@@ -32,10 +32,7 @@
             "name": "[parameters('networkSettings').virtualNetworkName]",
             "apiVersion": "[parameters('apiVersions').networkApiVersion]",
             "location": "[parameters('networkSettings').location]",
-            "dependsOn": [
-                "[concat('Microsoft.Network/routeTables/', parameters('fortigateFirewallSettings').routeTable1Name)]",
-                "[concat('Microsoft.Network/routeTables/', parameters('fortigateFirewallSettings').routeTable2Name)]"
-            ],
+         
             "properties": {
                 "addressSpace": {
                     "addressPrefixes": [
@@ -47,18 +44,14 @@
                         "name": "[parameters('networkSettings').subnet1Name]",
                         "properties": {
                             "addressPrefix": "[parameters('networkSettings').subnet1Prefix]",
-                            "routeTable": {
-                                "id": "[variables('routeTable1Id')]"
-                            }
+                          
                         }
                     },
                     {
                         "name": "[parameters('networkSettings').subnet2Name]",
                         "properties": {
                             "addressPrefix": "[parameters('networkSettings').subnet2Prefix]",
-                            "routeTable": {
-                                "id": "[variables('routeTable2Id')]"
-                            }
+                            
                         }
                     }
                 ]
