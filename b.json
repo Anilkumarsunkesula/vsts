@@ -50,7 +50,7 @@
                     "name": "vNet2tovNet1PeeringName",
                     "location": "[resourceGroup().location]",
                     "dependsOn": [
-                         "[concat('Microsoft.Network/virtualNetworks/', parameters('networkSettings').virtualNetworkName)]",
+                        
                        "[concat('Microsoft.Network/virtualNetworks/', parameters('wlNetworkSettings').virtualNetworkName)]"
                     ],
                     "comments": "This is the peering from vNet 1 to vNet 2",
