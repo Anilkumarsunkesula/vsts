@@ -1,0 +1,148 @@
+{
+    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "wlNetworkSettings": {
+            "type": "object"
+        },
+        "apiVersions": {
+            "type": "object"
+        },
+        "workloadsSettings": {
+            "type": "object"
+        }
+    },
+    "variables": {
+        "vnetRef": "[resourceId('Microsoft.Network/virtualNetworks', parameters('wlNetworkSettings').virtualNetworkName)]",
+        "subnetid": "[concat(variables('vnetRef'),'/subnets/',parameters('wlNetworkSettings').subnetName)]"
+    },
+    "resources": [
+        {
+            "name": "[ parameters('wlNetworkSettings').virtualNetworkName]",
+            "type": "Microsoft.Network/virtualNetworks",
+            "apiVersion": "[parameters('apiVersions').networkApiVersion]",
+            "location": "[resourceGroup().location]",
+            "properties": {
+                "addressSpace": {
+                    "addressPrefixes": [
+                        "[ parameters('wlNetworkSettings').addressPrefix]"
+                    ]
+                },
+                "subnets": [
+                    {
+                        "name": "[ parameters('wlNetworkSettings').subnetName]",
+                        "properties": {
+                            "addressPrefix": "[ parameters('wlNetworkSettings').subnetPrefix]"
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "apiVersion": "[parameters('apiVersions').networkApiVersion]",
+            "type": "Microsoft.Network/publicIPAddresses",
+            "name": "[concat(parameters('workloadsSettings').publicIpAddressName,copyIndex(1))]",
+            "location": "[resourceGroup().location]",
+            "properties": {
+                "publicIPAllocationMethod": "[parameters('workloadsSettings').publicIpAddressType]",
+                "dnsSettings": {
+                    "domainNameLabel": "[concat(parameters('workloadsSettings').publicIPdnsPrefix,copyIndex(1))]"
+                }
+            },
+            "copy": {
+                "name": "publicIpCopy",
+                "count": "[parameters('workloadsSettings').vmCount]"
+            }
+        },
+        {
+            "name": "[parameters('workloadsSettings').networkSecurityGroupName]",
+            "type": "Microsoft.Network/networkSecurityGroups",
+            "apiVersion": "[parameters('apiVersions').networkApiVersion]",
+            "location": "[resourceGroup().location]",
+            "properties": {
+                "securityRules": [
+                    {
+                        "name": "All",
+                        "properties": {
+                            "priority": 300,
+                            "protocol": "*",
+                            "access": "Allow",
+                            "direction": "Inbound",
+                            "sourceApplicationSecurityGroups": [],
+                            "destinationApplicationSecurityGroups": [],
+                            "sourceAddressPrefix": "*",
+                            "sourcePortRange": "*",
+                            "destinationAddressPrefix": "*",
+                            "destinationPortRange": "*"
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "apiVersion": "[parameters('apiVersions').networkApiVersion]",
+            "type": "Microsoft.Network/networkInterfaces",
+            "name": "[concat(parameters('workloadsSettings').nicName,1)]",
+            "location": "[resourceGroup().location]",
+            "dependsOn": [
+                "[concat('Microsoft.Network/publicIPAddresses/', concat(parameters('workloadsSettings').publicIpAddressName,1))]",
+                "[concat('Microsoft.Network/virtualNetworks/', parameters('wlNetworkSettings').virtualNetworkName)]"
+            ],
+            "properties": {
+                "ipConfigurations": [
+                    {
+                        "name": "ifconfig1",
+                        "properties": {
+                            "privateIPAllocationMethod": "static",
+                            "privateIPAddress": "[parameters('wlNetworkSettings').wl1_privateIP]",
+                            "publicIPAddress": {
+                                "id": "[resourceId('Microsoft.Network/publicIPAddresses', concat(parameters('workloadsSettings').publicIpAddressName,1))]"
+                            },
+                            "subnet": {
+                                "id": "[variables('subnetId')]"
+                            }
+                        }
+                    }
+                  ],
+                "networkSecurityGroup": {
+                    "id": "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('workloadsSettings').networkSecurityGroupName)]"
+                }
+            
+            }
+           
+        },
+        {
+            "apiVersion": "[parameters('apiVersions').networkApiVersion]",
+            "type": "Microsoft.Network/networkInterfaces",
+            "name": "[concat(parameters('workloadsSettings').nicName,2)]",
+            "location": "[resourceGroup().location]",
+            "dependsOn": [
+                "[concat('Microsoft.Network/publicIPAddresses/', concat(parameters('workloadsSettings').publicIpAddressName,2))]",
+                "[concat('Microsoft.Network/virtualNetworks/', parameters('wlNetworkSettings').virtualNetworkName)]"
+            ],
+            "properties": {
+                "ipConfigurations": [
+                    {
+                        "name": "ifconfig2",
+                        "properties": {
+                            "privateIPAllocationMethod": "static",
+                            "privateIPAddress": "[parameters('wlNetworkSettings').wl2_privateIP]",
+                            "publicIPAddress": {
+                                "id": "[resourceId('Microsoft.Network/publicIPAddresses', concat(parameters('workloadsSettings').publicIpAddressName,2))]"
+                            },
+                            "subnet": {
+                                "id": "[variables('subnetId')]"
+                            }
+                        }
+                    }
+                  ],
+                "networkSecurityGroup": {
+                    "id": "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('workloadsSettings').networkSecurityGroupName)]"
+                }
+            
+            }
+           
+        }  
+    ],
+    "outputs": {}
+}
