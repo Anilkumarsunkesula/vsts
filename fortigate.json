@@ -132,7 +132,8 @@
             "name": "[parameters('fortigateFirewallSettings').fortiNicName1]",
             "location": "[parameters('fortigateFirewallSettings').location]",
             "dependsOn": [
-                "[concat('Microsoft.Network/publicIPAddresses/', parameters('fortigateFirewallSettings').fortiPublicIPAddressName)]"
+                "[concat('Microsoft.Network/publicIPAddresses/', parameters('fortigateFirewallSettings').fortiPublicIPAddressName)]",
+                "[concat('Microsoft.Network/virtualNetworks/', parameters('networkSettings').virtualNetworkName)]"
             ],
             "properties": {
                 "ipConfigurations": [
@@ -159,7 +160,8 @@
             "name": "[parameters('fortigateFirewallSettings').fortiNicName2]",
             "location": "[parameters('fortigateFirewallSettings').location]",
             "dependsOn": [
-                "[concat('Microsoft.Network/publicIPAddresses/', parameters('fortigateFirewallSettings').fortiPublicIPAddressName)]"
+                "[concat('Microsoft.Network/publicIPAddresses/', parameters('fortigateFirewallSettings').fortiPublicIPAddressName)]",
+                "[concat('Microsoft.Network/virtualNetworks/', parameters('networkSettings').virtualNetworkName)]"
             ],
             "properties": {
                 "ipConfigurations": [
