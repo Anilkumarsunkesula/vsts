@@ -41,7 +41,7 @@
                 {
                     "apiVersion": "2016-06-01",
                     "type": "virtualNetworkPeerings",
-                    "name": "[variables('vNet2tovNet1PeeringName')]",
+                    "name": "vNet2tovNet1PeeringName",
                     "location": "[resourceGroup().location]",
                     "dependsOn": [
                         "[variables('remoteVNet')]",
