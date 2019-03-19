@@ -13,7 +13,6 @@
         }
     },
     "variables": {
-        "suffix": "[substring(uniqueString(resourceGroup().id), 0, 5)]",
         "vnetId": "[resourceId('Microsoft.Network/virtualNetworks', parameters('networkSettings').virtualNetworkName)]",
         "subnetRef": "[concat(variables('vnetId'), '/subnets/', parameters('networkSettings').subnet1Name)]",
         "subnet1Ref": "[concat(variables('vnetId'), '/subnets/', parameters('networkSettings').subnet2Name)]",
@@ -182,7 +181,7 @@
         },
         {
             "type": "Microsoft.Compute/virtualMachines",
-            "name": "[concat(parameters('fortigateFirewallSettings').FortiGateName,variables('suffix')) ]",
+            "name": "[parameters('fortigateFirewallSettings').FortiGateName]",
             "apiVersion": "[parameters('apiVersions').computeApiVersion]",
             "location": "[parameters('fortigateFirewallSettings').location]",
             "plan": {
