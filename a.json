@@ -22,7 +22,7 @@
         
         "vnetId": "[resourceId('Microsoft.Network/virtualNetworks', parameters('networkSettings').virtualNetworkName)]",
         "subnetRef": "[concat(variables('vnetId'), '/subnets/', parameters('networkSettings').subnet1Name)]",
-        "subnet1Ref": "[concat(variables('vnetId'), '/subnets/', parameters('networkSettings').subnet2Name)]",
+        "subnet1Ref": "[concat(variables('vnetId'), '/subnets/', parameters('networkSettings').subnet2Name)]"
        },
     "resources": [
         {
@@ -41,14 +41,14 @@
                     {
                         "name": "[parameters('networkSettings').subnet1Name]",
                         "properties": {
-                            "addressPrefix": "[parameters('networkSettings').subnet1Prefix]",
+                            "addressPrefix": "[parameters('networkSettings').subnet1Prefix]"
                           
                         }
                     },
                     {
                         "name": "[parameters('networkSettings').subnet2Name]",
                         "properties": {
-                            "addressPrefix": "[parameters('networkSettings').subnet2Prefix]",
+                            "addressPrefix": "[parameters('networkSettings').subnet2Prefix]"
                             
                         }
                     }
