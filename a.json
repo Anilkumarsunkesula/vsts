@@ -1,0 +1,62 @@
+{
+    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "networkSettings": {
+            "type": "object"
+        },
+        "apiVersions": {
+            "type": "object"
+        },
+        "fortigateFirewallSettings": {
+            "type": "object"
+        }
+    },
+    "variables": {
+        "vnetId": "[resourceId('Microsoft.Network/virtualNetworks', parameters('networkSettings').virtualNetworkName)]",
+        "subnetRef": "[concat(variables('vnetId'), '/subnets/', parameters('networkSettings').subnet1Name)]",
+        "subnet1Ref": "[concat(variables('vnetId'), '/subnets/', parameters('networkSettings').subnet2Name)]",
+        "routeTable1Id": "[resourceId('Microsoft.Network/routeTables',parameters('fortigateFirewallSettings').routeTable1Name)]",
+        "routeTable2Id": "[resourceId('Microsoft.Network/routeTables',parameters('fortigateFirewallSettings').routeTable2Name)]"
+    },
+    "resources": [
+        {
+            "type": "Microsoft.Network/virtualNetworks",
+            "name": "[parameters('networkSettings').virtualNetworkName]",
+            "apiVersion": "[parameters('apiVersions').networkApiVersion]",
+            "location": "[parameters('networkSettings').location]",
+            "dependsOn": [
+                "[concat('Microsoft.Network/routeTables/', parameters('fortigateFirewallSettings').routeTable1Name)]",
+                "[concat('Microsoft.Network/routeTables/', parameters('fortigateFirewallSettings').routeTable2Name)]"
+            ],
+            "properties": {
+                "addressSpace": {
+                    "addressPrefixes": [
+                        "[parameters('networkSettings').addressPrefix]"
+                    ]
+                },
+                "subnets": [
+                    {
+                        "name": "[parameters('networkSettings').subnet1Name]",
+                        "properties": {
+                            "addressPrefix": "[parameters('networkSettings').subnet1Prefix]",
+                            "routeTable": {
+                                "id": "[variables('routeTable1Id')]"
+                            }
+                        }
+                    },
+                    {
+                        "name": "[parameters('networkSettings').subnet2Name]",
+                        "properties": {
+                            "addressPrefix": "[parameters('networkSettings').subnet2Prefix]",
+                            "routeTable": {
+                                "id": "[variables('routeTable2Id')]"
+                            }
+                        }
+                    }
+                ]
+            }
+        }
+    ],
+    "outputs": {}
+}
