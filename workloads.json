@@ -142,7 +142,53 @@
             
             }
            
-        }  
+        },
+        {
+            "apiVersion": "2018-06-01",
+            "copy": {
+                "name": "nodeCopy",
+                "count": "[parameters('workloadsSettings').vmCount]"
+            },
+            "type": "Microsoft.Compute/virtualMachines",
+            "name": "[concat(parameters('workloadsSettings').virtualMachineName,copyIndex(1))]",
+            "location": "[resourceGroup().location]",
+            "dependsOn": [
+                "[resourceId('Microsoft.Network/networkInterfaces', concat(parameters('workloadsSettings').nicName,copyIndex(1)))]"
+            ],
+            "properties": {
+                "hardwareProfile": {
+                    "vmSize": "[parameters('workloadsSettings').vmSize]"
+                },
+                "osProfile": {
+                    "computerName": "[concat(parameters('workloadsSettings').virtualMachineName, copyIndex(1))]",
+                    "adminUsername": "[parameters('workloadsSettings').adminUsername]",
+                    "adminPassword": "[parameters('workloadsSettings').adminPassword]"
+                },
+                "storageProfile": {
+                    "imageReference": {
+                        "publisher": "[parameters('workloadsSettings').osPublisher]",
+                        "offer": "[parameters('workloadsSettings').osOffer]",
+                        "sku": "[parameters('workloadsSettings').osSku]",
+                        "version": "latest"
+                    },
+                    "osDisk": {
+                        "createOption": "FromImage",
+                        "managedDisk": {
+                            "storageAccountType": "[parameters('workloadsSettings').storageAccountType]"
+                        }
+                    },
+                    "dataDisks": []
+                },
+                "networkProfile": {
+                    "networkInterfaces": [
+                        {
+                            "id": "[resourceId('Microsoft.Network/networkInterfaces', concat(parameters('workloadsSettings').nicName,copyIndex(1)))]"
+                        }
+                    ]
+                }
+            }
+        }
+          
     ],
     "outputs": {}
 }
