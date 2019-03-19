@@ -212,7 +212,7 @@
                         "publisher": "[parameters('fortigateFirewallSettings').publisher]",
                         "offer": "[parameters('fortigateFirewallSettings').product]",
                         "sku": "[parameters('fortigateFirewallSettings').sku]",
-                        "version": "latest"
+                        "version": "[parameters('fortigateFirewallSettings').version]"
                     },
                     "osDisk": {
                         "createOption": "FromImage"
