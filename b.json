@@ -1,0 +1,43 @@
+{
+    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "wlNetworkSettings": {
+            "type": "object"
+        },
+        "apiVersions": {
+            "type": "object"
+        },
+        "workloadsSettings": {
+            "type": "object"
+        }
+    },
+    "variables": {
+        "vnetRef": "[resourceId('Microsoft.Network/virtualNetworks', parameters('wlNetworkSettings').virtualNetworkName)]",
+        "subnetid": "[concat(variables('vnetRef'),'/subnets/',parameters('wlNetworkSettings').subnetName)]"
+    },
+    "resources": [
+        {
+            "name": "[ parameters('wlNetworkSettings').virtualNetworkName]",
+            "type": "Microsoft.Network/virtualNetworks",
+            "apiVersion": "[parameters('apiVersions').networkApiVersion]",
+            "location": "[resourceGroup().location]",
+            "properties": {
+                "addressSpace": {
+                    "addressPrefixes": [
+                        "[ parameters('wlNetworkSettings').addressPrefix]"
+                    ]
+                },
+                "subnets": [
+                    {
+                        "name": "[ parameters('wlNetworkSettings').subnetName]",
+                        "properties": {
+                            "addressPrefix": "[ parameters('wlNetworkSettings').subnetPrefix]"
+                        }
+                    }
+                ]
+            }
+        }
+    ],
+    "outputs": {}
+}
