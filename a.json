@@ -23,9 +23,7 @@
         "vnetId": "[resourceId('Microsoft.Network/virtualNetworks', parameters('networkSettings').virtualNetworkName)]",
         "subnetRef": "[concat(variables('vnetId'), '/subnets/', parameters('networkSettings').subnet1Name)]",
         "subnet1Ref": "[concat(variables('vnetId'), '/subnets/', parameters('networkSettings').subnet2Name)]",
-        "routeTable1Id": "[resourceId('Microsoft.Network/routeTables',parameters('fortigateFirewallSettings').routeTable1Name)]",
-        "routeTable2Id": "[resourceId('Microsoft.Network/routeTables',parameters('fortigateFirewallSettings').routeTable2Name)]"
-    },
+       },
     "resources": [
         {
             "type": "Microsoft.Network/virtualNetworks",
@@ -63,8 +61,8 @@
                     "name": "vNet1tovNet2PeeringName",
                     "location": "[resourceGroup().location]",
                     "dependsOn": [
-                        "[variables('remoteVNet')]",
-                        "[variables('remoteVNet2)]"
+                        "variables('remoteVNet')",
+                        "variables('remoteVNet2)"
                     ],
                     "comments": "This is the peering from vNet 1 to vNet 2",
                     "properties": {
