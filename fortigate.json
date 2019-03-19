@@ -214,10 +214,8 @@
                         "version": "latest"
                     },
                     "osDisk": {
-                        "createOption": "FromImage",
-                        "managedDisk": {
-                            "storageAccountType": "[parameters('fortigateFirewallSettings').storageAccountType]"
-                        }
+                        "createOption": "FromImage"
+                       
                     },
                     "dataDisks": [
                         {
