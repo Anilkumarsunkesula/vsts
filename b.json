@@ -50,8 +50,8 @@
                     "name": "vNet2tovNet1PeeringName",
                     "location": "[resourceGroup().location]",
                     "dependsOn": [
-                        "[variables('remoteVNet')]",
-                        "[variables('remoteVNet2)]"
+                        "variables('remoteVNet')",
+                        "variables('remoteVNet2)"
                     ],
                     "comments": "This is the peering from vNet 1 to vNet 2",
                     "properties": {
