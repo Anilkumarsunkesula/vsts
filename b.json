@@ -2,7 +2,10 @@
     "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
-        "wlNetworkSettings": {
+        "networkSettings": {
+            "type": "object"
+        },
+           "wlNetworkSettings": {
             "type": "object"
         },
         "apiVersions": {
@@ -13,6 +16,9 @@
         }
     },
     "variables": {
+        "rgName": "[resourceGroup().name]",
+        "remoteVNet": "[resourceId(variables('rgName'), 'Microsoft.Network/virtualNetworks', variables('networkSettings').virtualNetworkName)]",
+        "remoteVNet2": "[resourceId(variables('rgName'), 'Microsoft.Network/virtualNetworks', variables('wlNetworkSettings').virtualNetworkName)]",
         "vnetRef": "[resourceId('Microsoft.Network/virtualNetworks', parameters('wlNetworkSettings').virtualNetworkName)]",
         "subnetid": "[concat(variables('vnetRef'),'/subnets/',parameters('wlNetworkSettings').subnetName)]"
     },
