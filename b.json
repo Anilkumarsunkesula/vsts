@@ -51,7 +51,8 @@
                     "location": "[resourceGroup().location]",
                     "dependsOn": [
                         
-                       "[concat('Microsoft.Network/virtualNetworks/', parameters('wlNetworkSettings').virtualNetworkName)]"
+                       "[concat('Microsoft.Network/virtualNetworks/', parameters('wlNetworkSettings').virtualNetworkName)]",
+                       "[resourceId(variables('rgName'), 'Microsoft.Network/virtualNetworks', parameters('networkSettings').virtualNetworkName)]"
                     ],
                     "comments": "This is the peering from vNet 1 to vNet 2",
                     "properties": {
