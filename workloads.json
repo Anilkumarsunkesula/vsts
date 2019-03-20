@@ -14,7 +14,11 @@
     },
     "variables": {
         "vnetRef": "[resourceId('Microsoft.Network/virtualNetworks', parameters('wlNetworkSettings').virtualNetworkName)]",
-        "subnetid": "[concat(variables('vnetRef'),'/subnets/',parameters('wlNetworkSettings').subnetName)]"
+        "subnetid": "[concat(variables('vnetRef'),'/subnets/',parameters('wlNetworkSettings').subnetName)]",
+        "rgName": "[resourceGroup().name]",
+        "remoteVNet": "[resourceId(variables('rgName'), 'Microsoft.Network/virtualNetworks', parameters('networkSettings').virtualNetworkName)]",
+        "remoteVNet2": "[resourceId(variables('rgName'), 'Microsoft.Network/virtualNetworks', parameters('wlNetworkSettings').virtualNetworkName)]"
+   
     },
     "resources": [
         {
@@ -36,7 +40,30 @@
                         }
                     }
                 ]
-            }
+            },
+            "resources": [
+                {
+                    "apiVersion": "2016-06-01",
+                    "type": "virtualNetworkPeerings",
+                    "name": "vNet2tovNet1PeeringName",
+                    "location": "[resourceGroup().location]",
+                    "dependsOn": [
+                        
+                       "[concat('Microsoft.Network/virtualNetworks/', parameters('wlNetworkSettings').virtualNetworkName)]",
+                       "[concat('Microsoft.Compute/virtualMachines/', parameters('fortigateFirewallSettings').FortiGateName)]"
+                    ],
+                    "comments": "This is the peering from vNet 1 to vNet 2",
+                    "properties": {
+                        "allowVirtualNetworkAccess": "true",
+                        "allowForwardedTraffic": "false",
+                        "allowGatewayTransit": "false",
+                        "useRemoteGateways": "false",
+                        "remoteVirtualNetwork": {
+                            "id": "[variables('remoteVNet')]"
+                        }
+                    }
+                }
+             ]
         },
         {
             "apiVersion": "[parameters('apiVersions').networkApiVersion]",
@@ -86,7 +113,7 @@
             "location": "[resourceGroup().location]",
             "dependsOn": [
                 "[concat('Microsoft.Network/publicIPAddresses/', concat(parameters('workloadsSettings').publicIpAddressName,1))]",
-                "[concat('Microsoft.Network/virtualNetworks/', parameters('wlNetworkSettings').virtualNetworkName)]"
+                "[concat('Microsoft.Network/virtualNetworks/', parameters('workloadsSettings').virtualMachineName,1)]"
             ],
             "properties": {
                 "ipConfigurations": [
