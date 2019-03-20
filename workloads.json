@@ -5,9 +5,6 @@
         "wlNetworkSettings": {
             "type": "object"
         },
-          "networkSettings": {
-            "type": "object"
-        },
         "apiVersions": {
             "type": "object"
         },
@@ -16,58 +13,11 @@
         }
     },
     "variables": {
-        "vnetRef": "[resourceId('Microsoft.Network/virtualNetworks', parameters('wlNetworkSettings').virtualNetworkName)]",
-        "subnetid": "[concat(variables('vnetRef'),'/subnets/',parameters('wlNetworkSettings').subnetName)]",
         "rgName": "[resourceGroup().name]",
-        "remoteVNet": "[resourceId(variables('rgName'), 'Microsoft.Network/virtualNetworks', parameters('networkSettings').virtualNetworkName)]",
-        "remoteVNet2": "[resourceId(variables('rgName'), 'Microsoft.Network/virtualNetworks', parameters('wlNetworkSettings').virtualNetworkName)]"
-   
-    },
-    "resources": [
-        {
-            "name": "[ parameters('wlNetworkSettings').virtualNetworkName]",
-            "type": "Microsoft.Network/virtualNetworks",
-            "apiVersion": "[parameters('apiVersions').networkApiVersion]",
-            "location": "[resourceGroup().location]",
-            "properties": {
-                "addressSpace": {
-                    "addressPrefixes": [
-                        "[ parameters('wlNetworkSettings').addressPrefix]"
-                    ]
-                },
-                "subnets": [
-                    {
-                        "name": "[ parameters('wlNetworkSettings').subnetName]",
-                        "properties": {
-                            "addressPrefix": "[ parameters('wlNetworkSettings').subnetPrefix]"
-                        }
-                    }
-                ]
-            },
-            "resources": [
-                {
-                    "apiVersion": "2016-06-01",
-                    "type": "virtualNetworkPeerings",
-                    "name": "vNet2tovNet1PeeringName",
-                    "location": "[resourceGroup().location]",
-                    "dependsOn": [
-                        
-                       "[concat('Microsoft.Network/virtualNetworks/', parameters('wlNetworkSettings').virtualNetworkName)]",
-                       "[concat('Microsoft.Compute/virtualMachines/', parameters('workloadsSettings').virtualMachineName,1)]"
-                    ],
-                    "comments": "This is the peering from vNet 1 to vNet 2",
-                    "properties": {
-                        "allowVirtualNetworkAccess": "true",
-                        "allowForwardedTraffic": "false",
-                        "allowGatewayTransit": "false",
-                        "useRemoteGateways": "false",
-                        "remoteVirtualNetwork": {
-                            "id": "[variables('remoteVNet')]"
-                        }
-                    }
-                }
-             ]
+        "vnetRef": "[resourceId(variables('rgName'), 'Microsoft.Network/virtualNetworks', parameters('wlNetworkSettings').virtualNetworkName)]",
+        "subnetid": "[concat(variables('vnetRef'),'/subnets/',parameters('wlNetworkSettings').subnetName)]"
         },
+    "resources": [
         {
             "apiVersion": "[parameters('apiVersions').networkApiVersion]",
             "type": "Microsoft.Network/publicIPAddresses",
@@ -92,18 +42,57 @@
             "properties": {
                 "securityRules": [
                     {
-                        "name": "All",
+                        "name": "HTTP",
                         "properties": {
-                            "priority": 300,
-                            "protocol": "*",
-                            "access": "Allow",
-                            "direction": "Inbound",
-                            "sourceApplicationSecurityGroups": [],
-                            "destinationApplicationSecurityGroups": [],
-                            "sourceAddressPrefix": "*",
+                            "provisioningState": "Succeeded",
+                            "protocol": "TCP",
                             "sourcePortRange": "*",
+                            "destinationPortRange": "80",
+                            "sourceAddressPrefix": "*",
                             "destinationAddressPrefix": "*",
-                            "destinationPortRange": "*"
+                            "access": "Allow",
+                            "priority": 300,
+                            "direction": "Inbound",
+                            "sourcePortRanges": [],
+                            "destinationPortRanges": [],
+                            "sourceAddressPrefixes": [],
+                            "destinationAddressPrefixes": []
+                        }
+                    },
+                    {
+                        "name": "SSH",
+                        "properties": {
+                            "provisioningState": "Succeeded",
+                            "protocol": "TCP",
+                            "sourcePortRange": "*",
+                            "destinationPortRange": "22",
+                            "sourceAddressPrefix": "*",
+                            "destinationAddressPrefix": "*",
+                            "access": "Allow",
+                            "priority": 320,
+                            "direction": "Inbound",
+                            "sourcePortRanges": [],
+                            "destinationPortRanges": [],
+                            "sourceAddressPrefixes": [],
+                            "destinationAddressPrefixes": []
+                        }
+                    },
+                    {
+                        "name": "Port_8080",
+                        "properties": {
+                            "provisioningState": "Succeeded",
+                            "protocol": "*",
+                            "sourcePortRange": "*",
+                            "destinationPortRange": "8080",
+                            "sourceAddressPrefix": "*",
+                            "destinationAddressPrefix": "*",
+                            "access": "Allow",
+                            "priority": 330,
+                            "direction": "Inbound",
+                            "sourcePortRanges": [],
+                            "destinationPortRanges": [],
+                            "sourceAddressPrefixes": [],
+                            "destinationAddressPrefixes": []
                         }
                     }
                 ]
@@ -117,7 +106,6 @@
             "dependsOn": [
                 "[concat('Microsoft.Network/publicIPAddresses/', concat(parameters('workloadsSettings').publicIpAddressName,1))]",
                 "[concat('Microsoft.Network/virtualNetworks/', parameters('wlNetworkSettings').virtualNetworkName)]"
-                
             ],
             "properties": {
                 "ipConfigurations": [
@@ -134,13 +122,11 @@
                             }
                         }
                     }
-                  ],
+                ],
                 "networkSecurityGroup": {
                     "id": "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('workloadsSettings').networkSecurityGroupName)]"
                 }
-            
             }
-           
         },
         {
             "apiVersion": "[parameters('apiVersions').networkApiVersion]",
@@ -166,16 +152,14 @@
                             }
                         }
                     }
-                  ],
+                ],
                 "networkSecurityGroup": {
                     "id": "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('workloadsSettings').networkSecurityGroupName)]"
                 }
-            
             }
-           
         },
         {
-            "apiVersion": "2018-06-01",
+            "apiVersion": "[parameters('apiVersions').computeApiVersion]",
             "copy": {
                 "name": "nodeCopy",
                 "count": "[parameters('workloadsSettings').vmCount]"
@@ -218,8 +202,28 @@
                     ]
                 }
             }
+        },
+        {
+            "type": "Microsoft.Compute/virtualMachines/extensions",
+            "name": "[concat(parameters('workloadsSettings').virtualMachineName,1,'/',parameters('workloadsSettings').extName)]",
+            "apiVersion":"[parameters('apiVersions').computeApiVersion]",
+            "location": "[resourceGroup().location]",
+            "properties": {
+                "publisher": "Microsoft.Azure.Extensions",
+                "type": "CustomScript",
+                "typeHandlerVersion": "2.0",
+                "autoUpgradeMinorVersion": true,
+                "settings": {
+                    "fileUris": [
+                        "[parameters('workloadsSettings').scriptUrl]"
+                    ],
+                    "commandToExecute": "sh webgoat.sh"
+                }
+            },
+            "dependsOn": [
+                "[concat('Microsoft.Compute/virtualMachines/',parameters('workloadsSettings').virtualMachineName,1)]"
+            ]
         }
-          
     ],
     "outputs": {
         "workloadFQDN1": {
