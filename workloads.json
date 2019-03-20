@@ -104,8 +104,8 @@
             "name": "[concat(parameters('workloadsSettings').nicName,1)]",
             "location": "[resourceGroup().location]",
             "dependsOn": [
-                "[concat('Microsoft.Network/publicIPAddresses/', concat(parameters('workloadsSettings').publicIpAddressName,1))]",
-                "[concat('Microsoft.Network/virtualNetworks/', parameters('wlNetworkSettings').virtualNetworkName)]"
+                "[concat('Microsoft.Network/publicIPAddresses/', concat(parameters('workloadsSettings').publicIpAddressName,1))]"
+                
             ],
             "properties": {
                 "ipConfigurations": [
@@ -134,8 +134,8 @@
             "name": "[concat(parameters('workloadsSettings').nicName,2)]",
             "location": "[resourceGroup().location]",
             "dependsOn": [
-                "[concat('Microsoft.Network/publicIPAddresses/', concat(parameters('workloadsSettings').publicIpAddressName,2))]",
-                "[concat('Microsoft.Network/virtualNetworks/', parameters('wlNetworkSettings').virtualNetworkName)]"
+                "[concat('Microsoft.Network/publicIPAddresses/', concat(parameters('workloadsSettings').publicIpAddressName,2))]"
+                
             ],
             "properties": {
                 "ipConfigurations": [
