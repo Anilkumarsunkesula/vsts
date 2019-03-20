@@ -5,6 +5,9 @@
         "wlNetworkSettings": {
             "type": "object"
         },
+          "networkSettings": {
+            "type": "object"
+        },
         "apiVersions": {
             "type": "object"
         },
