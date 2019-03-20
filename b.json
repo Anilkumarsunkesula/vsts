@@ -60,7 +60,7 @@
                         "allowGatewayTransit": "false",
                         "useRemoteGateways": "false",
                         "remoteVirtualNetwork": {
-                            "id": "[variables('remoteVNet2')]"
+                            "id": "[variables('remoteVNet')]"
                         }
                     }
                 }
