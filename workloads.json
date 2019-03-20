@@ -53,7 +53,7 @@
                     "dependsOn": [
                         
                        "[concat('Microsoft.Network/virtualNetworks/', parameters('wlNetworkSettings').virtualNetworkName)]",
-                       "[concat('Microsoft.Compute/virtualMachines/', parameters('fortigateFirewallSettings').FortiGateName)]"
+                       "[concat('Microsoft.Compute/virtualMachines/', parameters('workloadsSettings').virtualMachineName,1)]"
                     ],
                     "comments": "This is the peering from vNet 1 to vNet 2",
                     "properties": {
@@ -116,7 +116,8 @@
             "location": "[resourceGroup().location]",
             "dependsOn": [
                 "[concat('Microsoft.Network/publicIPAddresses/', concat(parameters('workloadsSettings').publicIpAddressName,1))]",
-                "[concat('Microsoft.Network/virtualNetworks/', parameters('workloadsSettings').virtualMachineName,1)]"
+                "[concat('Microsoft.Network/virtualNetworks/', parameters('wlNetworkSettings').virtualNetworkName)]"
+                
             ],
             "properties": {
                 "ipConfigurations": [
