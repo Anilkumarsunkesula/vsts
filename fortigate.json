@@ -124,7 +124,7 @@
                     "location": "[resourceGroup().location]",
                     "dependsOn": [
                          "[concat('Microsoft.Network/virtualNetworks/', parameters('networkSettings').virtualNetworkName)]",
-                         "[concat('Microsoft.Network/networkInterfaces/', parameters('fortigateFirewallSettings').fortiNicName1)]"
+                         "[concat('Microsoft.Compute/virtualMachines/', parameters('fortigateFirewallSettings').FortiGateName)]"
                        
                     ],
                     "comments": "This is the peering from vNet 1 to vNet 2",
