@@ -83,8 +83,8 @@
             "name": "[parameters('fortigateFirewallSettings').fortiNicName2]",
             "location": "[parameters('fortigateFirewallSettings').location]",
             "dependsOn": [
-                "[concat('Microsoft.Network/publicIPAddresses/', parameters('fortigateFirewallSettings').fortiPublicIPAddressName)]",
-                "[concat('Microsoft.Network/virtualNetworks/', parameters('networkSettings').virtualNetworkName)]"
+                "[concat('Microsoft.Network/publicIPAddresses/', parameters('fortigateFirewallSettings').fortiPublicIPAddressName)]"
+                
             ],
             "properties": {
                 "ipConfigurations": [
