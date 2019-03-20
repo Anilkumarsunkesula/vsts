@@ -17,7 +17,10 @@
         "subnetRef": "[concat(variables('vnetId'), '/subnets/', parameters('networkSettings').subnet1Name)]",
         "subnet1Ref": "[concat(variables('vnetId'), '/subnets/', parameters('networkSettings').subnet2Name)]",
         "routeTable1Id": "[resourceId('Microsoft.Network/routeTables',parameters('fortigateFirewallSettings').routeTable1Name)]",
-        "routeTable2Id": "[resourceId('Microsoft.Network/routeTables',parameters('fortigateFirewallSettings').routeTable2Name)]"
+        "routeTable2Id": "[resourceId('Microsoft.Network/routeTables',parameters('fortigateFirewallSettings').routeTable2Name)]",
+        "rgName": "[resourceGroup().name]",
+        "remoteVNet": "[resourceId(variables('rgName'), 'Microsoft.Network/virtualNetworks', parameters('networkSettings').virtualNetworkName)]",
+        "remoteVNet2": "[resourceId(variables('rgName'), 'Microsoft.Network/virtualNetworks', parameters('wlNetworkSettings').virtualNetworkName)]"
     },
     "resources": [
         {
@@ -112,7 +115,31 @@
                         }
                     }
                 ]
-            }
+            },
+            "resources": [
+                {
+                    "apiVersion": "2016-06-01",
+                    "type": "virtualNetworkPeerings",
+                    "name": "vNet1tovNet2PeeringName",
+                    "location": "[resourceGroup().location]",
+                    "dependsOn": [
+                         "[concat('Microsoft.Network/virtualNetworks/', parameters('networkSettings').virtualNetworkName)]",
+                         "[concat('Microsoft.Network/networkInterfaces/', parameters('fortigateFirewallSettings').fortiNicName1)]"
+                       
+                    ],
+                    "comments": "This is the peering from vNet 1 to vNet 2",
+                    "properties": {
+                        "allowVirtualNetworkAccess": "true",
+                        "allowForwardedTraffic": "false",
+                        "allowGatewayTransit": "false",
+                        "useRemoteGateways": "false",
+                        "remoteVirtualNetwork": {
+                            "id": "[variables('remoteVNet2')]"
+                        }
+                    }
+                }
+             ]
+            
         },
         {
             "type": "Microsoft.Network/publicIPAddresses",
