@@ -209,9 +209,9 @@
             "apiVersion":"[parameters('apiVersions').computeApiVersion]",
             "location": "[resourceGroup().location]",
             "properties": {
-                "publisher": "Microsoft.Azure.Extensions",
-                "type": "CustomScript",
-                "typeHandlerVersion": "2.0",
+                "publisher": "Microsoft.Compute",
+                "type": "CustomScriptExtension",
+                "typeHandlerVersion": "1.8",
                 "autoUpgradeMinorVersion": true,
                 "settings": {
                     "fileUris": [
@@ -230,9 +230,9 @@
             "apiVersion":"[parameters('apiVersions').computeApiVersion]",
             "location": "[resourceGroup().location]",
             "properties": {
-                "publisher": "Microsoft.Azure.Extensions",
-                "type": "CustomScript",
-                "typeHandlerVersion": "2.0",
+                "publisher": "Microsoft.Compute",
+                "type": "BGInfo",
+                "typeHandlerVersion": "2.1",
                 "autoUpgradeMinorVersion": true,
                 "settings": {
                     "fileUris": [
