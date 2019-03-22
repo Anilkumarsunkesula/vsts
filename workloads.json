@@ -106,6 +106,10 @@
             "dependsOn": [
                 "[concat('Microsoft.Network/publicIPAddresses/', concat(parameters('workloadsSettings').publicIpAddressName, copyIndex(1)))]"
             ],
+            "copy": {
+                "name": "nodeCopy",
+                "count": "[parameters('workloadsSettings').nicName]"
+            },
             "properties": {
                 "ipConfigurations": [
                     {
