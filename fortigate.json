@@ -2,175 +2,258 @@
     "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
-        "networkSettings": {
+        "wlNetworkSettings": {
             "type": "object"
         },
         "apiVersions": {
             "type": "object"
         },
-        "fortigateFirewallSettings": {
+        "workloadsSettings": {
             "type": "object"
         }
     },
     "variables": {
         "rgName": "[resourceGroup().name]",
-        "vnetId": "[resourceId(variables('rgName'), 'Microsoft.Network/virtualNetworks', parameters('networkSettings').virtualNetworkName)]",
-        "subnetRef": "[concat(variables('vnetId'), '/subnets/', parameters('networkSettings').subnet1Name)]",
-        "subnet1Ref": "[concat(variables('vnetId'), '/subnets/', parameters('networkSettings').subnet2Name)]",
-        "routeTable1Id": "[resourceId('Microsoft.Network/routeTables',parameters('fortigateFirewallSettings').routeTable1Name)]",
-        "routeTable2Id": "[resourceId('Microsoft.Network/routeTables',parameters('fortigateFirewallSettings').routeTable2Name)]"
-        
-        
-        
-    },
+        "vnetRef": "[resourceId(variables('rgName'), 'Microsoft.Network/virtualNetworks', parameters('wlNetworkSettings').virtualNetworkName)]",
+        "subnetid": "[concat(variables('vnetRef'),'/subnets/',parameters('wlNetworkSettings').subnetName)]"
+        },
     "resources": [
         {
-            "type": "Microsoft.Compute/availabilitySets",
-            "name": "[parameters('fortigateFirewallSettings').fortiAvailName]",
-            "apiVersion": "[parameters('apiVersions').computeApiVersion]",
-            "location": "[parameters('fortigateFirewallSettings').location]",
-            "properties": {
-                "platformFaultDomainCount": "2",
-                "platformUpdateDomainCount": "2"
-            },
-            "sku": {
-                "name": "Aligned"
-            }
-        },
-        {
+            "apiVersion": "[parameters('apiVersions').networkApiVersion]",
             "type": "Microsoft.Network/publicIPAddresses",
-            "name": "[parameters('fortigateFirewallSettings').fortiPublicIPAddressName]",
-            "apiVersion": "[parameters('apiVersions').routtableApiVersion]",
-            "location": "[parameters('fortigateFirewallSettings').location]",
+            "name": "[concat(parameters('workloadsSettings').publicIpAddressName,copyIndex(1))]",
+            "location": "[resourceGroup().location]",
             "properties": {
-                "publicIPAllocationMethod": "[parameters('fortigateFirewallSettings').publicIPAddressType]",
+                "publicIPAllocationMethod": "[parameters('workloadsSettings').publicIpAddressType]",
                 "dnsSettings": {
-                    "domainNameLabel": "[parameters('fortigateFirewallSettings').fortiDnsLabelPrefix]"
+                    "domainNameLabel": "[concat(parameters('workloadsSettings').publicIPdnsPrefix,copyIndex(1))]"
                 }
+            },
+            "copy": {
+                "name": "publicIpCopy",
+                "count": "[parameters('workloadsSettings').vmCount]"
             }
         },
         {
-            "apiVersion": "[parameters('apiVersions').routtableApiVersion]",
-            "type": "Microsoft.Network/networkInterfaces",
-            "name": "[parameters('fortigateFirewallSettings').fortiNicName1]",
-            "location": "[parameters('fortigateFirewallSettings').location]",
-            "dependsOn": [
-                "[concat('Microsoft.Network/publicIPAddresses/', parameters('fortigateFirewallSettings').fortiPublicIPAddressName)]"
-               
-            ],
+            "name": "[parameters('workloadsSettings').networkSecurityGroupName]",
+            "type": "Microsoft.Network/networkSecurityGroups",
+            "apiVersion": "[parameters('apiVersions').networkApiVersion]",
+            "location": "[resourceGroup().location]",
             "properties": {
-                "ipConfigurations": [
+                "securityRules": [
                     {
-                        "name": "ipconfig1",
+                        "name": "HTTP",
                         "properties": {
-                            "privateIPAllocationMethod": "Static",
-                            "privateIPAddress": "[parameters('fortigateFirewallSettings').FGPubFacingAddress]",
-                            "subnet": {
-                                "id": "[variables('subnetRef')]"
-                            },
-                            "publicIPAddress": {
-                                "id": "[resourceId('Microsoft.Network/publicIpAddresses', parameters('fortigateFirewallSettings').fortiPublicIPAddressName)]"
-                            }
+                            "provisioningState": "Succeeded",
+                            "protocol": "TCP",
+                            "sourcePortRange": "*",
+                            "destinationPortRange": "80",
+                            "sourceAddressPrefix": "*",
+                            "destinationAddressPrefix": "*",
+                            "access": "Allow",
+                            "priority": 300,
+                            "direction": "Inbound",
+                            "sourcePortRanges": [],
+                            "destinationPortRanges": [],
+                            "sourceAddressPrefixes": [],
+                            "destinationAddressPrefixes": []
+                        }
+                    },
+                    {
+                        "name": "SSH",
+                        "properties": {
+                            "provisioningState": "Succeeded",
+                            "protocol": "TCP",
+                            "sourcePortRange": "*",
+                            "destinationPortRange": "22",
+                            "sourceAddressPrefix": "*",
+                            "destinationAddressPrefix": "*",
+                            "access": "Allow",
+                            "priority": 320,
+                            "direction": "Inbound",
+                            "sourcePortRanges": [],
+                            "destinationPortRanges": [],
+                            "sourceAddressPrefixes": [],
+                            "destinationAddressPrefixes": []
+                        }
+                    },
+                    {
+                        "name": "Port_8080",
+                        "properties": {
+                            "provisioningState": "Succeeded",
+                            "protocol": "*",
+                            "sourcePortRange": "*",
+                            "destinationPortRange": "8080",
+                            "sourceAddressPrefix": "*",
+                            "destinationAddressPrefix": "*",
+                            "access": "Allow",
+                            "priority": 330,
+                            "direction": "Inbound",
+                            "sourcePortRanges": [],
+                            "destinationPortRanges": [],
+                            "sourceAddressPrefixes": [],
+                            "destinationAddressPrefixes": []
                         }
                     }
-                ],
-                "enableIPForwarding": true
+                ]
             }
         },
         {
-            "apiVersion": "[parameters('apiVersions').routtableApiVersion]",
+            "apiVersion": "[parameters('apiVersions').networkApiVersion]",
             "type": "Microsoft.Network/networkInterfaces",
-            "name": "[parameters('fortigateFirewallSettings').fortiNicName2]",
-            "location": "[parameters('fortigateFirewallSettings').location]",
+            "name": "[concat(parameters('workloadsSettings').nicName,1)]",
+            "location": "[resourceGroup().location]",
             "dependsOn": [
-                "[concat('Microsoft.Network/publicIPAddresses/', parameters('fortigateFirewallSettings').fortiPublicIPAddressName)]"
+                "[concat('Microsoft.Network/publicIPAddresses/', concat(parameters('workloadsSettings').publicIpAddressName,1))]"
                 
             ],
             "properties": {
                 "ipConfigurations": [
                     {
-                        "name": "ipconfig1",
+                        "name": "ifconfig1",
                         "properties": {
-                            "privateIPAllocationMethod": "Static",
-                            "privateIPAddress": "[parameters('fortigateFirewallSettings').FGDMZAddress]",
+                            "privateIPAllocationMethod": "static",
+                            "privateIPAddress": "[parameters('wlNetworkSettings').wl1_privateIP]",
+                            "publicIPAddress": {
+                                "id": "[resourceId('Microsoft.Network/publicIPAddresses', concat(parameters('workloadsSettings').publicIpAddressName,1))]"
+                            },
                             "subnet": {
-                                "id": "[variables('subnet1Ref')]"
+                                "id": "[variables('subnetId')]"
                             }
                         }
                     }
                 ],
-                "enableIPForwarding": true
+                "networkSecurityGroup": {
+                    "id": "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('workloadsSettings').networkSecurityGroupName)]"
+                }
             }
         },
         {
-            "type": "Microsoft.Compute/virtualMachines",
-            "name": "[parameters('fortigateFirewallSettings').FortiGateName]",
-            "apiVersion": "[parameters('apiVersions').computeApiVersion]",
-            "location": "[parameters('fortigateFirewallSettings').location]",
-            "plan": {
-                "name": "[parameters('fortigateFirewallSettings').sku]",
-                "publisher": "[parameters('fortigateFirewallSettings').publisher]",
-                "product": "[parameters('fortigateFirewallSettings').product]"
-            },
+            "apiVersion": "[parameters('apiVersions').networkApiVersion]",
+            "type": "Microsoft.Network/networkInterfaces",
+            "name": "[concat(parameters('workloadsSettings').nicName,2)]",
+            "location": "[resourceGroup().location]",
             "dependsOn": [
-                "[concat('Microsoft.Network/networkInterfaces/', parameters('fortigateFirewallSettings').fortiNicName1)]",
-                "[concat('Microsoft.Network/networkInterfaces/', parameters('fortigateFirewallSettings').fortiNicName2)]",
-                "[concat('Microsoft.Compute/availabilitySets/', parameters('fortigateFirewallSettings').fortiAvailName)]"
+                "[concat('Microsoft.Network/publicIPAddresses/', concat(parameters('workloadsSettings').publicIpAddressName,2))]"
+                
+            ],
+            "properties": {
+                "ipConfigurations": [
+                    {
+                        "name": "ifconfig2",
+                        "properties": {
+                            "privateIPAllocationMethod": "static",
+                            "privateIPAddress": "[parameters('wlNetworkSettings').wl2_privateIP]",
+                            "publicIPAddress": {
+                                "id": "[resourceId('Microsoft.Network/publicIPAddresses', concat(parameters('workloadsSettings').publicIpAddressName,2))]"
+                            },
+                            "subnet": {
+                                "id": "[variables('subnetId')]"
+                            }
+                        }
+                    }
+                ],
+                "networkSecurityGroup": {
+                    "id": "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('workloadsSettings').networkSecurityGroupName)]"
+                }
+            }
+        },
+        {
+            "apiVersion": "[parameters('apiVersions').computeApiVersion]",
+            "copy": {
+                "name": "nodeCopy",
+                "count": "[parameters('workloadsSettings').vmCount]"
+            },
+            "type": "Microsoft.Compute/virtualMachines",
+            "name": "[concat(parameters('workloadsSettings').virtualMachineName,copyIndex(1))]",
+            "location": "[resourceGroup().location]",
+            "dependsOn": [
+                "[resourceId('Microsoft.Network/networkInterfaces', concat(parameters('workloadsSettings').nicName,copyIndex(1)))]"
             ],
             "properties": {
                 "hardwareProfile": {
-                    "vmSize": "[parameters('fortigateFirewallSettings').fortigateVMSize]"
-                },
-                "availabilitySet": {
-                    "id": "[resourceId('Microsoft.Compute/availabilitySets', parameters('fortigateFirewallSettings').fortiAvailName)]"
+                    "vmSize": "[parameters('workloadsSettings').vmSize]"
                 },
                 "osProfile": {
-                    "computerName": "[parameters('fortigateFirewallSettings').FortiGateName]",
-                    "adminUsername": "[parameters('fortigateFirewallSettings').adminUsername]",
-                    "adminPassword": "[parameters('fortigateFirewallSettings').adminPassword]"
+                    "computerName": "[concat(parameters('workloadsSettings').virtualMachineName, copyIndex(1))]",
+                    "adminUsername": "[parameters('workloadsSettings').adminUsername]",
+                    "adminPassword": "[parameters('workloadsSettings').adminPassword]"
                 },
                 "storageProfile": {
                     "imageReference": {
-                        "publisher": "[parameters('fortigateFirewallSettings').publisher]",
-                        "offer": "[parameters('fortigateFirewallSettings').product]",
-                        "sku": "[parameters('fortigateFirewallSettings').sku]",
-                        "version": "[parameters('fortigateFirewallSettings').version]"
+                        "publisher": "[parameters('workloadsSettings').osPublisher]",
+                        "offer": "[parameters('workloadsSettings').osOffer]",
+                        "sku": "[parameters('workloadsSettings').osSku]",
+                        "version": "latest"
                     },
                     "osDisk": {
-                        "createOption": "FromImage"
-                       
-                    },
-                    "dataDisks": [
-                        {
-                            "diskSizeGB": "30",
-                            "lun": 0,
-                            "createOption": "Empty"
+                        "createOption": "FromImage",
+                        "managedDisk": {
+                            "storageAccountType": "[parameters('workloadsSettings').storageAccountType]"
                         }
-                    ]
+                    },
+                    "dataDisks": []
                 },
                 "networkProfile": {
                     "networkInterfaces": [
                         {
-                            "properties": {
-                                "primary": true
-                            },
-                            "id": "[resourceId('Microsoft.Network/networkInterfaces',parameters('fortigateFirewallSettings').fortiNicName1)]"
-                        },
-                        {
-                            "properties": {
-                                "primary": false
-                            },
-                            "id": "[resourceId('Microsoft.Network/networkInterfaces',parameters('fortigateFirewallSettings').fortiNicName2)]"
+                            "id": "[resourceId('Microsoft.Network/networkInterfaces', concat(parameters('workloadsSettings').nicName,copyIndex(1)))]"
                         }
                     ]
                 }
             }
+        },
+        {
+            "type": "Microsoft.Compute/virtualMachines/extensions",
+            "name": "[concat(parameters('workloadsSettings').virtualMachineName,1,'/',parameters('workloadsSettings').extName)]",
+            "apiVersion":"[parameters('apiVersions').computeApiVersion]",
+            "location": "[resourceGroup().location]",
+            "properties": {
+                "publisher": "Microsoft.Compute",
+                "type": "CustomScriptExtension",
+                "typeHandlerVersion": "1.8",
+                "autoUpgradeMinorVersion": true,
+                "settings": {
+                    "fileUris": [
+                        "[parameters('workloadsSettings').scriptUrl]"
+                    ],
+                    "commandToExecute": "sh webgoat.sh"
+                }
+            },
+            "dependsOn": [
+                "[concat('Microsoft.Compute/virtualMachines/',parameters('workloadsSettings').virtualMachineName,1)]"
+            ]
+        },
+        {
+            "type": "Microsoft.Compute/virtualMachines/extensions",
+            "name": "[concat(parameters('workloadsSettings').virtualMachineName,2,'/',parameters('workloadsSettings').extName2)]",
+            "apiVersion":"[parameters('apiVersions').computeApiVersion]",
+            "location": "[resourceGroup().location]",
+            "properties": {
+                "publisher": "Microsoft.Compute",
+                "type": "BGInfo",
+                "typeHandlerVersion": "2.1",
+                "autoUpgradeMinorVersion": true,
+                "settings": {
+                    "fileUris": [
+                        "[parameters('workloadsSettings').scriptUrl]"
+                    ],
+                    "commandToExecute": "sh webgoat.sh"
+                }
+            },
+            "dependsOn": [
+                "[concat('Microsoft.Compute/virtualMachines/',parameters('workloadsSettings').virtualMachineName,2)]"
+            ]
         }
     ],
     "outputs": {
-        "fortigateFQDN": {
+        "workloadFQDN1": {
             "type": "string",
-            "value": "[reference(parameters('fortigateFirewallSettings').fortiPublicIPAddressName).dnsSettings.fqdn]"
+            "value": "[reference(concat(parameters('workloadsSettings').publicIpAddressName,1)).dnsSettings.fqdn]"
+        },
+        "workloadFQDN2": {
+            "type": "string",
+            "value": "[reference(concat(parameters('workloadsSettings').publicIpAddressName,1)).dnsSettings.fqdn]"
         }
     }
 }
