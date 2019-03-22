@@ -101,20 +101,20 @@
         {
             "apiVersion": "[parameters('apiVersions').networkApiVersion]",
             "type": "Microsoft.Network/networkInterfaces",
-            "name": "[concat(parameters('workloadsSettings').nicName,1)]",
+            "name": "[concat(parameters('workloadsSettings').nicName, copyIndex(1))]",
             "location": "[resourceGroup().location]",
             "dependsOn": [
-                "[concat('Microsoft.Network/publicIPAddresses/', concat(parameters('workloadsSettings').publicIpAddressName,1))]"
+                "[concat('Microsoft.Network/publicIPAddresses/', concat(parameters('workloadsSettings').publicIpAddressName, copyIndex(1)))]"
             ],
             "properties": {
                 "ipConfigurations": [
                     {
                         "name": "ifconfig1",
                         "properties": {
-                            "privateIPAllocationMethod": "static",
-                            "privateIPAddress": "[parameters('wlNetworkSettings').wl1_privateIP]",
+                            "privateIPAllocationMethod": "Dynamic",
+                            
                             "publicIPAddress": {
-                                "id": "[resourceId('Microsoft.Network/publicIPAddresses', concat(parameters('workloadsSettings').publicIpAddressName,1))]"
+                                "id": "[resourceId('Microsoft.Network/publicIPAddresses', concat(parameters('workloadsSettings').publicIpAddressName, copyIndex(1)))]"
                             },
                             "subnet": {
                                 "id": "[variables('subnetId')]"
@@ -127,35 +127,7 @@
                 }
             }
         },
-        {
-            "apiVersion": "[parameters('apiVersions').networkApiVersion]",
-            "type": "Microsoft.Network/networkInterfaces",
-            "name": "[concat(parameters('workloadsSettings').nicName,2)]",
-            "location": "[resourceGroup().location]",
-            "dependsOn": [
-                "[concat('Microsoft.Network/publicIPAddresses/', concat(parameters('workloadsSettings').publicIpAddressName,2))]"
-            ],
-            "properties": {
-                "ipConfigurations": [
-                    {
-                        "name": "ifconfig2",
-                        "properties": {
-                            "privateIPAllocationMethod": "static",
-                            "privateIPAddress": "[parameters('wlNetworkSettings').wl2_privateIP]",
-                            "publicIPAddress": {
-                                "id": "[resourceId('Microsoft.Network/publicIPAddresses', concat(parameters('workloadsSettings').publicIpAddressName,2))]"
-                            },
-                            "subnet": {
-                                "id": "[variables('subnetId')]"
-                            }
-                        }
-                    }
-                ],
-                "networkSecurityGroup": {
-                    "id": "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('workloadsSettings').networkSecurityGroupName)]"
-                }
-            }
-        },
+        
         {
             "apiVersion": "[parameters('apiVersions').computeApiVersion]",
             "copy": {
