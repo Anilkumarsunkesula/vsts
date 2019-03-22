@@ -108,7 +108,7 @@
             ],
             "copy": {
                 "name": "nodeCopy",
-                "count": "[parameters('workloadsSettings').nicName]"
+                "count": "[parameters('workloadsSettings').vmCount]"
             },
             "properties": {
                 "ipConfigurations": [
