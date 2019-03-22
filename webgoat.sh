@@ -1,2 +1,2 @@
 #!/bin/bash
-sudo touch $HOME/hiiii
+ touch /tmp/hiiii
