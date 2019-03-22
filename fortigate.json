@@ -96,6 +96,70 @@
                 ],
                 "enableIPForwarding": true
             }
+        },
+        {
+            "type": "Microsoft.Compute/virtualMachines",
+            "name": "[parameters('fortigateFirewallSettings').FortiGateName]",
+            "apiVersion": "[parameters('apiVersions').computeApiVersion]",
+            "location": "[parameters('fortigateFirewallSettings').location]",
+            "plan": {
+                "name": "[parameters('fortigateFirewallSettings').sku]",
+                "publisher": "[parameters('fortigateFirewallSettings').publisher]",
+                "product": "[parameters('fortigateFirewallSettings').product]"
+            },
+            "dependsOn": [
+                "[concat('Microsoft.Network/networkInterfaces/', parameters('fortigateFirewallSettings').fortiNicName1)]",
+                "[concat('Microsoft.Network/networkInterfaces/', parameters('fortigateFirewallSettings').fortiNicName2)]",
+                "[concat('Microsoft.Compute/availabilitySets/', parameters('fortigateFirewallSettings').fortiAvailName)]"
+            ],
+            "properties": {
+                "hardwareProfile": {
+                    "vmSize": "[parameters('fortigateFirewallSettings').fortigateVMSize]"
+                },
+                "availabilitySet": {
+                    "id": "[resourceId('Microsoft.Compute/availabilitySets', parameters('fortigateFirewallSettings').fortiAvailName)]"
+                },
+                "osProfile": {
+                    "computerName": "[parameters('fortigateFirewallSettings').FortiGateName]",
+                    "adminUsername": "[parameters('fortigateFirewallSettings').adminUsername]",
+                    "adminPassword": "[parameters('fortigateFirewallSettings').adminPassword]"
+                },
+                "storageProfile": {
+                    "imageReference": {
+                        "publisher": "[parameters('fortigateFirewallSettings').publisher]",
+                        "offer": "[parameters('fortigateFirewallSettings').product]",
+                        "sku": "[parameters('fortigateFirewallSettings').sku]",
+                        "version": "[parameters('fortigateFirewallSettings').version]"
+                    },
+                    "osDisk": {
+                        "createOption": "FromImage"
+                       
+                    },
+                    "dataDisks": [
+                        {
+                            "diskSizeGB": "30",
+                            "lun": 0,
+                            "createOption": "Empty"
+                        }
+                    ]
+                },
+                "networkProfile": {
+                    "networkInterfaces": [
+                        {
+                            "properties": {
+                                "primary": true
+                            },
+                            "id": "[resourceId('Microsoft.Network/networkInterfaces',parameters('fortigateFirewallSettings').fortiNicName1)]"
+                        },
+                        {
+                            "properties": {
+                                "primary": false
+                            },
+                            "id": "[resourceId('Microsoft.Network/networkInterfaces',parameters('fortigateFirewallSettings').fortiNicName2)]"
+                        }
+                    ]
+                }
+            }
         }
     ],
     "outputs": {
