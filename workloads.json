@@ -107,7 +107,7 @@
                 "[concat('Microsoft.Network/publicIPAddresses/', concat(parameters('workloadsSettings').publicIpAddressName,copyIndex(1)))]"
             ],
             "copy": {
-                "name": "nodeCopy",
+                "name": "nicCopy",
                 "count": "[parameters('workloadsSettings').vmCount]"
             },
             "properties": {
