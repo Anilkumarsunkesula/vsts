@@ -55,7 +55,7 @@ Login to FlexDeploy using username and password from Registration Screen
  
 
 ### Review:
-  *Pre-Configured Roles – FD Administrators
+  - Pre-Configured Roles – FD Administrators
 **Click Home** tab to go back to the Homepage
 
 ### Topology
@@ -67,7 +67,7 @@ The topology is how we administer and configure FlexDeploy so it can understand 
 
  
 
-  * **Click on Development Environment** – Review preconfigured Properties
+  - **Click on Development Environment** – Review preconfigured Properties
  
 
 *Review other preconfigured properties in this lab 
