@@ -271,4 +271,67 @@ Outcome: Configured SCM will be polled every 5 minutes and build automatically i
   5. **Click Save**
 Outcome: A Deployment will automatically be triggered after any successful Build of this project. This will be fired immediately after any kind of successful build (Manual or Scheduled or Poll SCM Trigger).
 
+ ## Release and Pipeline
  
+ #### Releases 
+Release – a software delivery milestone, containing a collection of related or unrelated projects enabling new or updated features/capabilities. 
+
+Release Snapshot – build versions (project versions) of the release's projects which are sent sent through the pipeline. 
+
+   1. **Click Release tab**
+   2. **Click Weekly SOA and WebLogic Release**
+
+
+Lists four projects involved in this release
+
+ 
+
+### Pipeline 
+
+A pipeline defines a set of stages (also known as environments), which contain a series of gates and steps. Each gate blocks entry into the steps until some condition is satisfied (e.g. an approval, schedule, or test results meeting some quality metric). The steps define the implementation of delivering the snapshot into the stage. After a stage successfully completes execution, it is sent to the next stage and begins executing its defined gates. 
+
+When a snapshot (versioned project builds) is created it is sent to the pipeline for execution. 
+
+   - Click Pipeline Tab 
+Click Simple Pipeline
+
+ 
+
+### Review Simple Pipeline 
+- Stages 
+   1. Development
+        - Gates – No gates 
+        - Steps – 2 steps 
+            1. Deploy All Projects
+            2. Execute Unit Tests 
+   2. QA
+        - Gates
+            1. Check Unit Test Results
+            2. QA Manager Approval
+        - Steps
+            1. Deploy All Projects
+            2. Execute Integration Tests
+            3. Verify Quality (Manual)
+            4. Notify QA Manager (Notification) 
+   3. Production
+        - Gates
+            1. Check Integration Test Results (Integration with ServiceNow)
+            2. CAB Approval
+            3. Release Manager Approval
+            4. Schedule Saturday at 9 PM (Schedule)
+        - Steps
+            1. Deploy All Projects
+            2. Notify IT Checkout Group
+            3. Production Verification – Manual Tests
+
+ 
+### Build your Own Pipeline 
+
+- **Click Make a Copy** of Simple Pipeline 
+- **Click Expand** to see graphical editor
+ 
+
+- Drag and drop gates and steps to define reusable pipeline that makes sense to you
+ 
+
+- **Click Minimize** when you’re done
