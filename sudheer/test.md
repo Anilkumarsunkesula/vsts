@@ -2,11 +2,11 @@
 
 ## Table of Contents
 
-[Welcome to FlexDeploy's Training Lab](#welcome-to-flexdeploy-training-lab)
+[Welcome to FlexDeploy's Training Lab](#welcome-to-flexDeploy's-training-lab)
 
 [Pre-Requisites](#pre-requisites)
 
-[Homepage, Security, and Topology](#homepage-security-and-topology)
+[Homepage, Security, and Topology](#homepage,-security,-and-topology)
 
 [Projects and Workflow](#projects-and-workflow)
 
@@ -18,7 +18,7 @@
 
 [Reports](#reports)
 
-## welcome-to-flexdeploy-training-lab
+## Welcome to FlexDeploy's Training Lab
 In this Training Lab, you’ll have access to a pre-configured, running environment of FlexDeploy. Over the course, you’ll be walked through how to move code, configuration, and other changes from build to production using FlexDeploy. You’ll also see how easy it is to configure FlexDeploy to work in your environment. At the end of the lab you will understand: 
 
 1. A day in the life (at an execution level) of a developer, administrator, release manager, etc. 
@@ -29,7 +29,7 @@ In this Training Lab, you’ll have access to a pre-configured, running environm
 ## Pre-Requisites
 Basic understand about Continues Integration and Delivery
 
-## homepage-security-and-topology
+## Homepage, Security, and Topology
 
 go to the URL 
 ### Registration
@@ -44,21 +44,21 @@ Login to FlexDeploy using username and password from Registration Screen
 
 
 
-### Homepage, Security, and Topology
+###Homepage, Security, and Topology
  When you log in you see the **FlexDeploy Homepage**
 
  
 
-### Security
+###Security
  In the Security Tile **click Groups**
 
  
 
-### Review:
-  - Pre-Configured Roles – FD Administrators
+###Review:
+  *Pre-Configured Roles – FD Administrators
 **Click Home** tab to go back to the Homepage
 
-### Topology
+###Topology
 **Click** anywhere in the Topology tile or on the Topology Tab
 
  
@@ -67,23 +67,20 @@ The topology is how we administer and configure FlexDeploy so it can understand 
 
  
 
-  - **Click on Development Environment** – Review preconfigured Properties
+  ***Click on Development Environment** – Review preconfigured Properties
  
 
-  - Review other preconfigured properties in this lab 
-    1. Click Environments 
-    2. Click Instances 
-    3. Click Endpoints 
-    4. Click Integrations
+*Review other preconfigured properties in this lab 
+    1.Click Environments 
+    2.Click Instances 
+    3.Click Endpoints 
+    4.Click Integrations
  
 
-  - In Integrations - **Click Testing Tab**
+  *In Integrations - **Click Testing Tab**
  
 
 Reminder: This environment is totally preconfigured for ease of use. One FlexDeploy is set up, we’re ready to run.
-
-
-## projects-and-workflow
 
  
 
