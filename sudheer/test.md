@@ -101,10 +101,10 @@ Review pre-configured Projects
  
 
 - Open four different projects that relate to SOA\
-    1. Double Click HRMDS Object\
-    2. Double Click HRSOAService\
-    3. Double Click ValidatePayment\ 
-    4. Double Click WLSConfigurations 
+    1.Double Click HRMDS Object\
+    2.Double Click HRSOAService\
+    3.Double Click ValidatePayment\ 
+    4.Double Click WLSConfigurations 
  
 - On WLS Configurations – Click Configuration Tab 
 - Notice configuration information such as\
