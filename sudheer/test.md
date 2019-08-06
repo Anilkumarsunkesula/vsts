@@ -155,14 +155,10 @@ Now that we have reviewed the pre-configured environment (set up so that FlexDep
 
 ### Click Projects Tab 
 
-    1. **Click ValidatePayment** Project (Note: Version 1.0.1 is running in Development environment) 
-    2. Do the Build 
-             1. **Click Build**
-
-             2. **Select Environment** – Development 
-
-             3. **Select Stream** - Master 
-
-             4. **Check Force Build** (because nothing has changed) 
-
-             5. **Click Submit Request** – will run Build workflow
+   1. **Click ValidatePayment** Project (Note: Version 1.0.1 is running in Development environment) 
+   2. Do the Build 
+            1. **Click Build**
+            2. **Select Environment** – Development 
+            3. **Select Stream** - Master 
+            4. **Check Force Build** (because nothing has changed) 
+            5. **Click Submit Request** – will run Build workflow
