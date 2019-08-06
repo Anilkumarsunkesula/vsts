@@ -44,21 +44,21 @@ Login to FlexDeploy using username and password from Registration Screen
 
 
 
-###Homepage, Security, and Topology
+### Homepage, Security, and Topology
  When you log in you see the **FlexDeploy Homepage**
 
  
 
-###Security
+### Security
  In the Security Tile **click Groups**
 
  
 
-###Review:
+### Review:
   *Pre-Configured Roles – FD Administrators
 **Click Home** tab to go back to the Homepage
 
-###Topology
+### Topology
 **Click** anywhere in the Topology tile or on the Topology Tab
 
  
@@ -67,21 +67,21 @@ The topology is how we administer and configure FlexDeploy so it can understand 
 
  
 
-  ***Click on Development Environment** – Review preconfigured Properties
+  - **Click on Development Environment** – Review preconfigured Properties
  
 
-*Review other preconfigured properties in this lab 
+- Review other preconfigured properties in this lab 
     1.Click Environments 
     2.Click Instances 
     3.Click Endpoints 
     4.Click Integrations
  
 
-  *In Integrations - **Click Testing Tab**
+  - In Integrations - **Click Testing Tab**
  
 
 Reminder: This environment is totally preconfigured for ease of use. One FlexDeploy is set up, we’re ready to run.
 
  
 
- 
+ ## projects-and-workflow
