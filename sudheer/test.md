@@ -100,17 +100,17 @@ Review pre-configured Projects
 3. **Lists out Projects**: A project represents artifacts that can be built and deployed as a unit, deploy can be executed on many instances and many environments. Each project is mapped to exactly one build workflow and one deploy workflow. Each project is also mapped to one build instance, and one or more deploy instances. At workflow execution time (build or deploy), the user selects one or more of the available instances configured on the project, and an environment.
  
 
-- Open four different projects that relate to SOA 
-    1. Double Click HRMDS Object 
-    2. Double Click HRSOAService 
-    3. Double Click ValidatePayment 
-    4. Double Click WLSConfigurations
+- Open four different projects that relate to SOA \
+    1. Double Click HRMDS Object \
+    2. Double Click HRSOAService \
+    3. Double Click ValidatePayment \ 
+    4. Double Click WLSConfigurations 
  
 - On WLS Configurations – Click Configuration Tab 
-- Notice configuration information such as 
-    1. SCM 
-    2. Stream 
-    3. Build Workflow Association – which workflow and where running 
+- Notice configuration information such as \
+    1. SCM \
+    2. Stream \
+    3. Build Workflow Association – which workflow and where running \
     4. Deploy Workflow Association – which workflow and where running
  
 
