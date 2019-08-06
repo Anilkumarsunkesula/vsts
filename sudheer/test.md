@@ -126,17 +126,17 @@ A workflow is an orchestration of steps which define a build or deployment proce
 
 ### SOA Build Workflow 
 
-- Open SOA Build Workflow 
+- Open SOA Build Workflow\
     1.Click arrow for Oracle\
     2.Click arrow for SOA\
     3.Click Build SOA Composite\
-    4.Click Definition\
-      
+    4.Click Definition
 
-- You are now looking at the graphical editor. The Workflow editor contains: 
-    1. Workflow Operations 
-    2. Plugin Operations 
-    3. Drag-and-Drop canvas 
+
+- You are now looking at the graphical editor. The Workflow editor contains:\
+    1.Workflow Operations\
+    2.Plugin Operations\
+    3.Drag-and-Drop canvas 
 - This workflow is Cloning Project Sources (pulling info from Git), saving test files, and building the SOA Composite/sar file. 
 - Spend some time looking at the different workflow operations, and the operations available for different plugins. You can search the available plugin operations using the Search Bar. 
 
