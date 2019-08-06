@@ -44,7 +44,7 @@ Login to FlexDeploy using username and password from Registration Screen
 
 
 
-### Homepage, Security, and Topology
+### Home page, Security, and Topology
  When you log in you see the **FlexDeploy Homepage**
 
  
