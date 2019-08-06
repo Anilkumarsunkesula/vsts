@@ -1,4 +1,4 @@
-# Deploying Oracle Kubernetes Engine.
+# FlexDeploy & Oracle SOA Suite
 
 ## Table of Contents
 
@@ -335,3 +335,74 @@ Click Simple Pipeline
  
 
 - **Click Minimize** when you’re done
+
+
+## Execute a Snapshot
+
+### Create a Snapshot
+
+- **Click Releases** Tab
+- **Click Create SnapshFot**
+ 
+
+- Add Snapshot Description, e.g. “enhancements”
+ 
+
+- Build Options
+   -  Force Build to build all (because nothing changed)
+
+
+- Use existing Project Version
+ 
+- Derived from Snapshot
+ 
+- Hybrid
+ 
+
+- Click Submit Request
+
+
+#### Review Execution and Dashboard 
+- **Click Dashboard**
+- Here you can see the snapshot be created, i.e. the build of those projects being kicked off. o Click Statistics tab
+- The Statistics tab displays the duration and success rates of builds and deployments by environment. 
+- **Click Test Automation Tab**
+     - The Test Automation tab displays historical information about test automation executions. 
+
+### Release Snapshot
+**Click Releases** Tab
+
+**Click Release Dashboard**
+
+ 
+
+You see the Snapshot was created and is now deploying in Development Environment because no gates. Review specifics: 
+
+**Click “Deploy all Projects” step**
+
+ 
+
+**Click Deploy All Projects** to see what is deploying 
+
+- See four projects that were part of the release. If you deployed an existing project when creating the snapshot, you will see that those projects are skipped because there was nothing new to deploy.
+ 
+
+**Click Back** twice to go back to the Release Dashboard
+
+- Deployment is Waiting in QA for QA Manager Approval
+   1. Click Approve (thumbs up) button to approve this Deployment (NOTE: you are configured to have full permissions in this Demo Lab, including QA Manager permissions)
+   2. Enter Approval Notes, e.g. “Review looks good, we need these changes”
+ 
+
+- The snapshot will continue to move through steps, and ultimately move through to Production and wait for CAB Approval
+ 
+
+### Review Snapshot Content 
+
+**Click Snapshot Content** - See what Version of each project is running
+
+ 
+
+**Click State** Tab to see at birds-eye-view what’s running in which environments
+
+ 
