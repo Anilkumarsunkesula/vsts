@@ -29,7 +29,7 @@ In this Training Lab, you’ll have access to a pre-configured, running environm
 ## Pre-Requisites
 Basic understand about Continues Integration and Delivery
 
-## homepage-security-and-topology
+## Homepage, Security, and Topology
 
 go to the URL 
 ### Registration
