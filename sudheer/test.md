@@ -2,7 +2,7 @@
 
 ## Table of Contents
 
-[Welcome to FlexDeploy's Training Lab](#welcome-to-flexdeploy's-training-lab)
+[Welcome to FlexDeploy's Training Lab](#welcome-to-flexdeploy-training-lab)
 
 [Pre-Requisites](#pre-requisites)
 
