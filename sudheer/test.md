@@ -390,8 +390,8 @@ You see the Snapshot was created and is now deploying in Development Environment
 **Click Back** twice to go back to the Release Dashboard
 
 - Deployment is Waiting in QA for QA Manager Approval
-   1. Click Approve (thumbs up) button to approve this Deployment (NOTE: you are configured to have full permissions in this Demo Lab, including QA Manager permissions)
-   2. Enter Approval Notes, e.g. “Review looks good, we need these changes”
+1. Click Approve (thumbs up) button to approve this Deployment (NOTE: you are configured to have full permissions in this Demo Lab, including QA Manager permissions)
+2. Enter Approval Notes, e.g. “Review looks good, we need these changes”
  
 
 - The snapshot will continue to move through steps, and ultimately move through to Production and wait for CAB Approval
