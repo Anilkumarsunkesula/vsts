@@ -2,7 +2,7 @@
 
 ## Table of Contents
 
-[Welcome to FlexDeploy"'"s Training Lab](#welcome-to-flexdeploy-training-lab)
+[Welcome to FlexDeploy's Training Lab](#welcome-to-flexdeploy-training-lab)
 
 [Pre-Requisites](#pre-requisites)
 
@@ -71,10 +71,10 @@ The topology is how we administer and configure FlexDeploy so it can understand 
  
 
 - Review other preconfigured properties in this lab 
-    1.**Click Environments**;
-    2.**Click Instances**;
-    3.**Click Endpoints**;
-    4.**Click Integrations**;
+    1.**Click Environments**&nbsp;
+    2.**Click Instances**&nbsp;
+    3.**Click Endpoints**&nbsp;
+    4.**Click Integrations**
 
 - In Integrations - **Click Testing Tab**
  
