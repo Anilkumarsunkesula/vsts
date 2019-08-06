@@ -405,4 +405,23 @@ You see the Snapshot was created and is now deploying in Development Environment
 
 **Click State** Tab to see at birds-eye-view what’s running in which environments
 
+## Reports
+
+### Reports 
+
+Take some time to explore the available Reports in the **Reports Drop Down**
+
+- Environment State – provides visibility into the most recently deployed project versions to each of the environments and instances across the topology. 
+- Environment History - provides visibility into the history of all activities across the topology of environments and instances. This report is helpful in determining what may have happened with a given project that might be having issues. 
+- Environment Discrepancies - provides visibility into the history of all activities across the topology of environments and instances. 
+- Scheduled Tasks - provides visibility into scheduled tasks in the system for Project, Application or Pipeline Executions. 
+- Approval Tasks - provides visibility into approval tasks in the system that were approved or rejected for Project, Application or Pipeline Executions. 
+- Test Automation - provides visibility into results of all test executions performed across FlexDeploy topology.
+ 
+
+  
+
+Explore and enjoy!
+
+ If, after your Training Lab, you are ready to explore FlexDeploy further, send an email to rebecca.pruess@flexagon.com and we’ll be happy to help you out!
  
