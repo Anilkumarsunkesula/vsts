@@ -162,3 +162,59 @@ Now that we have reviewed the pre-configured environment (set up so that FlexDep
             3. **Select Stream** - Master\
             4. **Check Force Build** (because nothing has changed)\
             5. **Click Submit Request** – will run Build workflow
+
+
+
+   3. In the Project Activity – see Version 1.0.2 is being built 
+   4. **Click Dashboard**
+ 
+
+   5. On the Dashboard see that the build has been submitted and the workflow from before (Build SOA Composite) is running. This will save and version in artifact repository 
+   6. **Click ValidatePayment** in Current Activities to head back to the Project Explorer
+ 
+
+   7. **Click on the Execution ID** to look at Execution Steps
+ 
+
+   8. This is showing the three steps from the Build SOA Composite workflow we reviewed earlier 
+   9. **Click Back** to get back to the Project Page
+ 
+
+#### Deploy 
+
+- Deploy the newly packaged build artifact into the next environment. 
+1. **Click Deploy** 
+2. **Sect Project Version** – 0.2 (the artifact we just built) 
+3. **Select Environment** – Development 
+*NOTE: You can schedule the deployment if desired 
+4. **Click Submit Request** – will run deploy workflow
+ 
+
+- **Click on Execution ID** to review steps of deploy being executed
+ 
+
+- **Click Artifacts** to view what is being deployed
+ 
+
+- **Click Back** to get back to the Projects screen
+With that, Version 1.0.2 is running in Development environment
+
+ 
+### Build
+- On the Projects Screen – **Click WLSConfigurations** Project tab (Note: Version 1.0.1 is running in Development environment) 
+  1. **Click Build**
+  2. **Select Environment – Development**
+  3. **Check Force Build (because nothing has changed)**
+  4. **Click Submit Request – will run Build workflow**
+- In the Project Activity, see that Version 1.0.2 is being built**
+
+### Deploy 
+
+  1. **Click Deploy**
+  2. **Select Project Version – we are deploying previously created version 1.0.2**
+  3. **Select Environment – Development Note: Can schedule if desired**
+  4. **Click Submit Request – will run deploy workflow**
+  5. **Click on Execution ID – to review the steps of the deploy being executed**
+- Click Artifacts to view what is being deployed 
+- Click Back to get back to the Projects Screen 
+With that, Version 1.0.2 of WLSConfigurations is running in Development environment
