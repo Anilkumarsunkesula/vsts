@@ -202,11 +202,10 @@ With that, Version 1.0.2 is running in Development environment
  
 ### Build
 - On the Projects Screen – **Click WLSConfigurations** Project tab (Note: Version 1.0.1 is running in Development environment)
-
-  1. **Click Build**
-  2. **Select Environment – Development**
-  3. **Check Force Build (because nothing has changed)**
-  4. **Click Submit Request – will run Build workflow**
+  1.**Click Build**\
+  2.**Select Environment – Development**\
+  3.**Check Force Build (because nothing has changed)**\
+  4.**Click Submit Request – will run Build workflow**\
 - In the Project Activity, see that Version 1.0.2 is being built**
 
 ### Deploy 
