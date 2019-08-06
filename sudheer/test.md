@@ -201,7 +201,7 @@ With that, Version 1.0.2 is running in Development environment
 
  
 ### Build
-- On the Projects Screen – **Click WLSConfigurations** Project tab (Note: Version 1.0.1 is running in Development environment)
+- On the Projects Screen – **Click WLSConfigurations** Project tab (Note: Version 1.0.1 is running in Development environment)\
   1.**Click Build**\
   2.**Select Environment – Development**\
   3.**Check Force Build (because nothing has changed)**\
