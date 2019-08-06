@@ -40,6 +40,7 @@ go to the URL
    5. **Submit**
  
 ![https://github.com/sudheermareddy/vsts/raw/master/sudheer/compress/1.jpg](https://github.com/sudheermareddy/vsts/raw/master/sudheer/compress/1.jpg)
+
 Login to FlexDeploy using username and password from Registration Screen
 
 
