@@ -18,7 +18,7 @@
 
 [Reports](#reports)
 
-## welcome-to-flexdeploy-training-lab
+## Welcome to FlexDeploy's Training Lab
 In this Training Lab, you’ll have access to a pre-configured, running environment of FlexDeploy. Over the course, you’ll be walked through how to move code, configuration, and other changes from build to production using FlexDeploy. You’ll also see how easy it is to configure FlexDeploy to work in your environment. At the end of the lab you will understand: 
 
 1. A day in the life (at an execution level) of a developer, administrator, release manager, etc. 
