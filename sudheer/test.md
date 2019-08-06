@@ -32,7 +32,7 @@ Basic understand about Continues Integration and Delivery
 ## Homepage, Security, and Topology
 
 go to the URL 
-### Registration
+### Registration###
    1. **Use the prepopulated username or make one up** 
    2. **Create a password and confirm (NOTE: Remember your name and password so you can log in to FlexDeploy)**
    3. **Enter your details** 
