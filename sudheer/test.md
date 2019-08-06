@@ -70,11 +70,11 @@ The topology is how we administer and configure FlexDeploy so it can understand 
   - **Click on Development Environment** – Review preconfigured Properties
  
 
-- Review other preconfigured properties in this lab 
-    1.**Click Environments**\
-    2.**Click Instances**\
-    3.**Click Endpoints**\
-    4.**Click Integrations**
+- Review other preconfigured properties in this lab \
+    1. **Click Environments**\
+    2. **Click Instances**\
+    3. **Click Endpoints**\
+    4. **Click Integrations**
 
 - In Integrations - **Click Testing Tab**
  
