@@ -108,10 +108,10 @@ Review pre-configured Projects
  
 - On WLS Configurations – Click Configuration Tab 
 - Notice configuration information such as\
-    1. SCM\
-    2. Stream\
-    3. Build Workflow Association – which workflow and where running\
-    4. Deploy Workflow Association – which workflow and where running
+    1.SCM\
+    2.Stream\
+    3.Build Workflow Association – which workflow and where running\
+    4.Deploy Workflow Association – which workflow and where running
  
 
 Using the same steps, review the configurations for the other Projects.
