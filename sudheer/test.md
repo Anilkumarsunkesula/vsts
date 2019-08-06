@@ -218,3 +218,57 @@ With that, Version 1.0.2 is running in Development environment
 - Click Artifacts to view what is being deployed 
 - Click Back to get back to the Projects Screen 
 With that, Version 1.0.2 of WLSConfigurations is running in Development environment
+
+ 
+
+#### Other Project Properties 
+
+There are other tabs on the Project Screen that can be configured for a project. 
+
+   1. Project Configuration – We reviewed this previously. In this tab you can configure SCM, build and deploy workflows, and other project details.
+   2. Project Properties - Any project-scoped properties associated to the selected workflows or instances. 
+   3. Project Triggers - FlexDeploy's built-in Continuous Integration capabilities live here, and allow developers to setup various triggers for builds & deployment workflow executions. 
+   4. Issue Tracking System Configuration - Allows association of the project with any Issue Tracking System Instance which was configured 
+   5. Change Management System Configuration - Allows association of the project with any Change Management Instance which was configured 
+   6. Test Automation - Provides a way for you to define tests to be executed either as part of a deploy workflow, or to overtly choosing to execute tests on their own. 
+   7. Security - Fine-grained access control to meet any security requirements.
+ 
+
+Let’s review some of those in more detail, and how they’re configured for the HRSOAService Project. 
+
+**Click HRSOAService** Project Tab
+
+### Test Automation 
+
+- Review Test Automation Strategies set for this Project o Click Test Automation Tab 
+o  Note the following tests configured
+
+- Integration test in QA Environment for SOA Instance 
+- Unit Test in Development Environment 
+
+### Continuous Integration 
+
+Leverage built-in CI Server 
+
+### Click Continuous Integration Tab 
+
+Create Poll SCM Trigger 
+
+  1. **Click Create**
+  2. **Select Poll SCM Trigger**
+  3. **Define Environment: Development**
+  4. **Select Steam Name: Master**
+  5. **Set Interval Minutes: 5**
+  6. **Click Save**
+Outcome: Configured SCM will be polled every 5 minutes and build automatically if changes are found
+
+
+### Create Post Build Trigger 
+  1. **Click Create**
+  2. **Select Post Build Trigger**
+  3. **Define Environment: Development**
+  4. **Select Stream Name: Master**
+  5. **Click Save**
+Outcome: A Deployment will automatically be triggered after any successful Build of this project. This will be fired immediately after any kind of successful build (Manual or Scheduled or Poll SCM Trigger).
+
+ 
