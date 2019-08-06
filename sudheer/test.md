@@ -127,11 +127,11 @@ A workflow is an orchestration of steps which define a build or deployment proce
 ### SOA Build Workflow 
 
 - Open SOA Build Workflow 
-    1. Click arrow for Oracle 
-    2. Click arrow for SOA 
-    3. Click Build SOA Composite 
-    4. Click Definition
-  
+    1.Click arrow for Oracle\
+    2.Click arrow for SOA\
+    3.Click Build SOA Composite\
+    4.Click Definition\
+      
 
 - You are now looking at the graphical editor. The Workflow editor contains: 
     1. Workflow Operations 
