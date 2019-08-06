@@ -146,3 +146,23 @@ A workflow is an orchestration of steps which define a build or deployment proce
 
 - This workflow is one step to deploy the SOA Composite using plugin operations. 
 - Review what is interesting to you!
+
+## Build and Deploy
+
+### Build and Deploy
+
+Now that we have reviewed the pre-configured environment (set up so that FlexDeploy knows what the four types of projects are, what technologies are running in each, and how to hand builds and deploys) we can start running automated builds and deploys 
+
+### Click Projects Tab 
+
+    1. **Click ValidatePayment** Project (Note: Version 1.0.1 is running in Development environment) 
+    2. Do the Build 
+             1. **Click Build**
+
+             2. **Select Environment** – Development 
+
+             3. **Select Stream** - Master 
+
+             4. **Check Force Build** (because nothing has changed) 
+
+             5. **Click Submit Request** – will run Build workflow
