@@ -2,11 +2,11 @@
 
 ## Table of Contents
 
-[Welcome to FlexDeploy's Training Lab](#welcome-to-flexdeploy's-training-lab)
+[Welcome to FlexDeploy's Training Lab](#welcome-to-flexdeploy-training-lab)
 
 [Pre-Requisites](#pre-requisites)
 
-[Homepage, Security, and Topology](#homepage,-security,-and-topology)
+[Homepage, Security, and Topology](#homepage-security-and-topology)
 
 [Projects and Workflow](#projects-and-workflow)
 
@@ -18,7 +18,7 @@
 
 [Reports](#reports)
 
-## welcome-to-flexdeploy's-training-lab
+## welcome-to-flexdeploy-training-lab
 In this Training Lab, you’ll have access to a pre-configured, running environment of FlexDeploy. Over the course, you’ll be walked through how to move code, configuration, and other changes from build to production using FlexDeploy. You’ll also see how easy it is to configure FlexDeploy to work in your environment. At the end of the lab you will understand: 
 
 1. A day in the life (at an execution level) of a developer, administrator, release manager, etc. 
@@ -29,7 +29,7 @@ In this Training Lab, you’ll have access to a pre-configured, running environm
 ## Pre-Requisites
 Basic understand about Continues Integration and Delivery
 
-## homepage,-security,-and-topology
+## homepage-security-and-topology
 
 go to the URL 
 ### Registration
