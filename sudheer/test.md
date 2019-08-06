@@ -32,7 +32,7 @@ Basic understand about Continues Integration and Delivery
 ## Homepage, Security, and Topology
 
 go to the URL 
-### Registration###
+### Registration
    1. **Use the prepopulated username or make one up** 
    2. **Create a password and confirm (NOTE: Remember your name and password so you can log in to FlexDeploy)**
    3. **Enter your details** 
@@ -44,21 +44,21 @@ Login to FlexDeploy using username and password from Registration Screen
 
 
 
-###Homepage, Security, and Topology
+### Homepage, Security, and Topology
  When you log in you see the **FlexDeploy Homepage**
 
  
 
-###Security
+### Security
  In the Security Tile **click Groups**
 
  
 
-###Review:
+### Review:
   *Pre-Configured Roles – FD Administrators
 **Click Home** tab to go back to the Homepage
 
-###Topology
+### Topology
 **Click** anywhere in the Topology tile or on the Topology Tab
 
  
@@ -67,7 +67,7 @@ The topology is how we administer and configure FlexDeploy so it can understand 
 
  
 
-  ***Click on Development Environment** – Review preconfigured Properties
+  * **Click on Development Environment** – Review preconfigured Properties
  
 
 *Review other preconfigured properties in this lab 
