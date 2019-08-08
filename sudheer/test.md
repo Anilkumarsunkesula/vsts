@@ -39,7 +39,7 @@ go to the URL
    4. **Agree**
    5. **Submit**
  
-![111.png](/sudheer/compress/111.png)
+![111.png](https://github.com/sudheermareddy/vsts/raw/master/sudheer/test/10.png)
 
 Login to FlexDeploy using username and password from Registration Screen
 
