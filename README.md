@@ -1,5 +1,5 @@
 # vsts
 
-a: test
+[a]: google.com
 
-{%a%}}
+[a]
