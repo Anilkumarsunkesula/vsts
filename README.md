@@ -1,5 +1,5 @@
 # vsts
 
-a : test
+a: test
 
-{{a||
+{%a%}}
