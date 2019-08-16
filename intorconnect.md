@@ -17,7 +17,7 @@ Following is a high level diagram shows am Azure VNet (Virtual Network) that is 
 
 OCI-Azure Interconnect
 Lets continue and setup one by one each component to exactly enable such a connection.
-[here]: https://docs.cloud.oracle.com/iaas/Content/Network/Concepts/azure.htm?source=post_page---------------------------
+[here]:https://docs.cloud.oracle.com/iaas/Content/Network/Concepts/azure.htm?source=post_page---------------------------
 Assumptions:
 •	Users have access to OCI and Azure Tenancy
 •	Have necessary required policies to create resources in OCI and Azure. Can find more details here.
