@@ -8,7 +8,6 @@
 
 [Deploy Key Vault resources](#deploy-key-vault-resources)
 
-
 ## Overview
 
 The aim of this Lab is to add secrets in Azure Key Vault by deploying Key Vault resource in Azure portal and deploy the Azure VM using Key Vault secret.
