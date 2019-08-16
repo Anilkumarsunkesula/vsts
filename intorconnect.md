@@ -39,4 +39,11 @@ Sign in to the Azure portal.  Please take Azure credentials from workspace acces
 - Add in the required details as shown below, leave the rest to default and select Create.
 
 This creates a virtual network (VNet) and a subnet, which are scoped to a single region with in Azure. Resources within the virtual network can communicate outbound with the internet, by default. 
-An inbound connection can be achieved by attaching a public IP with the resource. You can also connect virtual network with your on-premises network or other public clouds (Oracle Cloud Infrastructure) by using **Azure ExpressRoute**. This connection is private. Traffic does not go over the internet
+An inbound connection can be achieved by attaching a public IP with the resource. You can also connect virtual network with your on-premises network or other public clouds (Oracle Cloud Infrastructure) by using **Azure ExpressRoute**. This connection is private. Traffic does not go over the internet.
+
+### virtual network gateway Creation
+
+In order to create the interconnect between Azure virtual network and oracle cloud infrastructure virtual cloud network (VCN), we must create a virtual network gateway first. A virtual network gateway serves two purposes: exchange IP routes between the networks and route network traffic.
+
+- On the upper-left side of the screen, search for ‘virtual network gateway’ resource and click on Create. It opens up the virtual network gateway options. 
+- Add in the details as shown below. Remember to select ‘ExpressRoute’ in gateway type.
