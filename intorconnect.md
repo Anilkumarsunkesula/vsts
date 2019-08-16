@@ -46,7 +46,7 @@ Oracle Cloud:<br>
 
 Sign in to the Azure portal.  Please take Azure credentials from workspace access info.
 
-### VNET and Subnet Creation
+###VNET and Subnet Creation
 - On the upper-left side of the screen, select Create a resource > Networking > Virtual network.
 - Add in the required details as shown below, leave the rest to default and select Create.
 
