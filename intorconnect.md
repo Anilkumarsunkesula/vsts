@@ -3,12 +3,11 @@
 ## Table of Contents
 
 [Overview](#overview)
-
 [Pre-Requisites](#pre-requisites)
-
 [Network Setup in Azure](#network-setup-in-azure)
-
-
+[Network Setup in OCI](#network-setup-in-OCI)
+[Setup Azure ExpressRoute](#setup-azure-expressroute)
+[Setup Oracle Cloud Infrastructure FastConnect](#setup-oracle-cloud-infrastructure-fastconnect)
 
 ## Overview
 
@@ -67,3 +66,56 @@ In the meantime, lets setup a virtual machine in your virtual network to test th
 
 This completes our pre-requisites for Microsoft Azure.
 
+## Network Setup in OCI
+
+Sign into the OCI console. Please take login credentials from workspace access info
+
+### Virtual cloud network Creation 
+
+- One the top left of the screen, select Menu > Networking > Virtual Cloud Networking > Create a Virtual Cloud Network.
+- Add in the required details and Select **Create Virtual Cloud Network plus related resources**. The dialog box expands to list the items that will be created with your cloud network.
+
+**Create Virtual Cloud Network plus related resources**
+
+**Resources to be created**
+
+**Subnets automatically created**
+
+A virtual cloud network is a software defined version of a network, and allows you to create a virtualized datacenter in any oracle cloud infrastructure region. The subnets are scoped within a particular virtual cloud network and can be availability domain specific or regional.
+
+Now that we have created basic virtual cloud network components,
+
+### Dynamic routing gateway (DRG) Creation
+
+- lets go ahead and create a dynamic routing gateway (DRG). A DRG can be considered as a virtual router that allows private traffic connectivity between your virtual cloud network and the networks outside of your VCN, that can be VCN in another region, a virtual network in another cloud or on-premise network.
+
+- One the top left of the screen, select Menu > Networking > Dynamic Routing Gateway > Create Dynamic Routing Gateway.
+
+
+**Create Dynamic Routing Gateway**
+
+It takes usually 3/4 minutes to create a DRG. Once the DRG is created, go ahead and attach that DRG with your VCN.
+
+
+- Once the DRG is attached to VCN, your pre-requisites are completed for Oracle Cloud Infrastructure. 
+
+Before we move ahead, lets create a virtual machine here in OCI VCN as well for testing.
+
+#### Virtual Machine Creation 
+
+One the top left of the screen, select Menu > Compute > Instances > Create Instance. 
+
+
+Now that the pre-requisites are completed, lets continue with the process of creating the interconnect between Microsoft Azure and Oracle Cloud Infrastructure.
+
+## Setup Azure ExpressRoute
+
+### Create ExpressRoute
+
+On the upper-left side of the screen, select Create a resource > ExpressRoute and select Create.
+Add in the required details as shown below. Choose Oracle Cloud FastConnect as the provider, and currently my region is EastUS for Azure.
+
+
+This creates an ExpressRoute circuit, however its not currently provisioned and doesn’t provide any connectivity details. Note down the service key as we will use this afterwards in Oracle Cloud Infrastructure.
+
+## Setup Oracle Cloud Infrastructure FastConnect
