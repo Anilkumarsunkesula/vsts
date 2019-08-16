@@ -117,10 +117,22 @@ Now that the pre-requisites are completed, lets continue with the process of cre
 
 ### Create ExpressRoute
 
-On the upper-left side of the screen, select Create a resource > ExpressRoute and select Create.
-Add in the required details as shown below. Choose Oracle Cloud FastConnect as the provider, and currently my region is EastUS for Azure.
+- On the upper-left side of the screen, select Create a resource > ExpressRoute and select Create.
+- Add in the required details as shown below. Choose Oracle Cloud FastConnect as the provider, and currently my region is EastUS for Azure.
 
 
 This creates an ExpressRoute circuit, however its not currently provisioned and doesn’t provide any connectivity details. Note down the service key as we will use this afterwards in Oracle Cloud Infrastructure.
 
 ## Setup Oracle Cloud Infrastructure FastConnect
+
+### FastConnect creation
+
+- In OCI Console, navigate to the Menu > Networking > FastConnect > Create Connection. 
+- Choose the connect through provider and select Microsoft Azure ExpressRoute.
+
+Choose a private virtual circuit creation, provide details of your dynamic routing gateway and add in the service key copied from Azure here.
+
+The connection between Azure VNet and OCI VCN uses BGP dynamic routing. Provide the BGP IP addresses that will be used for the two redundant BGP sessions between Oracle and Azure:
+•	A primary pair of BGP addresses
+•	A separate, secondary pair of BGP addresses
+I have provided here /30 addresses here for the BGP connection. The second and third in each /30 are used as BGP IP address pair. The second address in the block is for the Oracle side of the BGP session and the third address in the block is for the Azure side of the BGP session.
