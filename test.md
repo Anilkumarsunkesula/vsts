@@ -18,7 +18,7 @@ The aim of this Lab is to add secrets in Azure Key Vault by deploying Key Vault 
  
   After completing this lab, you will be able to:
   
- - Deploy Key Vault resource
+ - Deploy Key Vault resources
 
  - Remove lab resource
 
