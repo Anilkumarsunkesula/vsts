@@ -135,5 +135,15 @@ Choose a private virtual circuit creation, provide details of your dynamic routi
 The connection between Azure VNet and OCI VCN uses BGP dynamic routing. Provide the BGP IP addresses that will be used for the two redundant BGP sessions between Oracle and Azure:
   - A primary pair of BGP addresses
   - A separate, secondary pair of BGP addresses
-  
+
 I have provided here /30 addresses here for the BGP connection. The second and third in each /30 are used as BGP IP address pair. The second address in the block is for the Oracle side of the BGP session and the third address in the block is for the Azure side of the BGP session.
+
+
+Initially the circuit will go into provisioning.
+
+Shortly after the circuit goes into ‘UP’ status with its lifecycle state as ‘Provisioned’.
+
+Similarly on the Azure side, the circuit status has changed into provisioned as well.
+
+Azure ExpressRoute Provisioned Status and Peering details
+
