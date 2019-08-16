@@ -34,4 +34,9 @@ Oracle Cloud:<br>
 
 Sign in to the Azure portal.  Please take Azure credentials from workspace access info.
 
-On the upper-left side of the screen, select Create a resource > Networking > Virtual network. Add in the required details as shown below, leave the rest to default and select Create.
+### VNET and Subnet Creation
+- On the upper-left side of the screen, select Create a resource > Networking > Virtual network.
+- Add in the required details as shown below, leave the rest to default and select Create.
+
+This creates a virtual network (VNet) and a subnet, which are scoped to a single region with in Azure. Resources within the virtual network can communicate outbound with the internet, by default. 
+An inbound connection can be achieved by attaching a public IP with the resource. You can also connect virtual network with your on-premises network or other public clouds (Oracle Cloud Infrastructure) by using **Azure ExpressRoute**. This connection is private. Traffic does not go over the internet
