@@ -46,4 +46,24 @@ An inbound connection can be achieved by attaching a public IP with the resource
 In order to create the interconnect between Azure virtual network and oracle cloud infrastructure virtual cloud network (VCN), we must create a virtual network gateway first. A virtual network gateway serves two purposes: exchange IP routes between the networks and route network traffic.
 
 - On the upper-left side of the screen, search for ‘virtual network gateway’ resource and click on Create. It opens up the virtual network gateway options. 
-- Add in the details as shown below. Remember to select ‘ExpressRoute’ in gateway type.
+- Add in the details as shown below. Remember to select ‘**ExpressRoute**’ in gateway type.
+
+
+**Virtual Network Gateway Details**
+
+**Virtual Network and Gateway Network**
+
+**Public IP for Virtual Network Gateway**
+
+It make take up to 45 minutes for creating the virtual network gateway.
+
+In the meantime, lets setup a virtual machine in your virtual network to test the connectivity once the interconnect is successfully setup.
+
+### Virtual Machine Creation
+
+- On the upper-left side of the screen, select Create a resource > Compute > Ubuntu Server. 
+- Add in the required details and leave the rest as default.
+
+
+This completes our pre-requisites for Microsoft Azure.
+
