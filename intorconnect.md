@@ -3,10 +3,15 @@
 ## Table of Contents
 
 [Overview](#overview)
+
 [Pre-Requisites](#pre-requisites)
+
 [Network Setup in Azure](#network-setup-in-azure)
+
 [Network Setup in OCI](#network-setup-in-OCI)
+
 [Setup Azure ExpressRoute](#setup-azure-expressroute)
+
 [Setup Oracle Cloud Infrastructure FastConnect](#setup-oracle-cloud-infrastructure-fastconnect)
 
 ## Overview
