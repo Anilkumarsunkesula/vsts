@@ -8,9 +8,6 @@
 
 [Deploy Key Vault resources](#deploy-key-vault-resources)
 
-[Deploy Azure VM using Key Vault secret](#deploy-azure-vm-using-key-vault-secret)
-    
-[Remove lab resources](#remove-lab-resources)    
 
 ## Overview
 
