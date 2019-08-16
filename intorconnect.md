@@ -21,3 +21,12 @@ Lets continue and setup one by one each component to exactly enable such a conne
 Assumptions:
 •	Users have access to OCI and Azure Tenancy
 •	Have necessary required policies to create resources in OCI and Azure. Can find more details [here](https://docs.cloud.oracle.com/iaas/Content/Network/Concepts/azure.htm?source=post_page---------------------------).
+
+## Pre-Requisites
+
+Step 1: Microsoft Azure
+In order to setup this interconnect, there are some pre-requisites that we need to complete for this setup: Azure Virtual Network (VNet) with subnets that can host a test virtual machine, and an Azure virtual network gateway.
+
+Step 2: Oracle Cloud 
+Similarly on the Oracle Cloud Infrastructure side (OCI), we need to create a virtual cloud network with subnets and attach a dynamic routing gateway.
+
