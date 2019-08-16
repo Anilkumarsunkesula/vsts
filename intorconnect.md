@@ -18,6 +18,10 @@
 
 [Associate Network Security groups and Route table to Azure VNet](#associate-network-security-groups-and-route-table-to-azure-vnet)
 
+[Configure OCI VCN Security Lists and Route Table](#configure-oci-vcn-security-lists-and-route-table)
+
+[Test your Connection](#test-your-connection)
+
 ## Overview
 
 This document will walk through the details of setting up this interconnect between Oracle and Azure.
@@ -187,3 +191,27 @@ The following figure shows the route with address prefix is Oracle Cloud Infrast
 
 We have created an ExpressRoute, linked it with our Virtual Network Gateway and configured network security group and route table to allow traffic connectivity with OCI VCN.
 
+## Configure OCI VCN Security Lists and Route Table
+
+Navigate to the details of the Virtual Cloud Network and configure the security lists and route table associated with your subnet hosting your virtual machine.
+
+### Create Security lists
+
+- Virtual Cloud Network > Security Lists > Default Security List > Add Ingress Rule with source CIDR of the Azure VNet Subnet (172.26.0.0/24). This opens up all protocols traffic between the two virtual networks. 
+
+### create Route table
+
+Moving ahead, lets navigate to Virtual Cloud Network > Route table > Default Route table > Add Route rule with Destination CIDR of Azure VNet (172.26.0.0/16) and DRG as your target. This will add a route table entry for routing the traffic towards Azure VNet.
+
+
+## Test your Connection
+
+Lets go ahead and test the connection.
+
+We have virtual machines in each virtual network. Lets test out connectivity by doing a basic PING test.
+
+- OCI VM Private IP: 10.0.0.2
+-	Azure VM Private IP: 172.26.0.4
+
+
+There you go! The connection is successful. We are able to PING traffic from either direction i.e. OCI — Azure.
