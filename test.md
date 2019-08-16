@@ -6,11 +6,11 @@
 
 [Pre-requisites](#pre-requisites)
 
-[Exercise 1\: Deploy Key Vault resources](#exercise-1-deploy-key-vault-resources)
+[Deploy Key Vault resources](#deploy-key-vault-resources)
 
-[Exercise 2\: Deploy Azure VM using Key Vault secret](#exercise-2-deploy-azure-vm-using-key-vault-secret)
+[Deploy Azure VM using Key Vault secret](#deploy-azure-vm-using-key-vault-secret)
     
-[Exercise 3\: Remove lab resources](#exercise-3-remove-lab-resources)    
+[Remove lab resources](#remove-lab-resources)    
 
 ## Overview
 
@@ -36,7 +36,7 @@ The aim of this Lab is to add secrets in Azure Key Vault by deploying Key Vault 
 
 - Bash on Ubuntu on Windows
 
-## Exercise 1: Deploy Key Vault resources
+## Deploy Key Vault resources
 
 **Task 1: Open the Azure Portal**
 
@@ -284,7 +284,7 @@ The aim of this Lab is to add secrets in Azure Key Vault by deploying Key Vault 
 
 **Review** : In this exercise, you created a  **Key Vault**  instance and used several different methods to add secrets to the key vault.
 
-# Exercise 2: Deploy Azure VM using Key Vault secret
+# Deploy Azure VM using Key Vault secret
 
 **Task 1: Retrieve the value of the key vault Resource Id parameter**
 
@@ -416,7 +416,7 @@ The aim of this Lab is to add secrets in Azure Key Vault by deploying Key Vault 
 
 **Review** : In this exercise, you deployed a Linux VM using a password stored as a key vault secret.
 
-# Exercise 3: Remove lab resources
+# Remove lab resources
 
 **Task 1: Open Cloud Shell**
 
