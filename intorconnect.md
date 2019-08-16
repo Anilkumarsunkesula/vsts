@@ -24,9 +24,9 @@ Assumptions:
 
 ## Pre-Requisites
 
-Step 1: Microsoft Azure
+Microsoft Azure: 
 In order to setup this interconnect, there are some pre-requisites that we need to complete for this setup: Azure Virtual Network (VNet) with subnets that can host a test virtual machine, and an Azure virtual network gateway.
 
-Step 2: Oracle Cloud 
+Oracle Cloud: 
 Similarly on the Oracle Cloud Infrastructure side (OCI), we need to create a virtual cloud network with subnets and attach a dynamic routing gateway.
 
