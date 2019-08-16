@@ -14,6 +14,10 @@
 
 [Setup Oracle Cloud Infrastructure FastConnect](#setup-oracle-cloud-infrastructure-fastconnect)
 
+[Link VNet to Azure ExpressRoute](#link-vNet-to-azure-expressroute)
+
+[Associate Network Security groups and Route table to Azure VNet](#associate-network-security-groups-and-route-table-to-azure-vnet)
+
 ## Overview
 
 This document will walk through the details of setting up this interconnect between Oracle and Azure.
@@ -146,4 +150,40 @@ Shortly after the circuit goes into ‘UP’ status with its lifecycle state as 
 Similarly on the Azure side, the circuit status has changed into provisioned as well.
 
 Azure ExpressRoute Provisioned Status and Peering details
+
+
+## Link VNet to Azure ExpressRoute
+
+Next step is to create a link between the Azure Virtual Network and ExpressRoute circuit and configure security groups and routing for the virtual network.
+
+On your dashboard navigate to your virtual network gateway > connections > select Add and configure the values.
+
+Configure Values for connection
+
+Connection to ExpressRoute successful
+
+## Associate Network Security groups and Route table to Azure VNet
+
+### create Network Security group
+
+- On the upper-left side of the screen, select Create a resource > Network Security Group > select Create.
+- Configure the values to create a network security group.
+
+Associate the network security group to the subnet in your VNet hosting your virtual machine. Select the newly created network security group from the dashboard, select Subnets and Associate. Select the VNet and subnet required.
+
+Add relevant security group rules to allow traffic from Virtual Cloud Network on Oracle Cloud Infrastructure. We will start with some basic ping tests using the ICMP protocol.
+
+- Navigate to the newly created network security group from the dashboard, 
+- select Inbound Security Rules > select Add. Add two rules, one for ssh connection into the Azure VM and another rule for connection between OCI VCN Subnet (10.0.0.0/24) to Azure VNet Subnet (172.26.0.0/24).
+
+### Create Route Table
+
+- Navigate to the upper-left side of the screen, select Create a resource > Route Table > select Create. 
+- Configure the values to create a route table.
+
+Once the new route table is created, associate the route table with the VNet Subnet hosting your virtual machine and add a route.
+
+The following figure shows the route with address prefix is Oracle Cloud Infrastructure VCN CIDR (In our example: 10.0.0.0/16) and the next hop is the Azure Virtual Network Gateway.
+
+We have created an ExpressRoute, linked it with our Virtual Network Gateway and configured network security group and route table to allow traffic connectivity with OCI VCN.
 
