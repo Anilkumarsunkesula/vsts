@@ -6,7 +6,7 @@
 
 [Pre-Requisites](#pre-requisites)
 
-[Homepage, Security, and Topology](#homepage-security-and-topology)
+[Network Setup in Azure](#network-setup-in-azure)
 
 
 
@@ -30,3 +30,8 @@ Microsoft Azure:<br>
 Oracle Cloud:<br>
  Similarly on the Oracle Cloud Infrastructure side (OCI), we need to create a virtual cloud network with subnets and attach a dynamic routing gateway.
 
+## Network Setup in Azure
+
+Sign in to the Azure portal.  Please take Azure credentials from workspace access info.
+
+On the upper-left side of the screen, select Create a resource > Networking > Virtual network. Add in the required details as shown below, leave the rest to default and select Create.
