@@ -38,6 +38,7 @@ There is also the concept of “Cookbooks” and “Recipes”. These are effect
 ### Creating VCN:
 
 In this section, we will log in to the OCI console and adjust your screen size (if needed).
+
 Step 1. Get OCI Sign detailes from left to of content space as shown below.
  
 
@@ -53,13 +54,13 @@ Step 4. Ensure the correct compartment is selected (Bottom Left of OCI console).
 
 Choose Compartment as porvided in acceess info.
 
-Note: Keep the dynamically generated compartment ID, for use through out the lab and make sure you have selected the same in this step. 
+**Note:** Keep the dynamically generated compartment ID, for use through out the lab and make sure you have selected the same in this step. 
 
 Step 5. From OCI menu (click Left top corner) select Virtual Cloud Networks and then click "Create Virtual Cloud Network"
 
  
 
-Step 6. Fill out the dialog box:
+Step 6. Fill out the dialog box
 
 6.1 Create in Compartment: Has the correct compartment selected.
 6.2 Name: Enter easy to remember name (e.g. "my_vcn").
@@ -68,18 +69,6 @@ Step 6. Fill out the dialog box:
 6.5 Click Close.
 
  
-
-
-
-Step  6. Fill in the dialog box:
-
-6.1 Create in Compartment: Has the correct compartment selected.
-6.2 Name: Enter easy to remember name (e.g. "my_vcn").
-6.3 Select radio button **Create Virtual Cloud Network Plus Related Resources**
-6.4 Click Create Virtual Cloud Network.
-6.5 Click Close.
-
-
 
 Step 7. Navigate to created virtual cloud network
 
