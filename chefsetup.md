@@ -105,7 +105,7 @@ These keys will be used to launch a Compute instance and connect to it.
 
 **Step 1.** In the OCI Console Window, select the "Apps icon" and open "Git-Bash". A Git-Bash terminal will appear.
 
-**Step 2.** Enter the command "ssh-keygen" in the git-bash window.
+**Step 2.** Enter the command ```sh ssh-keygen``` in the git-bash window.
 
 **HINT:** You can swap between the OCI window and any other application (git-bash etc.) by clicking the "Switch Window"  icon.
 
@@ -279,7 +279,6 @@ Open new git bash terminal and send private and public keys to the workstation, 
 
 ```sh
 scp -r ~/.ssh ubuntu@< Chefworkstation_Public_IP >:~
-
 ````
 ssh to Chef workstation.
 
