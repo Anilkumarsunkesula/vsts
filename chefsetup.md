@@ -277,7 +277,7 @@ In this section, we are going to learn about, how to install and configure Chef 
 
 Open new git bash terminal and send private and public keys to the workstation, these key will be used to bootstrap the workstation node as chef node.
 
-**``**scp -r ~/.ssh ubuntu@< Chefworkstation_Public_IP >:~``**
+``scp -r ~/.ssh ubuntu@< Chefworkstation_Public_IP >:~``
 
 ssh to Chef workstation.
 
