@@ -185,7 +185,7 @@ Next, we will SSH to the compute instance.
 
 **Step 2.** SSH into the compute instance using the command,
 
-**$ ssh ubuntu@<PUBLIC_IP_OF_COMPUTE_INSTANCE>**
+**\# ssh ubuntu@<PUBLIC_IP_OF_COMPUTE_INSTANCE>**
 
 **NOTE:** User name is ‘ubuntu’. <PUBLIC_IP_OF_COMPUTE_INSTANCE> should be the actual IP address e.g 129.0.1.10 
 
@@ -195,7 +195,7 @@ Next, we will SSH to the compute instance.
 
 Step 3. Verify the prompt shows 
 
-**ubuntu@<YOUR_VM_NAME> (below example show Compute instance called ‘mean-vm’)**
+**\#ubuntu@<YOUR_VM_NAME>** (below example show Compute instance called ‘mean-vm’)
 
 
 ## Chef Server Configuration
@@ -350,11 +350,11 @@ Now, Copy the downloaded starter kit to chef-workstation.
 
 Run on git bash:
 
-**\# scp ~/Downloads/chef-starter.zip ubuntu@<WorkstaionIP>:\~**
+**\# scp ~/Downloads/chef-starter.zip ubuntu@<Workstaion_IP>:\~**
 
 Now ssh to workstation
 
-**\# ssh ubuntu@<WorkstationPublicIP>**
+**\# ssh ubuntu@<WorkstationPublic_IP>**
 
 Install "unzip".
 
