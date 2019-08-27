@@ -433,14 +433,14 @@ write a cookbook to install and enable service.
 Add the below code, save&quit the default.rb file (Esc:wq)
 
 
-execute "update" do
-command "apt-get update -y"
-end
-package "apache2" do
-action :install
-end
-service "apache2" do
-action [:enable, :start]
+execute "update" do<br>
+command "apt-get update -y"<br>
+end<br>
+package "apache2" do<br>
+action :install<br>
+end<br>
+service "apache2" do<br>
+action [:enable, :start]<br>
 end
 
 To test the Apache recipe, update the LAMP Stack recipe on the server:
@@ -458,5 +458,7 @@ From that node, run the chef-client:
 After a successful chef-client run, check to see if Apache is running:
 
 **\# sudo service apache2 status**
+
+ 
 
  
