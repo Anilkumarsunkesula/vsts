@@ -18,6 +18,8 @@
 
 [Workstation Configuration](#workstation-configuration)
 
+[Bootstrap a Node](#bootstrap-a-node)
+
 ## Overview
 
 Before you begin, review the basic concepts of Chef.
@@ -388,7 +390,13 @@ You should verify the authenticity of these certificates after downloading.
 
 **\# sudo knife ssl check**
 
+## Bootstrap a Node
 
+In this section, we will see how to bootstrap the workstation vm itself as chef node.
 
+**Bootstrap the Workstation:**
 
- 
+Run the below command to bootstrap the workstation
+
+ **# sudo knife bootstrap localhost -x ubuntu -i ~/.ssh/id_rsa -N chefnode --sudo**
+
