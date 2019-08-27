@@ -434,7 +434,7 @@ Add the below code, save&quit the default.rb file (Esc:wq)
 ```sh
 execute "update" do
 command "apt-get update -y"
-end<br>
+end
 package "apache2" do
 action :install
 end
