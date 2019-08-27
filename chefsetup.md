@@ -14,6 +14,7 @@
 
 [login to the instance Chef server](#login-to-the-instance-chef-server)
 
+
 ## Overview
 
 Before you begin, review the basic concepts of Chef.
