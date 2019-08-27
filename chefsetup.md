@@ -199,7 +199,7 @@ Next, we will SSH to the compute instance.
 
 Step 3. Verify the prompt shows 
 
-**\#ubuntu@\<YOUR_VM_NAME>** (below example show Compute instance called ‘mean-vm’)
+**\#ubuntu@< YOUR_VM_NAME>** (below example show Compute instance called ‘mean-vm’)
 
 
 ## Chef Server Configuration
