@@ -12,6 +12,8 @@
 
 [Content Create compute instances](#content-create-compute-instances)
 
+[login to the instance Chef server](#login-to-the-instance-chef-server)
+
 ## Overview
 
 Before you begin, review the basic concepts of Chef.
@@ -170,3 +172,24 @@ Step 5. You can also see the Fault Domain of the Virtual Machine
 We now have two Compute instances with  Public IP addresses.
 
 Next, we will SSH to the compute instance.
+
+## login to the instance Chef server
+
+Step 1. Bring up "git-bash" terminal.
+
+HINT: If the terminal was closed simply launch a new one using the "Apps" icon .
+
+Step 2. SSH into the compute instance using the command,
+
+**$ ssh ubuntu@<PUBLIC_IP_OF_COMPUTE_INSTANCE>**
+
+**NOTE:** User name is ‘ubuntu’. <PUBLIC_IP_OF_COMPUTE_INSTANCE> should be the actual IP address e.g 129.0.1.10 
+
+**NOTE:** Enter ‘Yes’ when prompted for security message. 
+
+
+
+Step 3. Verify the prompt shows 
+
+**ubuntu@<YOUR_VM_NAME> (below example show Compute instance called ‘mean-vm’)**
+
