@@ -189,7 +189,7 @@ Next, we will SSH to the compute instance.
 
 **Step 2.** SSH into the compute instance using the command,
 
-**\# ssh ubuntu@<PUBLIC_IP_OF_COMPUTE_INSTANCE>**
+**\# ssh ubuntu@< PUBLIC_IP_OF_COMPUTE_INSTANCE>**
 
 **NOTE:** User name is ‘ubuntu’. <PUBLIC_IP_OF_COMPUTE_INSTANCE> should be the actual IP address e.g 129.0.1.10 
 
@@ -199,7 +199,7 @@ Next, we will SSH to the compute instance.
 
 Step 3. Verify the prompt shows 
 
-**\#ubuntu@<YOUR_VM_NAME>** (below example show Compute instance called ‘mean-vm’)
+**\#ubuntu@< YOUR_VM_NAME>** (below example show Compute instance called ‘mean-vm’)
 
 
 ## Chef Server Configuration
@@ -250,7 +250,7 @@ An RSA private key is generated automatically. This is the chef-validator key an
 
 **Run:**<br>
 
-**\# sudo hostname <chef_server_publicip >**
+**\# sudo hostname < chef_server_publicip >**
 
 **\# chef-server-ctl reconfigure**
 
@@ -277,13 +277,13 @@ In this section, we are going to learn about, how to install and configure Chef 
 
 Open new git bash terminal and send private and public keys to the workstation, these key will be used to bootstrap the workstation node as chef node.
 
-**\# scp -r ~/.ssh ubuntu@<Chefworkstation_public_IP>:\~**
+**\# scp -r ~/.ssh ubuntu@< Chefworkstation_public_IP>:\~**
 
 ssh to Chef workstation.
 
 In git bash run :
 
-**\# ssh  ubuntu@<workStationPublic_IP>**
+**\# ssh  ubuntu@< workStationPublic_IP >**
 
  Make sure the keys are copied:  
 
@@ -355,11 +355,11 @@ Now, Copy the downloaded starter kit to chef-workstation.
 
 Run on git bash:
 
-**\# scp ~/Downloads/chef-starter.zip ubuntu@<Workstaion_Public_IP>:\~**
+**\# scp ~/Downloads/chef-starter.zip ubuntu@< Workstaion_Public_IP >:\~**
 
 Now ssh to workstation
 
-**\# ssh ubuntu@<Workstation_Public_IP>**
+**\# ssh ubuntu@< Workstation_Public_IP >**
 
 Install "unzip".
 
