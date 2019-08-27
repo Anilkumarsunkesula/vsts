@@ -204,7 +204,7 @@ Go to git bash, In the previous section, we already login to chef server.
 
 **Step 1.** Switch to the root user
 
-# sudo -i
+**\# sudo -i**
 
 **Step 2.** Run the below command to download the chef server.
 
