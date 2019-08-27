@@ -101,14 +101,15 @@ HINT: You can swap between the OCI window and any other application (git-bash et
 
 Step 3. Skip entering any values in next steps by hitting on "Enter" Key.
 
-NOTE: No Passphrase is needed.       
+**NOTE:** No Passphrase is needed.       
 
  
  
 Step 4. You should now have the Public and Private keys:
-            ~/.ssh/id_rsa (Private Key)
-             ~/.ssh/id_rsa.pub (Public Key)
-NOTE: "id_rsa.pub" will be used to create the Compute instance and "id_rsa" to connect via SSH into the Compute instance.
+            **~/.ssh/id_rsa (Private Key)**<br>
+            **~/.ssh/id_rsa.pub (Public Key)**
+
+**NOTE:** "id_rsa.pub" will be used to create the Compute instance and "id_rsa" to connect via SSH into the Compute instance.
  
 HINT: Run 'cd ~/.ssh' and then 'ls' to verify the two files exist.
 
