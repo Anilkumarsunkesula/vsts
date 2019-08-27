@@ -350,11 +350,11 @@ Now, Copy the downloaded starter kit to chef-workstation.
 
 Run on git bash:
 
-**\# scp ~/Downloads/chef-starter.zip ubuntu@<workstaionIP>:\~**
+**\# scp ~/Downloads/chef-starter.zip ubuntu@<workstaionIP>\:\~**
 
 Now ssh to workstation
 
-**\# ssh ubuntu@<workstation PublicIP>**
+**\# ssh ubuntu@<workstationPublicIP>**
 
 Install "unzip".
 
