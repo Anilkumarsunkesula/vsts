@@ -316,7 +316,7 @@ Open a new tab on chrome browser and enter https://chef server public ip
 
 **Login: chefuser**
 
-**\Password: Password@1234**
+**Password: Password@1234**
 
 
 
@@ -350,7 +350,7 @@ Now, Copy the downloaded starter kit to chef-workstation.
 
 Run on git bash:
 
-**\# scp ~/Downloads/chef-starter.zip ubuntu@<workstaionIP>:~**
+**\# scp ~/Downloads/chef-starter.zip ubuntu@<workstaionIP>:\~**
 
 Now ssh to workstation
 
@@ -370,11 +370,11 @@ cookbooks folder is use to store cookbooks and it is the default path to upload 
 
 knife commands are supposed to be executed only from the "chef-repo" directory.
 
-$ cd ~/chef-repo
+**\# cd ~/chef-repo**
 
 initialize the git on chef-repo. This folder contains chef configuration file (~/chef-repo/.chef/knife.rb). Run knife commands from this folder only otherwise the commands will not work.
 
-**\# sudo git init**\
+**\# sudo git init**
 
 
 
