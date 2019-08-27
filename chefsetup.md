@@ -259,6 +259,7 @@ After that chef server configuration is ready
 **Step 8.** Run below command to install and stop the firewall. 
 
 **\# sudo apt-get update**
+
 **\# sudo apt-get install -y firewalld**
 
 **\# sudo service firewalld stop**
@@ -350,11 +351,11 @@ Now, Copy the downloaded starter kit to chef-workstation.
 
 Run on git bash:
 
-**\# scp ~/Downloads/chef-starter.zip ubuntu@<Workstaion_IP>:\~**
+**\# scp ~/Downloads/chef-starter.zip ubuntu@<Workstaion_IP>:~**
 
 Now ssh to workstation
 
-**\# ssh ubuntu@<WorkstationPublic_IP>**
+**\# ssh ubuntu@<Workstation_Public_IP>**
 
 Install "unzip".
 
