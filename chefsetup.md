@@ -135,3 +135,37 @@ We now have a Public/Private SSH key pair. Next, we will create a compute instan
 
 ## Content Create compute instances
 
+In this section, we will create Two Compute instances (Chef server and chef workstation VMs)with a Public 
+IP address using the public SSH key generated in the previous section.
+
+Creating Chef server compute Instance:
+
+Step 1. Switch to OCI console. (if not already)
+
+Step 2. From the OCI service menu, Click "Instances" under "Compute". 
+
+Step 3. Click on "Create Instance". Fill out the dialog box:
+
+3.1 Name: Enter a name (e.g. "chef-server").
+3.2 Availability Domain: Select the first available domain. (Ad1)
+3.3 Image Operating System: For the image, Ubuntu 16.04 latest image available.
+3.4 Shape: Select VM.Standard2.1. select another shape if instance creation fails. 
+3.5 SSH Keys: Choose ‘Paste SSH Keys’ and paste the Public Key saved earlier.
+3.6 Virtual Cloud Network: Select the VCN you created in the previous section. 
+3.7 Subnet: Select the first available subnet. 
+3.8 Click on "Create Instance".
+
+
+
+Similarly, create Chef automate and Workstation Instances.
+Note: If you come across any limitation error, select another shape for the VM.
+
+Step 4. Once Instances are in ‘Running’ state, note down the public IP addresses.
+ 
+Step 5. You can also see the Fault Domain of the Virtual Machine
+
+
+
+We now have two Compute instances with  Public IP addresses.
+
+Next, we will SSH to the compute instance.
