@@ -117,14 +117,14 @@ These keys will be used to launch a Compute instance and connect to it.
  
 **Step 4.** You should now have the Public and Private keys:
 
-   **~/.ssh/id_rsa (Private Key)**<br>
-   **~/.ssh/id_rsa.pub (Public Key)**
+   **```~/.ssh/id_rsa``` (Private Key)**<br>
+   **```~/.ssh/id_rsa.pub``` (Public Key)**
 
 **NOTE:** "id_rsa.pub" will be used to create the Compute instance and "id_rsa" to connect via SSH into the Compute instance.
  
-**HINT:** Run 'cd ~/.ssh' and then 'ls' to verify the two files exist.
+**HINT:** Run ````cd ~/.ssh```` and then '```ls```' to verify the two files exist.
 
-**Step 5.** In git-bash Enter ‘cat ~/.ssh/id_rsa.pub’, highlight the key and copy.
+**Step 5.** In git-bash Enter ```cat ~/.ssh/id_rsa.pub```, highlight the key and copy.
  
 
  
