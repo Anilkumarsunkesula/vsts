@@ -14,6 +14,7 @@
 
 [login to the instance Chef server](#login-to-the-instance-chef-server)
 
+[Chef Server Configuration](#chef-server-configuration)
 
 ## Overview
 
@@ -193,4 +194,72 @@ Next, we will SSH to the compute instance.
 Step 3. Verify the prompt shows 
 
 **ubuntu@<YOUR_VM_NAME> (below example show Compute instance called ‘mean-vm’)**
+
+
+## Chef Server Configuration
+
+In this section, we are going to install and configure the chef server.
+
+Go to git bash, In the previous section, we already login to chef server. 
+
+**Step 1.** Switch to the root user
+
+# sudo -i
+
+**Step 2.** Run the below command to download the chef server.
+
+# wget https://packages.chef.io/files/stable/chef-server/12.17.5/ubuntu/16.04/chef-server-core_12.17.5-1_amd64.deb
+
+**Step 3.** Install the Chef server package, using the name of the package downloaded.
+
+# sudo dpkg -i chef-server-core_*.deb
+
+**Step 4.** Run the following to start the chef services
+
+# sudo chef-server-ctl reconfigure
+
+This step may take a few minutes to execute, As the Chef server is composed by many different services that work together to create a functioning system.
+
+**Step 5.** Run the following command to create an administrative user.
+
+**Syntax :** chef-server-ctl user-create USER_NAME FIRST_NAME [MIDDLE_NAME] LAST_NAME EMAIL 'PASSWORD' (options)
+
+# sudo chef-server-ctl user-create chefuser Chef Admin admin@test.com Password@1234 --filename /etc/opscode/chefauser.pem
+
+**Note:** Remember the user name and password.
+
+An RSA private key is generated automatically. This is the user’s private key and should be saved to a safe location. The --filename option will save the RSA private key to the specified absolute path.
+
+**Step 6.** Run the following command to create an organization:
+
+An RSA private key is generated automatically. This is the chef-validator key and should be saved to a safe location. The --filename option will save the RSA private key to the specified absolute path.
+
+**Syntax:** chef-server-ctl org-create ORG_NAME "ORG_FULL_NAME" (options)
+
+# sudo chef-server-ctl org-create orguser  "chef-orguser, Inc." --association_user <Chef-username_created above command> --filename /etc/opscode/orguser-validator.pem
+
+**Step 7.** To enable Chef server web view run below commands.
+
+# chef-server-ctl install chef-manage
+
+**Run:**<br>
+
+# sudo hostname <chef_server_publicip >
+
+# chef-server-ctl reconfigure
+
+# sudo chef-manage-ctl reconfigure --accept-license  
+
+It takes 2 to 3 mins
+
+After that chef server configuration is ready
+
+**Step 8.** Run below command to install and stop the firewall. 
+
+# sudo apt-get update
+# sudo apt-get install -y firewalld 
+
+# sudo service firewalld stop
+
+**Step 9.** You can browse chef-server from any internet browser with IP. use Username and passwords as created above.
 
