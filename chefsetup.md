@@ -261,7 +261,7 @@ After that chef server configuration is ready
 **\# sudo apt-get update**
 **\# sudo apt-get install -y firewalld**
 
-**\# sudo service firewalld stop**\
+**\# sudo service firewalld stop**
 
 **Step 9.** You can browse chef-server from any internet browser with IP. use Username and passwords as created above.
 
@@ -272,7 +272,7 @@ In this section, we are going to learn about, how to install and configure Chef 
 
 Open new git bash terminal and send private and public keys to the workstation, these key will be used to bootstrap the workstation node as chef node.
 
-**\# scp -r ~/.ssh ubuntu@<Chefworkstation_public_IP>:~**
+**\# scp -r ~/.ssh ubuntu@<Chefworkstation_public_IP>:\~**
 
 ssh to Chef workstation.
 
@@ -284,11 +284,11 @@ In git bash run :
 
 **\# ls ~/.ssh**
 
-**\# sudo chmod 0400 ~/.ssh/id_rsa**\
+**\# sudo chmod 0400 ~/.ssh/id_rsa**
 
  initialize git:
 
-**\# sudo git init**\
+**\# sudo git init**
 
 **\# sudo git config --global user.name "test"**
 
@@ -298,9 +298,9 @@ Download and Install ChefDk:
 
 Run:
 
-**\# wget https://packages.chef.io/files/stable/chefdk/2.5.3/ubuntu/16.04/chefdk_2.5.3-1_amd64.deb**\
+**\# wget https://packages.chef.io/files/stable/chefdk/2.5.3/ubuntu/16.04/chefdk_2.5.3-1_amd64.deb**
 
-**\# sudo dpkg -i chefdk_*.deb**\
+**\# sudo dpkg -i chefdk_*.deb**
 
  
 
