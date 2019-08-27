@@ -122,9 +122,9 @@ These keys will be used to launch a Compute instance and connect to it.
 
 **NOTE:** "id_rsa.pub" will be used to create the Compute instance and "id_rsa" to connect via SSH into the Compute instance.
  
-**HINT:** Run ````cd ~/.ssh```` and then '```ls```' to verify the two files exist.
+**HINT:** Run **```cd ~/.ssh```** and then **```ls```** to verify the two files exist.
 
-**Step 5.** In git-bash Enter ```cat ~/.ssh/id_rsa.pub```, highlight the key and copy.
+**Step 5.** In git-bash Enter **```cat ~/.ssh/id_rsa.pub```**, highlight the key and copy.
  
 
  
@@ -189,9 +189,9 @@ Next, we will SSH to the compute instance.
 
 **Step 2.** SSH into the compute instance using the command,
 
-**\# ssh ubuntu@< PUBLIC_IP_OF_COMPUTE_INSTANCE>**
+**``` ssh ubuntu@< PUBLIC_IP_OF_COMPUTE_INSTANCE>```**
 
-**NOTE:** User name is ‘ubuntu’. <PUBLIC_IP_OF_COMPUTE_INSTANCE> should be the actual IP address e.g 129.0.1.10 
+**NOTE:** User name is **ubuntu** <PUBLIC_IP_OF_COMPUTE_INSTANCE> should be the actual IP address e.g 129.0.1.10 
 
 **NOTE:** Enter ‘Yes’ when prompted for security message. 
 
@@ -210,27 +210,27 @@ Go to git bash, In the previous section, we already login to chef server.
 
 **Step 1.** Switch to the root user
 
-**\# sudo -i**
+**``` sudo -i```**
 
 **Step 2.** Run the below command to download the chef server.
 
-**\# wget https://packages.chef.io/files/stable/chef-server/12.17.5/ubuntu/16.04/chef-server-core_12.17.5-1_amd64.deb**
+**``` wget https://packages.chef.io/files/stable/chef-server/12.17.5/ubuntu/16.04/chef-server-core_12.17.5-1_amd64.deb```**
 
 **Step 3.** Install the Chef server package, using the name of the package downloaded.
 
-**\# sudo dpkg -i chef-server-core_*.deb**
+**``` sudo dpkg -i chef-server-core_*.deb```**
 
 **Step 4.** Run the following to start the chef services
 
-**\# sudo chef-server-ctl reconfigure**
+**``` sudo chef-server-ctl reconfigure```**
 
 This step may take a few minutes to execute, As the Chef server is composed by many different services that work together to create a functioning system.
 
 **Step 5.** Run the following command to create an administrative user.
 
-**Syntax :** chef-server-ctl user-create USER_NAME FIRST_NAME [MIDDLE_NAME] LAST_NAME EMAIL 'PASSWORD' (options)
+**Syntax :** ```chef-server-ctl user-create USER_NAME FIRST_NAME [MIDDLE_NAME] LAST_NAME EMAIL 'PASSWORD' (options)```
 
-**\# sudo chef-server-ctl user-create chefuser Chef Admin admin@test.com Password@1234 --filename /etc/opscode/chefauser.pem**
+**``` sudo chef-server-ctl user-create chefuser Chef Admin admin@test.com Password@1234 --filename /etc/opscode/chefauser.pem```**
 
 **Note:** Remember the user name and password.
 
@@ -242,19 +242,19 @@ An RSA private key is generated automatically. This is the chef-validator key an
 
 **Syntax:** chef-server-ctl org-create ORG_NAME "ORG_FULL_NAME" (options)
 
-**\# sudo chef-server-ctl org-create orguser  "chef-orguser, Inc." --association_user <Chef-username_created above command> --filename /etc/opscode/orguser-validator.pem**
+**``` sudo chef-server-ctl org-create orguser  "chef-orguser, Inc." --association_user <Chef-username_created above command> --filename /etc/opscode/orguser-validator.pem```**
 
 **Step 7.** To enable Chef server web view run below commands.
 
-**\# chef-server-ctl install chef-manage**
+**``` chef-server-ctl install chef-manage```**
 
 **Run:**<br>
 
-**\# sudo hostname < chef_server_publicip >**
+**``` sudo hostname <chef_server_publicip>```**
 
-**\# chef-server-ctl reconfigure**
+**``` chef-server-ctl reconfigure```**
 
-**\# sudo chef-manage-ctl reconfigure --accept-license** 
+**``` sudo chef-manage-ctl reconfigure --accept-license```** 
 
 It takes 2 to 3 mins
 
@@ -262,11 +262,11 @@ After that chef server configuration is ready
 
 **Step 8.** Run below command to install and stop the firewall. 
 
-**\# sudo apt-get update**
+**``` sudo apt-get update```**
 
-**\# sudo apt-get install -y firewalld**
+**``` sudo apt-get install -y firewalld```**
 
-**\# sudo service firewalld stop**
+**``` sudo service firewalld stop```**
 
 **Step 9.** You can browse chef-server from any internet browser with IP. use Username and passwords as created above.
 
@@ -279,46 +279,46 @@ Open new git bash terminal and send private and public keys to the workstation, 
 
 ```sh
 scp -r ~/.ssh ubuntu@< Chefworkstation_Public_IP >:~
-````
+```
 ssh to Chef workstation.
 
 In git bash run :
 
-**\# ssh  ubuntu@< workStationPublic_IP >**
+**```ssh ubuntu@<workStationPublic_IP>```**
 
  Make sure the keys are copied:  
 
-**\# ls ~/.ssh**
+**``` ls ~/.ssh```**
 
-**\# sudo chmod 0400 ~/.ssh/id_rsa**
+**``` sudo chmod 0400 ~/.ssh/id_rsa```**
 
  initialize git:
 
-**\# sudo git init**
+**``` sudo git init```**
 
-**\# sudo git config --global user.name "test"**
+**``` sudo git config --global user.name "test```**
 
-**\# sudo git config --global user.email test@example.com**
+**``` sudo git config --global user.email test@example.com```**
 
 Download and Install ChefDk:
 
 Run:
 
-**\# wget https://packages.chef.io/files/stable/chefdk/2.5.3/ubuntu/16.04/chefdk_2.5.3-1_amd64.deb**
+**``` wget https://packages.chef.io/files/stable/chefdk/2.5.3/ubuntu/16.04/chefdk_2.5.3-1_amd64.deb```**
 
-**\# sudo dpkg -i chefdk_*.deb**
+**``` sudo dpkg -i chefdk_*.deb```**
 
  
 
 Verify the components of the development kit:
 
-**\# chef verify**
+**``` chef verify```**
 
 Download Starter kit:
 
 The starter kit contains chef server configuration files, It will provide connectivity with chef server. Download and moves these to the workstation.
 
-Open a new tab on chrome browser and enter https://chef server public ip
+Open a new tab on chrome browser and enter https://chef-server-public-ip
 
 **Login: chefuser**
 
@@ -350,23 +350,23 @@ From workstation instance run exit. and copy the starter kit  from git bash to w
 
 run:
 
-**\# exit**
+**``` exit```**
 
 Now, Copy the downloaded starter kit to chef-workstation.
 
 Run on git bash:
 
-**scp ~/Downloads/chef-starter.zip ubuntu@< Workstaion_Public_IP >:~**
+**```scp ~/Downloads/chef-starter.zip ubuntu@< Workstaion_Public_IP >:~```**
 
 Now ssh to workstation
 
-**\# ssh ubuntu@< Workstation_Public_IP >**
+**``` ssh ubuntu@<Workstation_Public_IP>```**
 
 Install "unzip".
 
-**\# sudo apt-get install unzip**
+**```\# sudo apt-get install unzip```**
 
-**\# sudo unzip chef-starter.zip**
+**``` sudo unzip chef-starter.zip```**
 
 The starter kit contains chef-repo repository it has .chef, cookbooks and roles folders
 
@@ -376,22 +376,22 @@ cookbooks folder is use to store cookbooks and it is the default path to upload 
 
 knife commands are supposed to be executed only from the "chef-repo" directory.
 
-**\# cd ~/chef-repo**
+**``` cd ~/chef-repo```**
 
 initialize the git on chef-repo. This folder contains chef configuration file (~/chef-repo/.chef/knife.rb). Run knife commands from this folder only otherwise the commands will not work.
 
-**\# sudo git init**
+**``` sudo git init```**
 
 
 
 Download and check the certs from the Chef Server to the CheckDK host:
 
-**\# sudo knife ssl fetch**
+**``` sudo knife ssl fetch```**
 
 WARNING: Certificates from chef-server will be fetched and placed in your trusted_cert directory (/home/ubuntu/chef-repo/.chef/trusted_certs).
 You should verify the authenticity of these certificates after downloading.
 
-**\# sudo knife ssl check**
+**``` sudo knife ssl check```**
 
 ## Bootstrap a Node
 
@@ -401,7 +401,7 @@ In this section, we will see how to bootstrap the workstation vm itself as chef 
 
 Run the below command to bootstrap the workstation
 
- **# sudo knife bootstrap localhost -x ubuntu -i ~/.ssh/id_rsa -N chefnode --sudo**
+ **``` sudo knife bootstrap localhost -x ubuntu -i ~/.ssh/id_rsa -N chefnode --sudo```**
 
 ## Create a Cookbook and Apply
 
@@ -409,19 +409,19 @@ Run the below command to bootstrap the workstation
 
 From your workstation, move to your chef-repo:
 
-**\# cd ~/chef-repo/cookbooks**
+**``` cd ~/chef-repo/cookbooks```**
 
 Moving on to create a cookbook, named lamp-stack.
 
-**\# sudo  chef generate cookbook  apache**
+**``` sudo  chef generate cookbook  apache```**
 
 Change directory to the new cookbook.
 
-**\# cd apache**
+**``` cd apache```**
 
 Listing the files in the cookbook, you'll see the defaults.
 
-**\# ls**
+**```ls```**
 
 Recipes directory contains the “default.rb” recipe resources.
 
@@ -429,36 +429,38 @@ From within your apache directory, navigate to the recipes folder:
 
 write a cookbook to install and enable service.
 
-**\# sudo vim recipes/default.rb**
+**``` sudo vim recipes/default.rb```**
 
 Add the below code, save&quit the default.rb file (Esc:wq)
 
-
-execute "update" do<br>
-command "apt-get update -y"<br>
+```sh
+execute "update" do
+command "apt-get update -y"
 end<br>
-package "apache2" do<br>
-action :install<br>
-end<br>
-service "apache2" do<br>
-action [:enable, :start]<br>
+package "apache2" do
+action :install
 end
+service "apache2" do
+action [:enable, :start]
+end
+
+```
 
 To test the Apache recipe, update the LAMP Stack recipe on the server:
 
-**\# sudo knife cookbook upload apache**
+**``` sudo knife cookbook upload apache```**
 
 Add the recipe to a node’s run-list, replacing node name with your chosen node’s name:
 
-**\# sudo knife node run_list add chefnode "recipe[apache::default]"**
+**``` sudo knife node run_list add chefnode "recipe[apache::default]"```**
 
 From that node, run the chef-client:
 
-**\# sudo chef-client**
+**``` sudo chef-client```**
 
 After a successful chef-client run, check to see if Apache is running:
 
-**\# sudo service apache2 status**
+**``` sudo service apache2 status```**
 
  
 
