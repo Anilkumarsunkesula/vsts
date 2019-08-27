@@ -16,6 +16,8 @@
 
 [Chef Server Configuration](#chef-server-configuration)
 
+[Workstation Configuration](#workstation-configuration)
+
 ## Overview
 
 Before you begin, review the basic concepts of Chef.
@@ -263,3 +265,129 @@ After that chef server configuration is ready
 
 **Step 9.** You can browse chef-server from any internet browser with IP. use Username and passwords as created above.
 
+
+## Workstation Configuration
+
+In this section, we are going to learn about, how to install and configure Chef workstation.
+
+Open new git bash terminal and send private and public keys to the workstation, these key will be used to bootstrap the workstation node as chef node.
+
+**\# scp -r ~/.ssh ubuntu@<Chefworkstation_public_IP>:~**
+
+ssh to Chef workstation.
+
+In git bash run :
+
+**\# ssh  ubuntu@<workStationPublic_IP>**
+
+ Make sure the keys are copied:  
+
+**\# ls ~/.ssh**
+
+**\# sudo chmod 0400 ~/.ssh/id_rsa**\
+
+ initialize git:
+
+**\# sudo git init**\
+
+**\# sudo git config --global user.name "test"**
+
+**\# sudo git config --global user.email test@example.com**
+
+Download and Install ChefDk:
+
+Run:
+
+**\# wget https://packages.chef.io/files/stable/chefdk/2.5.3/ubuntu/16.04/chefdk_2.5.3-1_amd64.deb**\
+
+**\# sudo dpkg -i chefdk_*.deb**\
+
+ 
+
+Verify the components of the development kit:
+
+**\# chef verify**
+
+Download Starter kit:
+
+The starter kit contains chef server configuration files, It will provide connectivity with chef server. Download and moves these to the workstation.
+
+Open a new tab on chrome browser and enter https://chef server public ip
+
+**Login: chefuser**
+
+**\Password: Password@1234**
+
+
+
+ After a successful login, you can see chef server web console
+
+
+
+ 
+
+Click on "Administration tab and click" on "orguser" organization,  then select "Starter kit" from the left panel.
+
+
+
+Click on "Download starter kit".
+
+
+
+Click on "proceed".
+
+
+
+Ignore the warnings and click on "Proceed".
+
+From workstation instance run exit. and copy the starter kit  from git bash to workstation VM
+
+run:
+
+**\# exit**
+
+Now, Copy the downloaded starter kit to chef-workstation.
+
+Run on git bash:
+
+**\# scp ~/Downloads/chef-starter.zip ubuntu@<workstaionIP>:~**
+
+Now ssh to workstation
+
+**\# ssh ubuntu@<workstation PublicIP>**
+
+Install "unzip".
+
+**\# sudo apt-get install unzip**
+
+**\# sudo unzip chef-starter.zip**
+
+The starter kit contains chef-repo repository it has .chef, cookbooks and roles folders
+
+where .chef folder contains knife.rb (configuration file) and chef-server user key
+
+cookbooks folder is use to store cookbooks and it is the default path to upload the cookbook to chef server.
+
+knife commands are supposed to be executed only from the "chef-repo" directory.
+
+$ cd ~/chef-repo
+
+initialize the git on chef-repo. This folder contains chef configuration file (~/chef-repo/.chef/knife.rb). Run knife commands from this folder only otherwise the commands will not work.
+
+**\# sudo git init**\
+
+
+
+Download and check the certs from the Chef Server to the CheckDK host:
+
+**\# sudo knife ssl fetch**
+
+WARNING: Certificates from chef-server will be fetched and placed in your trusted_cert directory (/home/ubuntu/chef-repo/.chef/trusted_certs).
+You should verify the authenticity of these certificates after downloading.
+
+**\# sudo knife ssl check**
+
+
+
+
+ 
