@@ -20,6 +20,8 @@
 
 [Bootstrap a Node](#bootstrap-a-node)
 
+[Create a Cookbook and Apply](#create-a-cookbook-and-apply)
+
 ## Overview
 
 Before you begin, review the basic concepts of Chef.
@@ -400,3 +402,71 @@ Run the below command to bootstrap the workstation
 
  **# sudo knife bootstrap localhost -x ubuntu -i ~/.ssh/id_rsa -N chefnode --sudo**
 
+## Create a Cookbook and Apply
+
+### Write a Cookbook
+
+From your workstation, move to your chef-repo:
+
+**\# cd ~/chef-repo/cookbooks**
+
+Moving on to create a cookbook, named lamp-stack.
+
+**\# sudo  chef generate cookbook  apache**
+
+Change directory to the new cookbook.
+
+**\# cd apache**
+
+Listing the files in the cookbook, you'll see the defaults.
+
+**\# ls**
+
+Recipes directory contains the “default.rb” recipe resources.
+
+From within your apache directory, navigate to the recipes folder:
+
+write a cookbook to install and enable service.
+
+**\# sudo vim recipes/default.rb**
+
+Add the below code, save&quit the default.rb file (Esc:wq)
+
+
+  execute "update" do
+
+  command "apt-get update -y"
+
+end
+
+package "apache2" do
+
+        action :install
+
+end
+
+service "apache2" do
+
+        action [:enable, :start]
+
+end
+
+To test the Apache recipe, update the LAMP Stack recipe on the server:
+
+**\# sudo knife cookbook upload apache**
+
+Add the recipe to a node’s run-list, replacing node name with your chosen node’s name:
+
+**\# sudo knife node run_list add chefnode "recipe[apache::default]"**
+
+From that node, run the chef-client:
+
+**\# sudo chef-client**
+
+After a successful chef-client run, check to see if Apache is running:
+
+**\# sudo service apache2 status**
+
+ 
+
+ 
