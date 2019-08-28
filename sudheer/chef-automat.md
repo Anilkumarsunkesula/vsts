@@ -10,7 +10,7 @@
 
 [Create Public and Private SSH keypair to login into the VM](#create-public-and-private-ssh-keypair-to-login-into-the-vm)
 
-[Create compute instances for chef server, chef automate and chef workstation.](#create-compute-instances-for-chef-server,-chef-automate-and-chef-workstation)
+[Create compute instances for chef server, chef automate and chef workstation](#create-compute-instances-for-chef-server,-chef-automate-and-chef-workstation)
 
 [login to the instance Chef server](#login-to-the-instance-chef-server)
 
@@ -147,13 +147,13 @@ Step 2. From OCI services menu, Click Instances under Compute
 
 Step 3. Click Create Instance. Fill out the dialog box:<br>
 
-3.1 Name: Enter a name (e.g. "chef-server").
-3.2 Availability Domain: Select the first available domain. (Ad1)
-3.3 Image Operating System: For the image, Ubuntu 16.04 latest image available.
-3.4 Shape: Select VM.Standard2.1. select another shape if instance creation fails. 
-3.5 SSH Keys: Choose ‘Paste SSH Keys’ and paste the Public Key saved earlier.
-3.6 Virtual Cloud Network: Select the VCN you created in the previous section. 
-3.7 Subnet: Select the first available subnet. 
+3.1 Name: Enter a name (e.g. "chef-server").<br>
+3.2 Availability Domain: Select the first available domain. (Ad1)<br>
+3.3 Image Operating System: For the image, Ubuntu 16.04 latest image available.<br>
+3.4 Shape: Select VM.Standard2.1. select another shape if instance creation fails. <br>
+3.5 SSH Keys: Choose ‘Paste SSH Keys’ and paste the Public Key saved earlier.<br>
+3.6 Virtual Cloud Network: Select the VCN you created in the previous section. <br>
+3.7 Subnet: Select the first available subnet. <br>
 3.8 Click on "Create Instance".
 
 
