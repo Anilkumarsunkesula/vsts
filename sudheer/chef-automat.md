@@ -10,7 +10,7 @@
 
 [Create Public and Private SSH keypair to login into the VM](#create-public-and-private-ssh-keypair-to-login-into-the-vm)
 
-[Create compute instances for chef server, chef automate and chef workstation.](#create-compute-instances-for-chef-server,-chef-automate-and-chef-workstation)
+[Create compute instances for chef server, chef automate and chef workstation.](#create-compute-instances-for-chef-server-chef-automate-and-chef-workstation)
 
 [login to the instance Chef server](#login-to-the-instance-chef-server)
 
