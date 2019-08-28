@@ -342,82 +342,79 @@ In this section, you'll learn how to install Chefdk and workstation configuratio
 
    **```Chef verify  ```**
 
-2. Download Starter kit:
+2. Download Starter kit
 
-Open a new tab on chrome browser and enter https://<Chef server public ip>
+   Open a new tab on chrome browser and enter **https://<Chef-server-public-ip>**
 
-Login: chefadmin
-
-Password: Password@1234
-
+   **Login: chefadmin**<br>
+   **Password: Password@1234**
 
 
-After login, you can see Chef server web console
+   After login, you can see Chef server web console
 
 
 
-Click on Administration tab and click on orguser organization,  then select Starter kit from the left panel.
+   Click on Administration tab and click on orguser organization,  then select Starter kit from the left panel.
 
 
 
-Click on Download starter kit
+   Click on Download starter kit
 
 
 
-Click proceed
+   Click proceed
+
+
+   Click on proceed if any warnings you got
+
+   From workstation instance run exit. and copy the starter kit from git bash to workstation VM
+
+   **run:**<br> **``` exit```**
+
+   Now we need to copy the downloaded starter kit to Chef-workstation.
+
+   **Run in git bash**
+
+   **```scp ~/Downloads/chef-starter.zip ubuntu@<workstationIP>:~```**
 
 
 
-Click on proceed if any warnings you got
+   ssh to workstation
 
-From workstation instance run exit. and copy the starter kit from git bash to workstation VM
+  **```ssh ubuntu@<workstation PublicIP>```**
 
-run: exit
+  Install unzip
 
-Now we need to copy the downloaded starter kit to Chef-workstation.
+  **```sudo apt-get install unzip```**
+  **```sudo unzip chef-starter.zip```**
 
-Run in git bash:
+  The starter kit contains Chef-repo repository. it has ".Chef", cookbooks and roles folders
 
-$ scp ~/Downloads/chef-starter.zip ubuntu@<workstationIP>:~
+  where .chef folder contains knife.rb (configuration file) and Chef-server user key
 
+  cookbook folder is to store cookbooks and it is the default path to unload the cookbook to Chef server.
 
+  NOTE: You have to run every knife command from chef-repo folder
 
-ssh to workstation
+  **```cd ~/chef-repo```**
 
-$ ssh ubuntu@<workstation PublicIP>
+  Initialize the git on Chef-repo
 
-Install unzip
-
-$ sudo apt-get install unzip
-
-$ sudo unzip chef-starter.zip
-
-The starter kit contains Chef-repo repository. it has ".Chef", cookbooks and roles folders
-
-where .chef folder contains knife.rb (configuration file) and Chef-server user key
-
-cookbook folder is to store cookbooks and it is the default path to unload the cookbook to Chef server.
-
-NOTE: You have to run every knife command from chef-repo folder
-
-$ cd ~/chef-repo
-
-Initialize the git on Chef-repo
-
-$ sudo git init
+  **```sudo git init```**
 
 
 
 3. Download and check the certs from the Chef Server to the CheckDK host:
 
-$ sudo knife ssl fetch
+   **```sudo knife ssl fetch```**
 
-WARNING: Certificates from Chef-server will be fetched and placed in your trusted_cert directory (/home/ubuntu/Chef-repo/.Chef/trusted_certs).
-You should verify the authenticity of these certificates after downloading.
+  WARNING: Certificates from Chef-server will be fetched and placed in your trusted_cert directory (/home/ubuntu/Chef-repo/.Chef/trusted_certs).
+
+  You should verify the authenticity of these certificates after downloading.
 
 
 
-$ sudo knife ssl check
+  **```sudo knife ssl check```**
 
 
 
