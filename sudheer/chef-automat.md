@@ -225,14 +225,11 @@ In this section, we are going to install Chef Automate server and create a user 
 
     1.4 Run the below command to copy the "~/.ssh" folder to Chef Automate Home directory.
 
-    **``` scp -r ~/.ssh ubuntu@<ChefAutomate_public_IP>:~```**
-
+    **```scp -r ~/.ssh ubuntu@<ChefAutomate_public_IP>:~```**
 
     1.5 Now login to Chef Automate server 
 
     **```ssh ubuntu@<Public_IP>```**
-
-
 
     1.6 Check for the copied keys:  ls ~/.ssh
 
@@ -240,21 +237,21 @@ In this section, we are going to install Chef Automate server and create a user 
 
 2. Download and Install Chef Automate:
 
-Download Chef Automate deb package,
+    Download Chef Automate deb package,
 
-**``` sudo wget https://packages.chef.io/files/stable/automate/1.8.38/ubuntu/16.04/automate_1.8.38-1_amd64.deb```**
+    **``` sudo wget https://packages.chef.io/files/stable/automate/1.8.38/ubuntu/16.04/automate_1.8.38-1_amd64.deb```**
  
  
  
 3. Installing deb package:
  
-**``` sudo dpkg -i automate_1.8.38-1_amd64.deb```**
+    **``` sudo dpkg -i automate_1.8.38-1_amd64.deb```**
  
  
  
 To set up the Chef Automate server we require Chef server user key and Chef Automate license. Run below command to get temporary Automate license.
  
-**``` sudo wget https://aztdrepo.blob.core.windows.net/chefautomate-testdrive/automate.license -O /tmp/automate.license```**
+    **``` sudo wget https://aztdrepo.blob.core.windows.net/chefautomate-testdrive/automate.license -O /tmp/automate.license```**
  
 For now, use the above license.
 You can get your own temporary license key from below link:
@@ -264,13 +261,13 @@ Next, wait until Chef server script succeeded.
  
 4. Copying user key from Chef-server:
  
-4.1 The SSH keys, which we copied earlier may have excess permissions which may be Vulnerable. Change the permission levels by,
+    4.1 The SSH keys, which we copied earlier may have excess permissions which may be Vulnerable. Change the permission levels by,
  
-**``` sudo chmod 0400 ~/.ssh/id_rsa```**
+    **``` sudo chmod 0400 ~/.ssh/id_rsa```**
  
-4.2 Run below command it copies the Chef-server user key to /tmp directory. Enter "yes" to continue connecting with Chef server.
+    4.2 Run below command it copies the Chef-server user key to /tmp directory. Enter "yes" to continue connecting with Chef server.
  
-**``` scp ubuntu@<chef-server IP>:/etc/opscode/chefadmin.pem /tmp ```**
+    **``` scp ubuntu@<chef-server IP>:/etc/opscode/chefadmin.pem /tmp ```**
  
 5. Chef Automate Setup:
  
