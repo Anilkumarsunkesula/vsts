@@ -10,7 +10,7 @@
 
 [Create Public and Private SSH keypair to login into the VM](#create-public-and-private-ssh-keypair-to-login-into-the-vm)
 
-[Create compute instances for chef server chef automate and chef workstation](#create-compute-instances-for-chef-server-chef-automate-and-chef-workstation)
+[Create compute instances for chef server, chef automate and chef workstation](#create-compute-instances-for-chef-server-chef-automate-and-chef-workstation)
 
 [login to the instance Chef server](#login-to-the-instance-chef-server)
 
@@ -134,7 +134,7 @@ These keys will be used to launch a Compute instance and connect to it.
 We now have a Public/Private SSH key pair. Next, we will create a compute instance using the public key we just saved
  
 
-## Create compute instances for chef server chef automate and chef workstation
+## Create compute instances for chef server, chef automate and chef workstation
 
 In this section, you'll be creating three Compute instances (Chef server, chef automate and chef workstation VMs)with a Public 
 IP address, using the public SSH key generated in the previous section.
