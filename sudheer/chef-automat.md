@@ -344,9 +344,9 @@ In this section, you'll learn how to install Chefdk and workstation configuratio
 
    **```Chef verify  ```**
 
-2. Download Starter kit
+4. Download Starter kit
 
-   Open a new tab on chrome browser and enter **https://<Chef-server-public-ip>**
+   Open a new tab on chrome browser and enter **https://< Chef-server-public-ip>**
 
    **Login: chefadmin**<br>
    **Password: Password@1234**
@@ -406,7 +406,7 @@ In this section, you'll learn how to install Chefdk and workstation configuratio
 
 
 
-3. Download and check the certs from the Chef Server to the CheckDK host:
+5. Download and check the certs from the Chef Server to the CheckDK host:
 
    **```sudo knife ssl fetch```**
 
