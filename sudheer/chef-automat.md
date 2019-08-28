@@ -17,6 +17,8 @@
 [Installing and configuring chef server](#installing-and-configuring-chef-server)
 
 [Install and cofigure Chef Automate](#install-and-cofigure-chef-automate)
+
+[Configure chef worstation](#configure-chef-worstation)
 ## Overview
 
 ### Chef Automate
