@@ -200,12 +200,12 @@ Next, we will SSH to the compute instance.
 
 **NOTE:** Enter ‘Yes’ when prompted for security message. 
 
-
+![](https://github.com/sudheermareddy/vsts/raw/master/sudheer/chef-imgs/19.png)
 
 Step 3. Verify the prompt shows 
 
 **ubuntu@< YOUR_VM_NAME>**  (below example show Compute instance called ‘mean-vm’)
-
+![](https://github.com/sudheermareddy/vsts/raw/master/sudheer/chef-imgs/20.png)
 
 ## Chef Server Configuration
 
@@ -274,7 +274,7 @@ After that chef server configuration is ready
 **``` sudo service firewalld stop```**
 
 **Step 9.** You can browse chef-server from any internet browser with IP. use Username and passwords as created above.
-
+![](https://github.com/sudheermareddy/vsts/raw/master/sudheer/chef-imgs/21.png)
 
 ## Workstation Configuration
 
@@ -327,25 +327,24 @@ Open a new tab on chrome browser and enter https://chef-server-public-ip
 
 **Password: Password@1234**
 
-
+![](https://github.com/sudheermareddy/vsts/raw/master/sudheer/chef-imgs/22.png)
 
  After a successful login, you can see chef server web console
 
-
-
+![](https://github.com/sudheermareddy/vsts/raw/master/sudheer/chef-imgs/23.png)
  
 
 Click on "Administration tab and click" on "orguser" organization,  then select "Starter kit" from the left panel.
 
-
+![](https://github.com/sudheermareddy/vsts/raw/master/sudheer/chef-imgs/24.png)
 
 Click on "Download starter kit".
 
-
+![](https://github.com/sudheermareddy/vsts/raw/master/sudheer/chef-imgs/25.png)
 
 Click on "proceed".
 
-
+![](https://github.com/sudheermareddy/vsts/raw/master/sudheer/chef-imgs/26.png)
 
 Ignore the warnings and click on "Proceed".
 
@@ -385,7 +384,7 @@ initialize the git on chef-repo. This folder contains chef configuration file (~
 
 **``` sudo git init```**
 
-
+![](https://github.com/sudheermareddy/vsts/raw/master/sudheer/chef-imgs/27.png)
 
 Download and check the certs from the Chef Server to the CheckDK host:
 
@@ -395,6 +394,7 @@ WARNING: Certificates from chef-server will be fetched and placed in your truste
 You should verify the authenticity of these certificates after downloading.
 
 **``` sudo knife ssl check```**
+![](https://github.com/sudheermareddy/vsts/raw/master/sudheer/chef-imgs/28.png)
 
 ## Bootstrap a Node
 
@@ -405,6 +405,8 @@ In this section, we will see how to bootstrap the workstation vm itself as chef 
 Run the below command to bootstrap the workstation
 
  **``` sudo knife bootstrap localhost -x ubuntu -i ~/.ssh/id_rsa -N chefnode --sudo```**
+
+ ![](https://github.com/sudheermareddy/vsts/raw/master/sudheer/chef-imgs/29.png)
 
 ## Create a Cookbook and Apply
 
