@@ -14,6 +14,7 @@
 
 [login to the instance Chef server](#login-to-the-instance-chef-server)
 
+[Installing and configuring chef server](#installing-and-configuring-chef-server)
 ## Overview
 
 ### Chef Automate
@@ -157,9 +158,6 @@ Step 3. Click Create Instance. Fill out the dialog box:<br>
 3.8 Click on "Create Instance".
 
 
-
- 
-
  
 Similarly, create Chef automate and Workstation Instances.
 
@@ -168,8 +166,6 @@ Note: If you come across any limitation error, select another shape for the VM.
 Step 4. Once Instances are in ‘Running’ state, note down the public IP addresses.
 
 Step 5. You can also see the Fault Domain of the Virtual Machine.
-
-
 
 
 We now have three Compute instances with  Public IP addresses.
@@ -191,8 +187,24 @@ NOTE: User name is ‘ubuntu’. <PUBLIC_IP_OF_COMPUTE_INSTANCE> should be the a
 NOTE: Enter ‘Yes’ when prompted for security message. 
 
 
-
 Step 3. Verify the prompt shows 
 
 **ubuntu@<YOUR_VM_NAME>** (below example show Compute instance called ‘mean-vm’)
 
+## Installing and configuring chef server
+
+In this section, you'll be installing and configuring the Chef server.
+
+Go to git-bash, where you're already logged in to the Chef server. 
+
+Installation Script:
+
+The below script will download and install the chef server and it creates chef user(chefadmin) and organization (orguser). 
+
+In chef-server **Run:**
+
+**```` wget https://raw.githubusercontent.com/sysgain/tl-scripts/master/chef-server.sh```**
+ 
+**``` bash chef-server.sh```**
+ 
+The process would take 10 to 15 minutes. Meanwhile, go to the next section and Install Chef automate.
