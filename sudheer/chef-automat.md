@@ -225,12 +225,12 @@ In this section, we are going to install Chef Automate server and create a user 
 
     1.4 Run the below command to copy the "~/.ssh" folder to Chef Automate Home directory.
 
-**``` scp -r ~/.ssh ubuntu@<ChefAutomate_public_IP>:~```**
+    **``` scp -r ~/.ssh ubuntu@<ChefAutomate_public_IP>:~```**
 
 
     1.5 Now login to Chef Automate server 
 
-**```ssh ubuntu@<Public_IP>```**
+    **```ssh ubuntu@<Public_IP>```**
 
 
 
