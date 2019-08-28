@@ -62,7 +62,7 @@ In this section, we will log in to the OCI console and adjust your screen size (
 
 **Step 3.** From OCI Services menu, click "Virtual Cloud Network", under "Networking".
 
-
+![](https://github.com/sudheermareddy/vsts/raw/master/sudheer/chef-imgs/4.png)
 
 **Step 4.** Ensure the correct compartment is selected (Bottom Left of OCI console). 
 
@@ -72,7 +72,7 @@ Choose Compartment as porvided in acceess info.
 
 **Step 5.** From OCI menu (click Left top corner) select **Virtual Cloud Networks** and then click "Create Virtual Cloud Network"
 
- 
+![](https://github.com/sudheermareddy/vsts/raw/master/sudheer/chef-imgs/5.png)
 
 **Step 6.** Fill out the dialog box
 
@@ -82,25 +82,24 @@ Choose Compartment as porvided in acceess info.
 **6.4** Click Create Virtual Cloud Network.<br>
 **6.5** Click Close.
 
- 
+![](https://github.com/sudheermareddy/vsts/raw/master/sudheer/chef-imgs/7.png)
 
 **Step 7.** Navigate to created virtual cloud network
 
- 
-
- 
+![](https://github.com/sudheermareddy/vsts/raw/master/sudheer/chef-imgs/8.png)
 
 **Step 8.** Select **"security lists"** on the navigation panel and click on "default security list".  
 
-
+![](https://github.com/sudheermareddy/vsts/raw/master/sudheer/chef-imgs/9.png)
 
 **Step 9.** Click "Edit All Rules".
 
- 
+ ![](https://github.com/sudheermareddy/vsts/raw/master/sudheer/chef-imgs/10.png)
 
 **Step 10.** Click on "Ingress Rules" then click **"+Another Ingress rule"** and enter source cidr as 0.0.0.0/0 and Destination port range as 443 then click save changes.
 
- 
+![](https://github.com/sudheermareddy/vsts/raw/master/sudheer/chef-imgs/11.png)
+
 ## Create Public and Private SSH keypair to login into the VM
 
  In this section, we will create a public/private SSH key pair. 
