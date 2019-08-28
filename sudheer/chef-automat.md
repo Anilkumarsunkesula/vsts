@@ -216,26 +216,27 @@ The process would take 10 to 15 minutes. Meanwhile, go to the next section and I
 In this section, we are going to install Chef Automate server and create a user for Chef Automate web console.
 
 1. Copying keys to Chef Automate server:
-1.1 Open a new "Git-bash" from the "Apps" icon. 
 
-1.2 To get the key from Chef-server with SCP command, you'll need SSH keys into Automate server. 
+    1.1 Open a new "Git-bash" from the "Apps" icon. 
 
-1.3 In this lab, we are using the same private and public keys (id_rsa and id_rsa.pub)for all the three servers. Push these keys from git bash to Automate server with scp command.
+    1.2 To get the key from Chef-server with SCP command, you'll need SSH keys into Automate server. 
 
-1.4 Run the below command to copy the "~/.ssh" folder to Chef Automate Home directory.
+    1.3 In this lab, we are using the same private and public keys (id_rsa and id_rsa.pub)for all the three servers. Push these keys from git bash to Automate server with scp command.
+
+    1.4 Run the below command to copy the "~/.ssh" folder to Chef Automate Home directory.
 
 **``` scp -r ~/.ssh ubuntu@<ChefAutomate_public_IP>:~```**
 
 
-1.5 Now login to Chef Automate server 
+    1.5 Now login to Chef Automate server 
 
 **```ssh ubuntu@<Public_IP>```**
 
 
 
-1.6 Check for the copied keys:  ls ~/.ssh
+    1.6 Check for the copied keys:  ls ~/.ssh
 
-1.7 we will copy the Chef user-key after Chef-server setup script is succeeded.
+    1.7 we will copy the Chef user-key after Chef-server setup script is succeeded.
 
 2. Download and Install Chef Automate:
 
@@ -308,8 +309,8 @@ Pass Chef Automate IP in below command and run it enables the compliance data co
  
 Browse Chef Automate on your favorite browser 
  
-**Username:** chefuser
-
+**Username:** chefuser<br>
 **Password:** Password@1234
  
 
+ 
