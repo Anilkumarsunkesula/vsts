@@ -116,7 +116,7 @@ These keys will be used to launch a Compute instance and connect to it.
 
 **NOTE:** No Passphrase is needed.       
 
-![](https://github.com/sudheermareddy/vsts/raw/master/sudheer/chef-imgs/12.PNG) 
+![](https://github.com/sudheermareddy/vsts/raw/master/sudheer/chef-imgs/12.png)
  
 **Step 4.** You should now have the Public and Private keys:
 
@@ -129,17 +129,17 @@ These keys will be used to launch a Compute instance and connect to it.
 
 **Step 5.** In git-bash Enter **```cat ~/.ssh/id_rsa.pub```**, highlight the key and copy.
  
-![](https://github.com/sudheermareddy/vsts/raw/master/sudheer/chef-imgs/13.PNG)
+![](https://github.com/sudheermareddy/vsts/raw/master/sudheer/chef-imgs/13.png)
  
 **Step 6.** In the OCI Console Window, click the "Apps" icon  and click "Notepad". 
  
 **HINT:** You can swap between the OCI window and any other application (Notepad etc.) by clicking the Switch Window  icon.
  
-![](https://github.com/sudheermareddy/vsts/raw/master/sudheer/chef-imgs/14.PNG)
+![](https://github.com/sudheermareddy/vsts/raw/master/sudheer/chef-imgs/14.png)
  
 **Step 7.** Paste the public key in Notepad.
  
-![](https://github.com/sudheermareddy/vsts/raw/master/sudheer/chef-imgs/15.PNG)
+![](https://github.com/sudheermareddy/vsts/raw/master/sudheer/chef-imgs/15.png)
   
 **Step 8.** Minimize Notepad and git-bash (if open) windows.
 
@@ -168,7 +168,9 @@ Creating Chef server compute Instance:
 **3.7** Subnet: Select the first available subnet. <br>
 **3.8** Click on "Create Instance".
 
+![](https://github.com/sudheermareddy/vsts/raw/master/sudheer/chef-imgs/16.png)
 
+![](https://github.com/sudheermareddy/vsts/raw/master/sudheer/chef-imgs/17.png)
 
 Similarly, create Chef automate and Workstation Instances.<br>
 
@@ -178,7 +180,7 @@ Similarly, create Chef automate and Workstation Instances.<br>
  
 **Step 5.** You can also see the Fault Domain of the Virtual Machine
 
-
+![](https://github.com/sudheermareddy/vsts/raw/master/sudheer/chef-imgs/18.png)
 
 We now have two Compute instances with  Public IP addresses.
 
