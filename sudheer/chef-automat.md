@@ -203,7 +203,7 @@ The below script will download and install the chef server and it creates chef u
 
 In chef-server **Run:**
 
-**```` wget https://raw.githubusercontent.com/sysgain/tl-scripts/master/chef-server.sh```**
+**``` wget https://raw.githubusercontent.com/sysgain/tl-scripts/master/chef-server.sh```**
  
 **``` bash chef-server.sh```**
  
