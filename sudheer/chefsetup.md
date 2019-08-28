@@ -49,12 +49,12 @@ There is also the concept of “Cookbooks” and “Recipes”. These are effect
 
 In this section, we will log in to the OCI console and adjust your screen size (if needed).
 
-**Step 1.** Get OCI Sign detailes from left top of content window as shown below.
+**Step 1.** Get OCI Sign detailes from left top of content window as shown below.<br>
      **NOTE:** To copy the access details click on requred value and past it in you work space window.
 
 ![](https://github.com/sudheermareddy/vsts/raw/master/sudheer/chef-imgs/30.PNG)
  
- ![](https://github.com/sudheermareddy/vsts/raw/master/sudheer/chef-imgs/2.PNG)
+![](https://github.com/sudheermareddy/vsts/raw/master/sudheer/chef-imgs/2.PNG)
 
 **Step 2.** Reduce the browser display size  as needed (Below example is for Chrome). 
 
