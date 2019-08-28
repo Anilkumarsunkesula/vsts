@@ -394,6 +394,7 @@ WARNING: Certificates from chef-server will be fetched and placed in your truste
 You should verify the authenticity of these certificates after downloading.
 
 **``` sudo knife ssl check```**
+
 ![](https://github.com/sudheermareddy/vsts/raw/master/sudheer/chef-imgs/28.png)
 
 ## Bootstrap a Node
