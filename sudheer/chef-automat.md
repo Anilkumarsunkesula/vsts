@@ -243,7 +243,7 @@ In this section, we are going to install Chef Automate server and create a user 
  
  
  
-3. Installing deb package:
+3. Installing deb package:<br>
  
     **``` sudo dpkg -i automate_1.8.38-1_amd64.deb```**
  
