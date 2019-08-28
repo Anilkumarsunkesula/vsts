@@ -247,7 +247,7 @@ In this section, we are going to install Chef Automate server and create a user 
  
     **``` sudo dpkg -i automate_1.8.38-1_amd64.deb```**
  
-     To set up the Chef Automate server we require Chef server user key and Chef Automate license. Run below command to get temporary Automate license.
+    To set up the Chef Automate server we require Chef server user key and Chef Automate license. Run below command to get temporary Automate license.
  
     **``` sudo wget https://aztdrepo.blob.core.windows.net/chefautomate-testdrive/automate.license -O /tmp/automate.license```**
  
