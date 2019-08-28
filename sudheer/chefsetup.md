@@ -464,6 +464,3 @@ After a successful chef-client run, check to see if Apache is running:
 
 **``` sudo service apache2 status```**
 
- 
-
- 
