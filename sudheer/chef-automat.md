@@ -15,6 +15,8 @@
 [login to the instance Chef server](#login-to-the-instance-chef-server)
 
 [Installing and configuring chef server](#installing-and-configuring-chef-server)
+
+[Install and cofigure Chef Automate](#install-and-cofigure-chef-automate)
 ## Overview
 
 ### Chef Automate
@@ -208,3 +210,103 @@ In chef-server **Run:**
 **``` bash chef-server.sh```**
  
 The process would take 10 to 15 minutes. Meanwhile, go to the next section and Install Chef automate.
+
+## Install and cofigure Chef Automate
+
+In this section, we are going to install Chef Automate server and create a user for Chef Automate web console.
+
+1. Copying keys to Chef Automate server:
+1.1 Open a new "Git-bash" from the "Apps" icon. 
+
+1.2 To get the key from Chef-server with SCP command, you'll need SSH keys into Automate server. 
+
+1.3 In this lab, we are using the same private and public keys (id_rsa and id_rsa.pub)for all the three servers. Push these keys from git bash to Automate server with scp command.
+
+1.4 Run the below command to copy the "~/.ssh" folder to Chef Automate Home directory.
+
+**``` scp -r ~/.ssh ubuntu@<ChefAutomate_public_IP>:~```**
+
+
+1.5 Now login to Chef Automate server 
+
+**```ssh ubuntu@<Public_IP>```**
+
+
+
+1.6 Check for the copied keys:  ls ~/.ssh
+
+1.7 we will copy the Chef user-key after Chef-server setup script is succeeded.
+
+2. Download and Install Chef Automate:
+
+Download Chef Automate deb package,
+
+**``` sudo wget https://packages.chef.io/files/stable/automate/1.8.38/ubuntu/16.04/automate_1.8.38-1_amd64.deb```**
+ 
+ 
+ 
+3. Installing deb package:
+ 
+**``` sudo dpkg -i automate_1.8.38-1_amd64.deb```**
+ 
+ 
+ 
+To set up the Chef Automate server we require Chef server user key and Chef Automate license. Run below command to get temporary Automate license.
+ 
+**``` sudo wget https://aztdrepo.blob.core.windows.net/chefautomate-testdrive/automate.license -O /tmp/automate.license```**
+ 
+For now, use the above license.
+You can get your own temporary license key from below link:
+https://learn.Chef.io/modules/manage-a-node-Chef-Automate/ubuntu/Automate/set-up-your-Chef-server#/
+Next, wait until Chef server script succeeded.
+ 
+4. Copying user key from Chef-server:
+ 
+4.1 The SSH keys, which we copied earlier may have excess permissions which may be Vulnerable. Change the permission levels by,
+ 
+**``` sudo chmod 0400 ~/.ssh/id_rsa```**
+ 
+4.2 Run below command it copies the Chef-server user key to /tmp directory. Enter "yes" to continue connecting with Chef server.
+ 
+**``` scp ubuntu@<chef-server IP>:/etc/opscode/chefadmin.pem /tmp ```**
+ 
+5. Chef Automate Setup:
+ 
+Run below command to set up the Automate server, in this command, we are passing the Automate license, Chef-server user key file paths and chef server Private key(take it from OCI instance details page). 
+ 
+**``` sudo automate-ctl setup --license /tmp/automate.license --key /tmp/chefadmin.pem --server-url https://<Chef-server-PrivateIP>/organizations/orguser --fqdn $(hostname) --enterprise default --configure --no-build-node```**
+ 
+ 
+ 
+**``` sudo automate-ctl reconfigure```**
+ 
+6. Creating Chef Automate user:
+ 
+$ sudo automate-ctl create-user default chefuser --password Password@1234 --roles "admin"
+ 
+Allow 443 on Firewall:
+ 
+To access the Chef Automate web view from browsers we need to open firewalld https port.
+ ```sh
+ sudo apt-get update
+ sudo apt-get install -y firewalld
+ sudo firewall-cmd --zone=public --add-port=443/tcp --permanent
+ sudo firewall-cmd --reload
+ ```
+NOTE: Run below commands on Chef server
+ 
+Go to chef server:
+ 
+**``` sudo chmod 777 /etc/opscode/chef-server.rb```**
+ 
+Pass Chef Automate IP in below command and run it enables the compliance data collection.
+ 
+**``` sudo echo "data_collector['root_url'] = 'https://<Automate public IP>/data-collector/v0/'" >> /etc/opscode/chef-server.rb```**
+
+ **```sudo chef-server-ctl reconfigure```**
+ 
+Browse Chef Automate on your favorite browser 
+ 
+**Username:** chefuser
+**Password:** Password@1234
+ 
