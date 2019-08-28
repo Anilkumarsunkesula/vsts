@@ -54,8 +54,7 @@ In this section, we will log in to the OCI console and adjust your screen size (
 
 ![](https://github.com/sudheermareddy/vsts/raw/master/sudheer/chef-imgs/30.PNG)
  
-![](https://github.com/sudheermareddy/vsts/raw/master/sudheer/chef-imgs/2.PNG)
-
+![](https://github.com/sudheermareddy/vsts/raw/master/sudheer/chef-imgs/2.png)
 **Step 2.** Reduce the browser display size  as needed (Below example is for Chrome). 
 
 
