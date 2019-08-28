@@ -225,7 +225,7 @@ In this section, we are going to install Chef Automate server and create a user 
 
     1.4 Run the below command to copy the "~/.ssh" folder to Chef Automate Home directory.
 
-    **```scp -r ~/.ssh ubuntu@<ChefAutomate_public_IP>:~```**
+    **```scp -r ~/.ssh ubuntu@<ChefAutomate_public_IP>:~```**<br>
 
     1.5 Now login to Chef Automate server 
 
@@ -254,7 +254,7 @@ To set up the Chef Automate server we require Chef server user key and Chef Auto
     **``` sudo wget https://aztdrepo.blob.core.windows.net/chefautomate-testdrive/automate.license -O /tmp/automate.license```**
  
 For now, use the above license.
-You can get your own temporary license key from below link:
+You can get your own temporary license key from below link:<br>
 https://learn.Chef.io/modules/manage-a-node-Chef-Automate/ubuntu/Automate/set-up-your-Chef-server#/
 
 Next, wait until Chef server script succeeded.
@@ -308,6 +308,4 @@ Browse Chef Automate on your favorite browser
  
 **Username:** chefuser<br>
 **Password:** Password@1234
- 
-
  
