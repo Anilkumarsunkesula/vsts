@@ -19,6 +19,9 @@
 [Install and cofigure Chef Automate](#install-and-cofigure-chef-automate)
 
 [Configure chef worstation](#configure-chef-worstation)
+
+[Bootstrap a node, Scan and fix compliance issues](#bootstrap-a-node-scan-and-fix-compliance-issues)
+
 ## Overview
 
 ### Chef Automate
@@ -419,5 +422,71 @@ In this section, you'll learn how to install Chefdk and workstation configuratio
    **```sudo knife ssl check```**
 
 
+## Bootstrap a node, Scan and fix compliance issues
+
+In this section, we will see how to bootstrap the workstation vm itself as chef node and scan the compliance and fix the issues by applying cookbooks on the workstation
+
+Bootstrap the Workstation:
+
+1. Run the below command to bootstrap the workstation
+
+**``` sudo knife bootstrap localhost -x ubuntu -i ~/.ssh/id_rsa -N chefnode --sudo```**
 
  
+
+2. Now download the cookbooks
+
+**``` sudo git clone https://github.com/sysgain/OCI-chef-tl-cookbooks.git```**
+
+
+
+3. Move or copy the cookbooks to cookbook folder.
+
+**``` sudo mv  OCI-chef-tl-cookbooks/* cookbooks/```**
+
+Upload Cookbooks to Chef Server:
+
+**Run**
+
+**``` sudo knife cookbook upload audit-linux compat_resource ohai sysctl os-hardening```**
+
+4. Check the Automate server there you can see a node is added
+
+
+
+5. Now add audit-linux recipe to chefnode run list
+
+**``` sudo knife node run_list add chefnode "recipe[audit-linux]"```**
+
+
+
+**Now run:**
+
+**``` sudo chef-client```**
+
+
+
+6. Go to Chef automate and click compliance tab, here we see the chef node compliances.
+
+
+
+7. Click on 1Nodes then click node name to view the list of compliances.
+
+
+
+To fix the issues we need to apply the os-hardening cookbook.
+
+8. Add the os-hardening recipe to chefnode runlist
+
+**``` sudo knife node run_list add chefnode "recipe[os-hardening]"```**
+
+
+
+Now run :
+
+**``` sudo chef-client```**
+
+It will fix compliance issues.
+
+9. Now refresh the Chef automate you can see the node is passed in compliance tab.
+
