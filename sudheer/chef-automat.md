@@ -231,11 +231,11 @@ In this section, we are going to install Chef Automate server and create a user 
 
     **```ssh ubuntu@<Public_IP>```**
 
-    1.6 Check for the copied keys:  ls ~/.ssh
+    1.6 Check for the copied keys:<br>  **```ls ~/.ssh**```
 
     1.7 we will copy the Chef user-key after Chef-server setup script is succeeded.
 
-2. Download and Install Chef Automate:
+2. Download and Install Chef Automate:<br>
 
     Download Chef Automate deb package,
 
@@ -247,14 +247,11 @@ In this section, we are going to install Chef Automate server and create a user 
  
     **``` sudo dpkg -i automate_1.8.38-1_amd64.deb```**
     
-    <br>To set up the Chef Automate server we require Chef server user key and Chef Automate license. Run below command to get temporary Automate license.
+    To set up the Chef Automate server we require Chef server user key and Chef Automate license. Run below command to get temporary Automate license.
  
     **``` sudo wget https://aztdrepo.blob.core.windows.net/chefautomate-testdrive/automate.license -O /tmp/automate.license```**
  
-    For now, use the above license.
-    You can get your own temporary license key from below link:<br>
-    https://learn.Chef.io/modules/manage-a-node-Chef-Automate/ubuntu/Automate/set-up-your-Chef-server#/
-
+    
     Next, wait until Chef server script succeeded.
  
 4. Copying user key from Chef-server:
@@ -306,4 +303,122 @@ In this section, we are going to install Chef Automate server and create a user 
  
     **Username:** chefuser<br>
     **Password:** Password@1234
+ 
+## Configure chef worstation
+
+In this section, you'll learn how to install Chefdk and workstation configuration steps.
+
+1. Open a new "git-bash" terminal 
+
+2. We need to send private and public keys to the Workstation. Follow steps mentioned in the previous section.
+
+   **```scp -r ~/.ssh ubuntu@<Chefworkstation_public_IP>:~```**<br>
+
+   ssh to Chef workstation 
+
+   In git-bash run 
+
+   **```ssh ubuntu@<workStationPublic_IP>```**
+
+3. Check keys are copied or not:<br>  
+
+   **```ls ~/.ssh```**
+   
+   **``` sudo chmod 0400 ~/.ssh/id_rsa```**
+   
+   Download and Install ChefDk
+   
+   initialize git
+
+   
+   ```sh
+   sudo git init
+   sudo git config --global user.name "test"
+   sudo git config --global user.email test@example.com
+   wget https://packages.chef.io/files/stable/chefdk/2.5.3/ubuntu/16.04/chefdk_2.5.3-1_amd64.deb
+   sudo dpkg -i chefdk_*.deb
+   ```
+   verify the components of the development kit
+
+   **```Chef verify  ```**
+
+2. Download Starter kit:
+
+Open a new tab on chrome browser and enter https://<Chef server public ip>
+
+Login: chefadmin
+
+Password: Password@1234
+
+
+
+After login, you can see Chef server web console
+
+
+
+Click on Administration tab and click on orguser organization,  then select Starter kit from the left panel.
+
+
+
+Click on Download starter kit
+
+
+
+Click proceed
+
+
+
+Click on proceed if any warnings you got
+
+From workstation instance run exit. and copy the starter kit from git bash to workstation VM
+
+run: exit
+
+Now we need to copy the downloaded starter kit to Chef-workstation.
+
+Run in git bash:
+
+$ scp ~/Downloads/chef-starter.zip ubuntu@<workstationIP>:~
+
+
+
+ssh to workstation
+
+$ ssh ubuntu@<workstation PublicIP>
+
+Install unzip
+
+$ sudo apt-get install unzip
+
+$ sudo unzip chef-starter.zip
+
+The starter kit contains Chef-repo repository. it has ".Chef", cookbooks and roles folders
+
+where .chef folder contains knife.rb (configuration file) and Chef-server user key
+
+cookbook folder is to store cookbooks and it is the default path to unload the cookbook to Chef server.
+
+NOTE: You have to run every knife command from chef-repo folder
+
+$ cd ~/chef-repo
+
+Initialize the git on Chef-repo
+
+$ sudo git init
+
+
+
+3. Download and check the certs from the Chef Server to the CheckDK host:
+
+$ sudo knife ssl fetch
+
+WARNING: Certificates from Chef-server will be fetched and placed in your trusted_cert directory (/home/ubuntu/Chef-repo/.Chef/trusted_certs).
+You should verify the authenticity of these certificates after downloading.
+
+
+
+$ sudo knife ssl check
+
+
+
  
