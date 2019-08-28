@@ -116,7 +116,7 @@ These keys will be used to launch a Compute instance and connect to it.
 
 **NOTE:** No Passphrase is needed.       
 
- 
+![](https://github.com/sudheermareddy/vsts/raw/master/sudheer/chef-imgs/12.PNG) 
  
 **Step 4.** You should now have the Public and Private keys:
 
@@ -129,17 +129,17 @@ These keys will be used to launch a Compute instance and connect to it.
 
 **Step 5.** In git-bash Enter **```cat ~/.ssh/id_rsa.pub```**, highlight the key and copy.
  
-
+![](https://github.com/sudheermareddy/vsts/raw/master/sudheer/chef-imgs/13.PNG)
  
 **Step 6.** In the OCI Console Window, click the "Apps" icon  and click "Notepad". 
  
 **HINT:** You can swap between the OCI window and any other application (Notepad etc.) by clicking the Switch Window  icon.
  
-
+![](https://github.com/sudheermareddy/vsts/raw/master/sudheer/chef-imgs/14.PNG)
  
 **Step 7.** Paste the public key in Notepad.
  
-
+![](https://github.com/sudheermareddy/vsts/raw/master/sudheer/chef-imgs/15.PNG)
   
 **Step 8.** Minimize Notepad and git-bash (if open) windows.
 
