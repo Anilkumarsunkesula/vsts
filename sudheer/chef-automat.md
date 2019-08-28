@@ -145,7 +145,7 @@ Step 1. Switch to OCI console. (if not already)
 
 Step 2. From OCI services menu, Click Instances under Compute 
 
-Step 3. Click Create Instance. Fill out the dialog box:
+Step 3. Click Create Instance. Fill out the dialog box:<br>
 
 3.1 Name: Enter a name (e.g. "chef-server").
 3.2 Availability Domain: Select the first available domain. (Ad1)
@@ -184,7 +184,7 @@ HINT: If the terminal was closed simply launch a new one using the "Apps" icon .
 
 Step 2. SSH into the compute instance using the command,
 
-$ ssh ubuntu@<PUBLIC_IP_OF_COMPUTE_INSTANCE>
+**``` ssh ubuntu@<PUBLIC_IP_OF_COMPUTE_INSTANCE>```**
 
 NOTE: User name is ‘ubuntu’. <PUBLIC_IP_OF_COMPUTE_INSTANCE> should be the actual IP address e.g 129.0.1.10 
 
@@ -194,5 +194,5 @@ NOTE: Enter ‘Yes’ when prompted for security message.
 
 Step 3. Verify the prompt shows 
 
-ubuntu@<YOUR_VM_NAME> (below example show Compute instance called ‘mean-vm’)
+**ubuntu@<YOUR_VM_NAME>** (below example show Compute instance called ‘mean-vm’)
 
