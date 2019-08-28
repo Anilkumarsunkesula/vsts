@@ -383,26 +383,26 @@ In this section, you'll learn how to install Chefdk and workstation configuratio
 
    ssh to workstation
 
-  **```ssh ubuntu@<workstation PublicIP>```**
+   **```ssh ubuntu@<workstation PublicIP>```**
 
-  Install unzip
+   Install unzip
 
-  **```sudo apt-get install unzip```**
-  **```sudo unzip chef-starter.zip```**
+   **```sudo apt-get install unzip```**
+   **```sudo unzip chef-starter.zip```**
 
-  The starter kit contains Chef-repo repository. it has ".Chef", cookbooks and roles folders
+   The starter kit contains Chef-repo repository. it has ".Chef", cookbooks and roles folders
 
-  where .chef folder contains knife.rb (configuration file) and Chef-server user key
+   where .chef folder contains knife.rb (configuration file) and Chef-server user key
 
-  cookbook folder is to store cookbooks and it is the default path to unload the cookbook to Chef server.
+   cookbook folder is to store cookbooks and it is the default path to unload the cookbook to Chef server.
 
-  NOTE: You have to run every knife command from chef-repo folder
+   NOTE: You have to run every knife command from chef-repo folder
 
-  **```cd ~/chef-repo```**
+   **```cd ~/chef-repo```**
 
-  Initialize the git on Chef-repo
+   Initialize the git on Chef-repo
 
-  **```sudo git init```**
+   **```sudo git init```**
 
 
 
@@ -410,13 +410,13 @@ In this section, you'll learn how to install Chefdk and workstation configuratio
 
    **```sudo knife ssl fetch```**
 
-  WARNING: Certificates from Chef-server will be fetched and placed in your trusted_cert directory (/home/ubuntu/Chef-repo/.Chef/trusted_certs).
+   WARNING: Certificates from Chef-server will be fetched and placed in your trusted_cert directory (/home/ubuntu/Chef-repo/.Chef/trusted_certs).
 
-  You should verify the authenticity of these certificates after downloading.
+   You should verify the authenticity of these certificates after downloading.
 
 
 
-  **```sudo knife ssl check```**
+   **```sudo knife ssl check```**
 
 
 
