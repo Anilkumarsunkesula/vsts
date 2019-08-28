@@ -258,6 +258,7 @@ To set up the Chef Automate server we require Chef server user key and Chef Auto
 For now, use the above license.
 You can get your own temporary license key from below link:
 https://learn.Chef.io/modules/manage-a-node-Chef-Automate/ubuntu/Automate/set-up-your-Chef-server#/
+
 Next, wait until Chef server script succeeded.
  
 4. Copying user key from Chef-server:
@@ -282,7 +283,7 @@ Run below command to set up the Automate server, in this command, we are passing
  
 6. Creating Chef Automate user:
  
-$ sudo automate-ctl create-user default chefuser --password Password@1234 --roles "admin"
+**``` sudo automate-ctl create-user default chefuser --password Password@1234 --roles "admin"```**
  
 Allow 443 on Firewall:
  
@@ -308,5 +309,7 @@ Pass Chef Automate IP in below command and run it enables the compliance data co
 Browse Chef Automate on your favorite browser 
  
 **Username:** chefuser
+
 **Password:** Password@1234
  
+
