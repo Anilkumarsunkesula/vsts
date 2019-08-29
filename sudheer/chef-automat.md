@@ -26,8 +26,7 @@
 
 ### Chef Automate
 Chef Automate provides a full suite of enterprise capabilities for workflow, node visibility and compliance. Chef Automate integrates with the open-source products Chef, InSpec and Habitat. Chef Automate comes with comprehensive 24×7 support services for the entire platform, including open source components.
-
-
+![](https://github.com/sudheermareddy/vsts/raw/master/sudheer/automate/1.png)
 
 ### Compliance:
 Chef Automate 1.5.46 or later provides an easy way to view how successful the nodes in your infrastructure are at meeting the compliance requirements specified by your organization. Several built-in profiles are included in Chef Automate to scan for security risks, outdated software, and more. These profiles cover a variety of security frameworks, such as Center for Internet Security (CIS) benchmarks. If you have additional compliance requirements, you can also write your own compliance profiles in InSpec and upload them to Chef Automate. For more information how to view the compliance status across your cluster, see Compliance Overview.
@@ -48,17 +47,17 @@ In this section, we will log in to the OCI console and adjust your screen size (
 **Step 1.** Get OCI Sign detailes from left top of content window as shown below.<br>
      **NOTE:** To copy the access details click on requred value and past it in you work space window.
 
-![](https://github.com/sudheermareddy/vsts/raw/master/sudheer/chef-imgs/30.PNG)
- 
-![](https://github.com/sudheermareddy/vsts/raw/master/sudheer/chef-imgs/2.png)
+![](https://github.com/sudheermareddy/vsts/raw/master/sudheer/automate/2.PNG)
 
+![](https://github.com/sudheermareddy/vsts/raw/master/sudheer/automate/3.png)
+ 
 **Step 2.** Reduce the browser display size  as needed (Below example is for Chrome). 
 
-![](https://github.com/sudheermareddy/vsts/raw/master/sudheer/chef-imgs/3.png)
+![](https://github.com/sudheermareddy/vsts/raw/master/sudheer/automate/4.png)
 
 **Step 3.** From OCI Services menu, click "Virtual Cloud Network", under "Networking".
 
-![](https://github.com/sudheermareddy/vsts/raw/master/sudheer/chef-imgs/4.png)
+![](https://github.com/sudheermareddy/vsts/raw/master/sudheer/automate/5.png)
 
 **Step 4.** Ensure the correct compartment is selected (Bottom Left of OCI console). 
 
@@ -68,7 +67,7 @@ Choose Compartment as porvided in acceess info.
 
 **Step 5.** From OCI menu (click Left top corner) select **Virtual Cloud Networks** and then click "Create Virtual Cloud Network"
 
-![](https://github.com/sudheermareddy/vsts/raw/master/sudheer/chef-imgs/5.png)
+![](https://github.com/sudheermareddy/vsts/raw/master/sudheer/automate/6.png)
 
 **Step 6.** Fill out the dialog box
 
@@ -78,23 +77,23 @@ Choose Compartment as porvided in acceess info.
 **6.4** Click Create Virtual Cloud Network.<br>
 **6.5** Click Close.
 
-![](https://github.com/sudheermareddy/vsts/raw/master/sudheer/chef-imgs/7.png)
+![](https://github.com/sudheermareddy/vsts/raw/master/sudheer/automate/7.png)
 
 **Step 7.** Navigate to created virtual cloud network
 
-![](https://github.com/sudheermareddy/vsts/raw/master/sudheer/chef-imgs/8.png)
+![](https://github.com/sudheermareddy/vsts/raw/master/sudheer/automate/8.png)
 
 **Step 8.** Select **"security lists"** on the navigation panel and click on "default security list".  
 
-![](https://github.com/sudheermareddy/vsts/raw/master/sudheer/chef-imgs/9.png)
+![](https://github.com/sudheermareddy/vsts/raw/master/sudheer/automate/9.png)
 
 **Step 9.** Click "Edit All Rules".
 
- ![](https://github.com/sudheermareddy/vsts/raw/master/sudheer/chef-imgs/10.png)
+ ![](https://github.com/sudheermareddy/vsts/raw/master/sudheer/automate/10.png)
 
 **Step 10.** Click on "Ingress Rules" then click **"+Another Ingress rule"** and enter source cidr as 0.0.0.0/0 and Destination port range as 443 then click save changes.
 
-![](https://github.com/sudheermareddy/vsts/raw/master/sudheer/chef-imgs/11.png)
+![](https://github.com/sudheermareddy/vsts/raw/master/sudheer/automate/11.png)
 
 ## Create Public and Private SSH keypair to login into the VM
 
