@@ -1,4 +1,3 @@
-
 # CHEF AUTOMATE
 
 # Table of Contents
@@ -110,17 +109,17 @@ The deployed server contains both Chef server and Chef Automate servers.
 
 Step 1: Switch to the root user.
 
-""``` sudo -i```**
+**``` sudo -i```**
 
 Step 2: Create users for 'chef automate server web view and 'chef server user'. 
 
 Execute the following command to download a script which creates the users, ORG, and keys
 
-""``` wget https://raw.githubusercontent.com/sysgain/tl-scripts/master/chefautomate.sh```**
+**``` wget https://raw.githubusercontent.com/sysgain/tl-scripts/master/chefautomate.sh```**
 
 Pass the parameters required for the script in an order Chef server's username & Automate server, Chef user first name, last name, E-mail , Password, and Organization name for chef server.
 
-**```` bash chefautomate.sh chefuser chef user test@noreply.com Password@1234 orguser```**
+**``` bash chefautomate.sh chefuser chef user test@noreply.com Password@1234 orguser```**
 
 
 
