@@ -12,6 +12,8 @@
 
 [Create Chef workstation on the Azure portal](#create-chef-workstation-on-the-azure-portal)
 
+[Workstation setup](#workstation-setup)
+
 ## Overview
 
 Chef Automate
@@ -154,3 +156,93 @@ Step 5: Set the "Boot Diagnostics" to 'Off' and proceed over to the final step "
 
 Note: Do copy chef server ip for future use.
 
+## Workstation setup
+
+The Workstation is where you create cookbooks, recipes, attributes and manage configurations. A workstation can be hosted on any machine, on any flavor of OS but it is recommended that you host it on a remotely accessible machine.
+
+Setting Up a Workstation:
+
+Open putty from applications drop-down, at top-left corner of the workspace.
+
+
+
+Step 1. Connect using the IP of "Workstation Server VM" and use the credentials you provided when creating the VM.
+
+Public ip address : Workstation public IP.
+
+
+
+Login as: chefuser
+
+Password: Password@1234
+
+
+
+Step 2. Run the below command to download the Chef Development Kit. 
+
+**``` wget https://packages.chef.io/files/stable/chefdk/2.5.3/ubuntu/16.04/chefdk_2.5.3-1_amd64.deb```**
+
+Step 3. Run the below command to install ChefDK.
+
+**```` sudo dpkg -i chefdk_*.deb```**
+
+Step 4. Run the below command to verify the components of the development kit.
+
+**``` chef verify```**
+
+Step 5. Generate the chef-repo and move into the newly-created directory
+
+**``` sudo chef generate repo chef-repo```**
+
+Step 6: Change directory to chef-repo
+
+**``` cd ~/chef-repo```**
+
+Step 7: Create a directory ".chef"
+
+**``` sudo mkdir .chef```**
+
+Copy the RSA Private Keys from Chef server
+
+The RSA private keys generated when setting up the Chef server will now need to be placed on the workstation. The process behind this will vary depending on if you are using SSH key pair authentication to log into your Linodes.
+
+If you are not using key pair authentication, then copy the file directly off of the Chef Server. replace user with your username on the server, and 45.67.89 with the URL or IP of your Chef Server:
+
+**``` scp chefuser@<ChefServerIP>:/etc/opscode/*.pem ~/chef-repo/.chef/```**
+
+Enter password,
+
+Make sure that the files have been copied successfully by listing the contents of the .chef directory
+
+**``` chef-repo/.chef/ ls```**
+
+Generate knife.rb
+
+ 1.Download configuration into the rb file to .chef
+
+
+***``` wget https://raw.githubusercontent.com/sysgain/tl-scripts/master/knife.rb -O $HOME/chef-repo/.chef/knife.rb```**
+
+Change the following in knife.rb: 
+
+**``` sudo vim $HOME/chef-repo/.chef/knife.rb```**
+
+- The value for node_name should be the username that was created above.
+- Change username.pem under client_key to reflect your .pem file for your user.
+- The validation_client_name should be your organization’s shortname followed by -validator.
+- shortname.pem in the validation_key path should be set to the shortname was defined in the steps above.
+- Finally the chef_server-url needs to contain the FQDN URL of your Chef server. you can get it from chef-server overview Page
+
+2.Move to the chef-repo and copy the needed SSL certificates from the server.
+
+**``` sudo knife ssl fetch```**
+
+This command should output the validator name.
+
+3.Confirm that knife.rb is set up correctly by running the client list
+
+**```sudo knife client list```**
+
+4. With both the server and a workstation configured, it is possible to bootstrap your first node.
+
+**```# sudo knife ssl check```**
