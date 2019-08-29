@@ -1,4 +1,4 @@
-# CHEF SERVER CONFIGURATION
+# CHEF AUTOMATE
 
 # Table of Contents
 
@@ -277,7 +277,7 @@ This uses the service resource, which calls on the Apache service; the enable ac
 
 add below code then save and close the default.rb file
 ```sh
-  execute "update" do
+execute "update" do
   command "apt-get update -y"
 end
 package "apache2" do
@@ -304,7 +304,7 @@ After a successful chef-client run, check to see if Apache is running:
 
 **``` service apache2 status```**
   
-Paste chef server Url ```https://< chefVMip>/organizations/orguser``` in web browser.
+Paste chef server Url ```https://< chef-server-ip>/organizations/orguser``` in web browser.
 
 Login with your user name and password
 
