@@ -14,6 +14,12 @@
 
 [Workstation setup](#workstation-setup)
 
+[Bootstrap a node](#bootstrap-a-node)
+
+[cookbooks to scan complains in VM](#cookbooks-to-scan-complains-in-vm)
+
+[Chef Automate Usecase](#chef-automate-usecase)
+
 ## Overview
 
 Chef Automate
@@ -184,7 +190,7 @@ Step 2. Run the below command to download the Chef Development Kit.
 
 Step 3. Run the below command to install ChefDK.
 
-**```` sudo dpkg -i chefdk_*.deb```**
+**``` sudo dpkg -i chefdk_*.deb```**
 
 Step 4. Run the below command to verify the components of the development kit.
 
@@ -221,7 +227,7 @@ Generate knife.rb
  1.Download configuration into the rb file to .chef
 
 
-***``` wget https://raw.githubusercontent.com/sysgain/tl-scripts/master/knife.rb -O $HOME/chef-repo/.chef/knife.rb```**
+**``` wget https://raw.githubusercontent.com/sysgain/tl-scripts/master/knife.rb -O $HOME/chef-repo/.chef/knife.rb```**
 
 Change the following in knife.rb: 
 
@@ -245,4 +251,83 @@ This command should output the validator name.
 
 4. With both the server and a workstation configured, it is possible to bootstrap your first node.
 
-**```# sudo knife ssl check```**
+**``` sudo knife ssl check```**
+
+## Bootstrap a node
+
+Bootstrapping a node installs the chef-client and validates the node, allowing it to read from the Chef server and make any needed configuration changes picked up by the chef-client in the future.
+
+From your workstation, bootstrap the node either by using the node’s root user, or a user with elevated privileges:
+
+As the node’s root user, changing password to your root password and nodename to the desired name for your node. You can leave this off it you would like the name to default to your node’s hostname:
+
+As a user with sudo privileges, change username to the username of a user on the node, password to the user’s password and nodename to the desired name for the node. You can leave this off it you would like the name to default to your node’s hostname:
+
+**``` sudo knife bootstrap localhost -x  <workstation_uername> -P <workstation_Password> --sudo --node-name chefnodevm```**
+
+## cookbooks to scan complains in VM
+
+Download the cookbooks :
+
+For this lab we used audit and os hardening cookbooks, audit cookbook will scan the compliance in your node and hardening cookbook will fix the compliances.
+
+Execute below commands in chef-repo folder.
+
+**``` cd $HOME/chef-repo```**
+
+1. Run below command to download required cookbooks.
+
+  **```sudo git clone https://github.com/sysgain/OCI-chef-tl-cookbooks.git```**
+
+2. Press Enter. Your local clone will be created.
+
+
+
+3. Copy the cookbooks to chef cookbooks path.
+
+ **```sudo mv OCI-chef-tl-cookbooks/* $HOME/chef-repo/cookbooks/ ```**
+
+
+
+4. Upload the cookbooks to the server using below commands.
+
+ **```sudo knife cookbook upload audit-linux compat_resource ohai sysctl os-hardening```**
+
+5. Add the audit-Linux recipe to a node’s run-list, replacing nodename with your chosen bootstrap node’s name.
+
+ **``` sudo knife node run_list add chefnodevm "recipe[audit-linux]"```**
+
+ ## Chef Automate Usecase
+
+ Open the web browser and enter the ```https://<publicip of Chefautomate>``` in the address bar to access the chef automate web console.
+
+**username: chefuser**
+
+**Password: Password@1234**   (These Credentials  are passed to chef automate setup script as parameters)
+
+ After successful login, you can view the Chef-Automate dashboard.
+
+
+
+ 
+
+Now run below command on workstation VM:
+
+**``` sudo chef-client ```**
+
+GO to Chef automate refresh browser and click compliance tab, here we see the chef node compliances.
+
+
+
+Review the nodes compliance state in Chef Automate.
+
+To fix the issues we need to run the os-hardening cookbook
+
+add the os-hardening recipe to chef node run list
+
+**``` sudo knife node run_list add chefnodevm "recipe[os-hardening]"```**
+
+**Now run** : **``` sudo chef-client```**
+
+It will fix the compliances. Now refresh the Chef automate you can see the node is  passed in compliance tab.
+
