@@ -111,7 +111,7 @@ These keys will be used to launch a Compute instance and connect to it.
 
 **NOTE:** No Passphrase is needed.       
 
-![](https://github.com/sudheermareddy/vsts/raw/master/sudheer/chef-imgs/12.png)
+![](https://github.com/sudheermareddy/vsts/raw/master/sudheer/automate/12.png)
  
 **Step 4.** You should now have the Public and Private keys:
 
@@ -124,17 +124,17 @@ These keys will be used to launch a Compute instance and connect to it.
 
 **Step 5.** In git-bash Enter **```cat ~/.ssh/id_rsa.pub```**, highlight the key and copy.
  
-![](https://github.com/sudheermareddy/vsts/raw/master/sudheer/chef-imgs/13.png)
+![](https://github.com/sudheermareddy/vsts/raw/master/sudheer/automate/13.png)
  
 **Step 6.** In the OCI Console Window, click the "Apps" icon  and click "Notepad". 
  
 **HINT:** You can swap between the OCI window and any other application (Notepad etc.) by clicking the Switch Window  icon.
  
-![](https://github.com/sudheermareddy/vsts/raw/master/sudheer/chef-imgs/14.png)
+![](https://github.com/sudheermareddy/vsts/raw/master/sudheer/automate/14.png)
  
 **Step 7.** Paste the public key in Notepad.
  
-![](https://github.com/sudheermareddy/vsts/raw/master/sudheer/chef-imgs/15.png)
+![](https://github.com/sudheermareddy/vsts/raw/master/sudheer/automate/15.png)
   
 **Step 8.** Minimize Notepad and git-bash (if open) windows.
 
@@ -163,8 +163,9 @@ Step 3. Click Create Instance. Fill out the dialog box:<br>
 3.7 Subnet: Select the first available subnet. <br>
 3.8 Click on "Create Instance".
 
-
+![](https://github.com/sudheermareddy/vsts/raw/master/sudheer/automate/16.png)
  
+![](https://github.com/sudheermareddy/vsts/raw/master/sudheer/automate/17.png)
 Similarly, create Chef automate and Workstation Instances.
 
 Note: If you come across any limitation error, select another shape for the VM.
@@ -173,6 +174,7 @@ Step 4. Once Instances are in ‘Running’ state, note down the public IP addre
 
 Step 5. You can also see the Fault Domain of the Virtual Machine.
 
+![](https://github.com/sudheermareddy/vsts/raw/master/sudheer/automate/18.png)
 
 We now have three Compute instances with  Public IP addresses.
 
@@ -192,6 +194,7 @@ NOTE: User name is ‘ubuntu’. <PUBLIC_IP_OF_COMPUTE_INSTANCE> should be the a
 
 NOTE: Enter ‘Yes’ when prompted for security message. 
 
+![](https://github.com/sudheermareddy/vsts/raw/master/sudheer/automate/19.png)
 
 Step 3. Verify the prompt shows 
 
@@ -230,10 +233,14 @@ In this section, we are going to install Chef Automate server and create a user 
     1.4 Run the below command to copy the "~/.ssh" folder to Chef Automate Home directory.
 
     **```scp -r ~/.ssh ubuntu@<ChefAutomate_public_IP>:~```**<br>
+    
+    ![](https://github.com/sudheermareddy/vsts/raw/master/sudheer/automate/20.png)
 
     1.5 Now login to Chef Automate server 
 
     **```ssh ubuntu@<Public_IP>```**
+
+    ![](https://github.com/sudheermareddy/vsts/raw/master/sudheer/automate/21.png)
 
     1.6 Check for the copied keys:<br>  **```ls ~/.ssh**```
 
@@ -245,11 +252,13 @@ In this section, we are going to install Chef Automate server and create a user 
 
     **``` sudo wget https://packages.chef.io/files/stable/automate/1.8.38/ubuntu/16.04/automate_1.8.38-1_amd64.deb```**
  
- 
+    ![](https://github.com/sudheermareddy/vsts/raw/master/sudheer/automate/22.png)
  
 3. Installing deb package:<br>
  
     **``` sudo dpkg -i automate_1.8.38-1_amd64.deb```**
+
+    ![](https://github.com/sudheermareddy/vsts/raw/master/sudheer/automate/23.png)
     
     To set up the Chef Automate server we require Chef server user key and Chef Automate license. Run below command to get temporary Automate license.
  
@@ -274,7 +283,7 @@ In this section, we are going to install Chef Automate server and create a user 
  
     **``` sudo automate-ctl setup --license /tmp/automate.license --key /tmp/chefadmin.pem --server-url https://<Chef-server-PrivateIP>/organizations/orguser --fqdn $(hostname) --enterprise default --configure --no-build-node```**
  
- 
+    ![](https://github.com/sudheermareddy/vsts/raw/master/sudheer/automate/24.png)
  
     **``` sudo automate-ctl reconfigure```**
  
@@ -291,7 +300,7 @@ In this section, we are going to install Chef Automate server and create a user 
     sudo firewall-cmd --zone=public --add-port=443/tcp --permanent
     sudo firewall-cmd --reload
     ```
-    NOTE: Run below commands on Chef server
+    **NOTE:** Run below commands on **Chef server**
  
     Go to chef server:
  
@@ -304,6 +313,10 @@ In this section, we are going to install Chef Automate server and create a user 
     **```sudo chef-server-ctl reconfigure```**
  
     Browse Chef Automate on your favorite browser 
+
+    ![](https://github.com/sudheermareddy/vsts/raw/master/sudheer/automate/25.png)
+
+    ![](https://github.com/sudheermareddy/vsts/raw/master/sudheer/automate/21.png)
  
     **Username:** chefuser<br>
     **Password:** Password@1234
@@ -353,21 +366,23 @@ In this section, you'll learn how to install Chefdk and workstation configuratio
    **Login: chefadmin**<br>
    **Password: Password@1234**
 
+   ![](https://github.com/sudheermareddy/vsts/raw/master/sudheer/automate/28.png)
 
    After login, you can see Chef server web console
 
-
+   ![](https://github.com/sudheermareddy/vsts/raw/master/sudheer/automate/29.png)
 
    Click on Administration tab and click on orguser organization,  then select Starter kit from the left panel.
 
-
+   ![](https://github.com/sudheermareddy/vsts/raw/master/sudheer/automate/30.png)
 
    Click on Download starter kit
 
-
+   ![](https://github.com/sudheermareddy/vsts/raw/master/sudheer/automate/31.png)
 
    Click proceed
 
+   ![](https://github.com/sudheermareddy/vsts/raw/master/sudheer/automate/32.png)
 
    Click on proceed if any warnings you got
 
@@ -381,6 +396,7 @@ In this section, you'll learn how to install Chefdk and workstation configuratio
 
    **```scp ~/Downloads/chef-starter.zip ubuntu@<workstationIP>:~```**
 
+   ![](https://github.com/sudheermareddy/vsts/raw/master/sudheer/automate/33.png)
 
 
    ssh to workstation
@@ -406,7 +422,7 @@ In this section, you'll learn how to install Chefdk and workstation configuratio
 
    **```sudo git init```**
 
-
+   ![](https://github.com/sudheermareddy/vsts/raw/master/sudheer/automate/34.png)
 
 5. Download and check the certs from the Chef Server to the CheckDK host:
 
@@ -416,10 +432,11 @@ In this section, you'll learn how to install Chefdk and workstation configuratio
 
    You should verify the authenticity of these certificates after downloading.
 
-
+   ![](https://github.com/sudheermareddy/vsts/raw/master/sudheer/automate/35.png)
 
    **```sudo knife ssl check```**
 
+   ![](https://github.com/sudheermareddy/vsts/raw/master/sudheer/automate/36.png)
 
 ## Bootstrap a node, Scan and fix compliance issues
 
@@ -431,13 +448,13 @@ Bootstrap the Workstation:
 
 **``` sudo knife bootstrap localhost -x ubuntu -i ~/.ssh/id_rsa -N chefnode --sudo```**
 
- 
+![](https://github.com/sudheermareddy/vsts/raw/master/sudheer/automate/37.png)
 
 2. Now download the cookbooks
 
 **``` sudo git clone https://github.com/sysgain/OCI-chef-tl-cookbooks.git```**
 
-
+![](https://github.com/sudheermareddy/vsts/raw/master/sudheer/automate/38.png)
 
 3. Move or copy the cookbooks to cookbook folder.
 
@@ -451,27 +468,27 @@ Upload Cookbooks to Chef Server:
 
 4. Check the Automate server there you can see a node is added
 
-
+![](https://github.com/sudheermareddy/vsts/raw/master/sudheer/automate/39.png)
 
 5. Now add audit-linux recipe to chefnode run list
 
 **``` sudo knife node run_list add chefnode "recipe[audit-linux]"```**
 
-
+![](https://github.com/sudheermareddy/vsts/raw/master/sudheer/automate/40.png)
 
 **Now run:**
 
 **``` sudo chef-client```**
 
-
+![](https://github.com/sudheermareddy/vsts/raw/master/sudheer/automate/41.png)
 
 6. Go to Chef automate and click compliance tab, here we see the chef node compliances.
 
-
+  ![](https://github.com/sudheermareddy/vsts/raw/master/sudheer/automate/42.png)
 
 7. Click on 1Nodes then click node name to view the list of compliances.
 
-
+   ![](https://github.com/sudheermareddy/vsts/raw/master/sudheer/automate/43.png)
 
 To fix the issues we need to apply the os-hardening cookbook.
 
@@ -479,7 +496,7 @@ To fix the issues we need to apply the os-hardening cookbook.
 
 **``` sudo knife node run_list add chefnode "recipe[os-hardening]"```**
 
-
+![](https://github.com/sudheermareddy/vsts/raw/master/sudheer/automate/44.png)
 
 Now run :
 
@@ -489,3 +506,4 @@ It will fix compliance issues.
 
 9. Now refresh the Chef automate you can see the node is passed in compliance tab.
 
+![](https://github.com/sudheermareddy/vsts/raw/master/sudheer/automate/45.png)
