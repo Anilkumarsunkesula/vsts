@@ -10,6 +10,8 @@
 
 [Creating Chef Automate from Azure portal](#creating-chef-automate-from-azure-portal)
 
+[Create Chef workstation on the Azure portal](#create-chef-workstation-on-the-azure-portal)
+
 ## Overview
 
 Chef Automate
@@ -31,6 +33,7 @@ Chef Automate includes a pipeline for continuous delivery of infrastructure and 
 ## Pre-Requisites
 
 Linux basics
+Idea about VM creation in Azure 
 
 ## Login to the Azure portal
 
@@ -121,5 +124,33 @@ Pass the parameters required for the script in an order Chef server's username &
 
 **``` bash chefautomate.sh chefuser chef user test@noreply.com Password@1234 orguser```**
 
+## Create Chef workstation on the Azure portal
 
+Steps to create Chef workstation:
+
+Step 1: On Azure portal (https://portal.azure.com), click on "Create a resource" from the navigation pane.
+
+Step 2: Search for "Ubuntu Server", select "Ubuntu 16.04 LTS" from the search dropdown and click on create.
+
+
+
+
+
+Step 3: Leaving the default values untouched, Fill the form as below.
+
+Resource group: Select the name of RG shared with your login credentials.
+
+Virtual Machine Name: <Any name> <br>
+Authentication type: Password<br>
+Username: chefuser<br>
+Password: Password@1234<br>
+Public inbound ports: Check the radio button "Allow selected ports" and allow ports 22 & 443 from the dropdown.
+
+  
+
+Step 4: On the next steps "Disks and Networking", Leave all fields to defaults and proceed to the Management tab.
+
+Step 5: Set the "Boot Diagnostics" to 'Off' and proceed over to the final step "Review and Create" and click on create after you see that the validation succeeds.
+
+Note: Do copy chef server ip for future use.
 
