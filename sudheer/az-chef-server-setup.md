@@ -1,4 +1,4 @@
-# CHEF AUTOMATE
+# CHEF SERVER CONFIGURATION
 
 # Table of Contents
 
@@ -13,6 +13,12 @@
 [Chef Server Configuration](#chef-server-configuration)
 
 [Workstation Configuration](#workstation-configuration)
+
+[Bootstrap a Node](#bootstrap-a-node)
+
+[write a cookbook](#write-a-cookbook)
+
+
 ## Overview
 
 Chef has three main architectural components: Chef Server, Chef Client (node), and Chef Workstation.
@@ -91,12 +97,13 @@ Open putty from applications drop-down at top-left corner of the workspace.
 Connect using the IP of "Chef Server VM" and use the credentials you provided when creating the VM.
  
 Server setup:
-**Login as: chefuser**
+**Login as: chefuser**<br>
 **Password: Password@1234**
  
 Step 1. Switch to the root user
 
 **``` sudo -i```**
+
 Step 2. Run the below command to download the chef server.
 
 **``` wget https://packages.chef.io/files/stable/chef-server/12.17.5/ubuntu/16.04/chef-server-core_12.17.5-1_amd64.deb```**
@@ -173,7 +180,7 @@ Downloading the Starter kit:
 
 Step 5. Open new tab on chrome browser and enter https://< chef server public ip>
 
-Login: chefadmin
+Login: chefadmin<br>
 Password: Password@1234
  
 Step 6. Click on orguser organization under the Administration tab, then select Starter kit from the navigation panel.
@@ -221,6 +228,84 @@ You should verify the authenticity of these certificates after downloading.
  
 **``` sudo knife ssl check```**
 
+## Bootstrap a Node
 
+Bootstrapping a node installs the chef-client and validates the node, allowing it to read from the Chef server and make any needed configuration changes picked up by the chef-client in the future.
 
+1.From your workstation, bootstrap the node either by using the node’s root user, or a user with elevated privileges:
+
+As the node’s root user, changing password to your root password and nodename to the desired name for your node. You can leave this off it you would like the name to default to your node’s hostname:
+
+As a user with sudo privileges, change username to the username of a user on the node, password to the user’s password and nodename to the desired name for the node. You can leave this off it you would like the name to default to your node’s hostname:
+
+**```knife bootstrap localhost -x  <workstation username> -P <Workstation Password> --sudo --node-name chefnodevm```**
+
+## write a cookbook
+
+In this section we well leran about how to write a cookbook and how to apply on node.
+
+From your workstation, move to your chef-repo:
+
+**``` cd ~/chef-repo/cookbooks```**
  
+Moving on to create a cookbook, named lamp-stack.
+
+**``` sudo chef generate cookbook  lamp-stack```**
+ 
+Change directory to the new cookbook.
+
+**``` cd lamp-stack```**
+ 
+Listing the files in the cookbook, you'll see the defaults.
+**``` ls```**
+ 
+default.rb
+
+The default.rb file in recipes contains the “default” recipe resources.
+
+Because each section of the LAMP stack (Apache, MySQL, and PHP) will have its own recipe, the default.rb file is used to prepare your servers.
+
+1.From within your lamp-stack directory, navigate to the recipes folder:
+ 
+Install and Enable Apache
+
+Apache will also need to be set to turn on at reboot, and start. In the same file, add the additional lines of code:
+
+This uses the service resource, which calls on the Apache service; the enable action enables it upon startup, whereas start will start Apache.
+
+**``` sudo vim recipes/default.rb```**
+
+add below code then save and close the default.rb file
+```sh
+  execute "update" do
+  command "apt-get update -y"
+end
+package "apache2" do
+        action :install
+end
+service "apache2" do
+        action [:enable, :start]
+end
+```
+
+To test the Apache recipe, update the LAMP Stack recipe on the server:
+
+**``` sudo knife cookbook upload lamp-stack```**
+ 
+Add the recipe to a node’s run-list, replacing nodename with your chosen node’s name:
+
+**``` sudo knife node run_list add chefnodevm "recipe[lamp-stack::default]"```**
+ 
+From that node, run the chef-client:
+
+**``` sudo chef-client```**
+ 
+After a successful chef-client run, check to see if Apache is running:
+
+**``` service apache2 status```**
+  
+Paste chef server Url ```https://< chefVMip>/organizations/orguser``` in web browser.
+
+Login with your user name and password
+
+You can see the page like below.
