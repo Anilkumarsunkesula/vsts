@@ -15,16 +15,16 @@
 ## Login to OCI Console
 
 Before you Begin:
-1- All screen shots are examples ONLY. Screen shots
-can be enlarged by Clicking on them
+
+1- All screen shots are examples ONLY. Screen shots can be enlarged by Clicking on them
+
 2- Every User MUST keep below credentials handy.
 User Name
 Password
 Compartment Name (Provided Later)
 Cloud Tenant Name
-3- Do NOT use compartment name and other data from 
-screen shots.Only use  data(including compartment name) 
-provided in the content section of the lab
+
+3- Do NOT use compartment name and other data from screen shots.Only use  data(including compartment name) provided in the content section of the lab
 
 In this section we will login to the OCI console and adjust your screen size (if needed).
 
