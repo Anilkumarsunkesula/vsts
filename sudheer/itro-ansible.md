@@ -298,3 +298,60 @@ Enter "yes" when prompted to add server ip to the known_hosts file.
 
 
 Above command pings the servers defined in the inventory file that is created in the previous steps. Since only local machine is added in the inventory file ansible does a ping on the local machine using the SSH key created. 
+
+## create-ansible-playbook
+
+In this section, We will learn what an ansible playbook is and how to create and execute a playbook which installs a package on the server.
+
+Ansible Playbook are the files where ansible code is written. They are written in YAML format. Playbooks contains the tasks which the user wants to execute on a particular machine. Multiple tasks can be specified in a playbook which are executed sequentially.
+
+**Important:-**
+Both Ansible control machine and managed node are same in this tutorial. All the packages that are being installed and managed are done on the same machine. 
+
+Step 1. Create a folder named Ansible and store all the playbooks that are required in this tutorial. Create a YAML file inside the folder using the following commands
+```
+mkdir /root/ansible
+cd /root/ansible
+vi install_package.yaml
+```
+
+Step 2. Copy/Type the following code into the created install_package.yaml file 
+
+```
+---
+- hosts: local
+  tasks:
+    - name: install htop
+      yum: name=htop state=latest
+```
+
+Step 3. In the above code, hosts section is mandatory to determine where the playbook needs to be executed. This can be a server name or a group of servers that are defined in the inventory file(created in previous section).  A group named local was defined in the inventory file in the previous section. Ansible runs this playbook on the servers defined under local group. 
+
+**Note:**
+Before installing htop with ansible. Check if htop is already installed on a server and remove if it is installed using the following commands
+
+Uninstall htop package - ```yum -y remove htop```
+
+Step 4. Run the command "ansible-playbook -s install_package.yaml". Ansible checks the inventory file for the local group and installs the package htop with latest version on the servers. 
+
+
+
+Step 5. From the output, there were 2 tasks run in the playbook , first is gathering facts. Ansible gathers facts of the server on which playbook is running and then executes the tasks defined in the playbook which is installing htop package. 
+
+Step 6. To validate if htop is installed on the server, type the command "htop --version". If a package with specific version needs to be installed then update the code in install_package.yaml file with the required package and the version of the package.
+
+To list all the versions of httpd package available, execute the command "yum list httpd" and copy the version 
+
+
+```
+example: 
+
+- name: install one specific version of Apache
+  yum:
+     name: httpd-2.4.6-8-.0.1.el7_5.1
+     state: present
+```
+Step 7. Multiple tasks can be defined in a single playbook, all the tasks are executed in a sequencial fashion. Like install a package, update the configuration of the package and start the service. All the 3 steps defined are executed in a sequencial fashion.
+
+In the below example we are installing wget and telnet packages that are installed sequencially.
+
