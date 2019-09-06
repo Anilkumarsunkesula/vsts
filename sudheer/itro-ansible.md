@@ -28,6 +28,14 @@
 
 ## Overview
 
+## Pre-Requisites
+
+1) Basic knowledge of Linux servers
+
+2) YAML language
+
+3) SSH private/public key knowledge
+
 ## Login to OCI Console
 
 Before you Begin:
@@ -70,9 +78,9 @@ Choose Compartment: {{comparment-name}}
 
 
 
-Step 3: Click Create Virtual Cloud Network. 
+**Step 3.** Click Create Virtual Cloud Network. 
 
-Step 4: Fill out the details for Dialog Box that appears with the following information.<br>
+**Step 4.** Fill out the details for Dialog Box that appears with the following information.<br>
      4.1 Ensure Create in Compartment is set to the right compartment.<br>
      4.2 For the NAME, enter an easy to remember name, like for example, "my_vcn"<br>
      4.3 Check the radio button Virtual Cloud Network Plus Related Resources option to ensure we create a VCN that can accommodate other OCI resources.
@@ -427,7 +435,7 @@ Remove wget package if it is already installed on the server using "yum -y remov
         when: installedpkg.results|selectattr("yumstate", "match", "installed")|list|length == 0
 ```
 
-**Step 6.**The above code checks to see if the package is installed and gets the length of the package installation results. If the package is installed then the length will be greater than 0.
+**Step 6.** The above code checks to see if the package is installed and gets the length of the package installation results. If the package is installed then the length will be greater than 0.
 
 **Step 7.**  In the last task of the playbook, we check the length to validate if the package needs to be installed. 
 
