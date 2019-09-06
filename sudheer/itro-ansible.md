@@ -57,6 +57,7 @@ Choose Compartment: {{comparment-name}}
 Step 3: Click Create Virtual Cloud Network. 
 
 Step 4: Fill out the details for Dialog Box that appears with the following information.<br>
+     <br>
      4.1 Ensure Create in Compartment is set to the right compartment.<br>
      4.2 For the NAME, enter an easy to remember name, like for example, "my_vcn"<br>
      4.3 Check the radio button Virtual Cloud Network Plus Related Resources option to ensure we create a VCN that can accommodate other OCI resources.
