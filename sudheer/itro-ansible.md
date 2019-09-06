@@ -83,20 +83,21 @@ You can swap between the OCI window and any other application (git-bash etc.) by
 
  
 Step 3. Press "Enter", when asked for the following:
-    a) Enter file in which to save the key 
 
-    b) Enter passphrase
+ a) Enter file in which to save the key 
 
-    c) Enter passphrase again
+ b) Enter passphrase
+
+ c) Enter passphrase again
 
 
-Step 4. You should now have the Public and Private keys generated.They can be found in 
-             /C/Users/PhotonUser/.ssh/id_rsa (Private Key)
+Step 4. You should now have the Public and Private keys generated.They can be found in<br> 
+             /C/Users/PhotonUser/.ssh/id_rsa (Private Key)<br>
              /C/Users/PhotonUser/.ssh/id_rsa.pub (Public Key)
 
 **Note:**<br>
-id_rsa.pub will be used to create the Compute instance and id_rsa to connect via SSH into the Compute instance.
-Run 'cd /C/Users/PhotonUser/.ssh' (No Spaces in directory path) and then 'ls' to verify the two files exist.
+       id_rsa.pub will be used to create the Compute instance and id_rsa to connect via SSH into the Compute instance.<br>
+       Run 'cd /C/Users/PhotonUser/.ssh' (No Spaces in directory path) and then 'ls' to verify the two files exist.
 
 
 Step 5. In the git-bash terminal window, type ‘cat /C/Users/PhotonUser/.ssh/id_rsa.pub’, Highlight the SSH key and copy (using the mouse or the keyboard (ctrl-c)
