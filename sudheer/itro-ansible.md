@@ -12,6 +12,10 @@
 
 [Create Public/Private SSH Keypair to Login to the Compute Instance](#create-publicprivate-ssh-keypair-to-login-to-the-compute-instance)
 
+[Create a Compute Instance](#create-a-compute-instance)
+
+
+
 ## Overview
 
 ## Login to OCI Console
@@ -117,3 +121,42 @@ Step 8. Minimize Notepad and git-bash (if open) windows.
 
 We now have a Public/Private SSH key pair. Next we will
 create a compute instance using the public key we just saved.
+
+## Create a Compute Instance
+
+In this section we will create a Compute instance with a Public IP address using the public SSH key generated in the previous section.
+
+
+Step 1. Switch to OCI console (if not already).
+
+**TIP:** You can swap between the OCI window and any other application (git-bash etc.) by clicking the Switch Window icon beside apps icon. 
+
+Step 2. Click on the OCI Services Menu, Select Compute and choose Instances
+
+Step 3. Click Create Instance. Fill out the dialog box:<br>
+         3.1 Name: Enter a name (e.g. "Ansible_VM").<br>
+         3.2 Availability Domain: Select the first available domain.<br>
+         3.3 Image Operating System: For the image, we recommend using the Latest Oracle Linux available.<br>
+         3.4 Shape: Select VM.Standard1.1 (1 OCPU, 7GB RAM).<br>
+         3.5 SSH Keys: Select the PASTE SSH KEYS radio button and Paste the Public Key you saved in Notepad in the previous section.
+
+You can swap between the OCI window and any other application (notepad etc.) by clicking the Switch Window icon beside apps icon. 
+<br>
+         3.6 Virtual Cloud Network: Select the VCN you created in the previous section.<br>
+         3.7 Subnet: Select the first available subnet. <br>
+         3.8 Click Create Instance.<br>
+
+**Note:**Leave other options in the dialog box as is other than the options mentioned above. 
+
+
+Step 4. Once Instance is in ‘Running’ state, note down the public IP address.
+ 
+**Tip:**We recommend writing down the IP address in a notepad for future use.
+
+ 
+Step 5. You can also that instance has now been provisioned and is in Running state.
+
+
+We now have a Compute instance with a Public IP address running in OCI.
+
+Next we will SSH to the compute instance from the internet.
