@@ -24,7 +24,7 @@
 
 [Configuring Apache using Ansible](#configuring-apache-using-ansible)
 
-[Delete the resources](#delete-the-resources)
+
 
 ## Overview
 
@@ -449,8 +449,9 @@ Step 2. Packages are defined in a list variable and the variable is used in the 
 
 Step 3. If the packages are already installed on the server, Ansible skips installation of the specific package, to validate the playbook installs the required packages, they can be removed with the command
 
-yum remove -y wget telnet htop
-4) Execute the playbook using the command "ansible-playbook -s install_package.yaml" to install the packages
+```yum remove -y wget telnet htop```
+
+4) Execute the playbook using the command ```ansible-playbook -s install_package.yaml``` to install the packages
 
 
 5) All the packages are installed on the server. To verify if the package is installed run the command:
