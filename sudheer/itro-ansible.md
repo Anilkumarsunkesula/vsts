@@ -14,7 +14,7 @@
 
 [Create a Compute Instance](#create-a-compute-instance)
 
-
+[Login to the Compute Instance & Install Ansible](#login-to-the-compute-instance-&-install-ansible)
 
 ## Overview
 
@@ -153,12 +153,12 @@ You can swap between the OCI window and any other application (notepad etc.) by 
 
          3.8 Click Create Instance.
 
-**Note:**Leave other options in the dialog box as is other than the options mentioned above. 
+**Note:** Leave other options in the dialog box as is other than the options mentioned above. 
 
 
 Step 4. Once Instance is in ‘Running’ state, note down the public IP address.
  
-**Tip:**We recommend writing down the IP address in a notepad for future use.
+**Tip:** We recommend writing down the IP address in a notepad for future use.
 
  
 Step 5. You can also that instance has now been provisioned and is in Running state.
@@ -167,3 +167,79 @@ Step 5. You can also that instance has now been provisioned and is in Running st
 We now have a Compute instance with a Public IP address running in OCI.
 
 Next we will SSH to the compute instance from the internet.
+
+## Login to the Compute Instance & Install Ansible
+
+In this section we will SSH into the Compute instance using its Public IP address and private SSH key to Install and Configure Ansible. 
+
+Step 1. Bring up a new git terminal or switch to the existing one (if you still have it open).
+
+**Tip:** 
+If the terminal was closed simply launch a new one using the Apps icon .
+
+
+ 
+ Step 2. In the git-bash Terminal Window Type the command
+
+```cd /C/Users/PhotonUser/.ssh/  ```
+
+Type ls and verify the id_rsa file exists.
+       
+
+**Tip:** No Space in directory path (/C/Users/PhotonUser/.ssh).
+
+
+
+Step 3. To login to the running instance, we will SSH into it. Type the command            
+
+```ssh –i id_rsa opc@<PUBLIC_IP_OF_COMPUTE_INSTANCE>```
+
+**Note:** User name is ‘opc’. <PUBLIC_IP_OF_COMPUTE_INSTANCE> should be the actual IP address which was noted in previous section. (Example: 129.0.1.10)
+
+
+
+Step 4. Enter ‘yes’ when prompted for security message. 
+Step 5. Verify the prompt shows 
+
+              opc@<YOUR_VM_NAME> (below example shows the command prompt for Compute instance)
+
+
+
+Step 6.  We now have a Compute instance in OCI with a Public IP  address which is accessible over the internet. 
+
+Step 7. The "sudo" command allows user to run programs with elevated privileges and "su" command allows you to become another user. Running the following command will default to root account(system administrator account) which allows installing and configuring ansible using yum package manager.
+
+```sudo su -```
+```yum install -y ansible```
+ 
+**Note:** Along with Anisble package, multiple pre-requisite packages are being installed which takes a couple of minutes.
+
+Step 8. Ansible has a default inventory file created which is located at "/etc/ansible/hosts". Inventory file contains a list of nodes which are managed/configured by ansible.
+
+It is always a good practice to back up the default inventory file to reference it in future if required.
+
+Run the following commands to move and create a new inventory file
+
+```sudo mv /etc/ansible/hosts /etc/ansible/hosts.orig```
+```sudo touch /etc/ansible/hosts```
+```vi /etc/ansible/hosts```
+ 
+**Note:** In this tutorial by default "vi" text editor is used to update files.
+
+To learn vi text editor "https://ryanstutorials.net/linuxtutorial/vi.php"
+
+Any other user preferred text editor can be used to update files.
+
+Step 9. Update the created hosts file in the step 8 with the following data
+```
+[local]
+127.0.0.1
+```
+Step 10. In the Step 9, we have added local server's ip address(127.0.0.1) to the hosts inventory file, ansible uses the host file to SSH into the servers and run the required ansible jobs.
+
+Step 11. To validate Ansible is installed and configured correctly, run the following command
+
+ ansible --version
+**Note:** It is ok, if the above command returns different version of ansible. 
+
+ 
