@@ -16,6 +16,8 @@
 
 [Login to the Compute Instance & Install Ansible](#login-to-the-compute-instance-&-install-ansible)
 
+[Creating SSH Keys for Ansible to access other instances](#creating-ssh-keys-for-ansible-to-access-other-instances)
+
 ## Overview
 
 ## Login to OCI Console
@@ -210,6 +212,7 @@ Step 6.  We now have a Compute instance in OCI with a Public IP  address which i
 Step 7. The "sudo" command allows user to run programs with elevated privileges and "su" command allows you to become another user. Running the following command will default to root account(system administrator account) which allows installing and configuring ansible using yum package manager.
 
 ```sudo su -```
+
 ```yum install -y ansible```
  
 **Note:** Along with Anisble package, multiple pre-requisite packages are being installed which takes a couple of minutes.
@@ -221,7 +224,9 @@ It is always a good practice to back up the default inventory file to reference 
 Run the following commands to move and create a new inventory file
 
 ```sudo mv /etc/ansible/hosts /etc/ansible/hosts.orig```
+
 ```sudo touch /etc/ansible/hosts```
+
 ```vi /etc/ansible/hosts```
  
 **Note:** In this tutorial by default "vi" text editor is used to update files.
@@ -240,6 +245,56 @@ Step 10. In the Step 9, we have added local server's ip address(127.0.0.1) to th
 Step 11. To validate Ansible is installed and configured correctly, run the following command
 
  ansible --version
+
 **Note:** It is ok, if the above command returns different version of ansible. 
 
- 
+## Creating SSH Keys for Ansible to access other instances
+
+In this section, We will create a public and private SSH key pairs for ansible control machine to SSH into the nodes defined in inventory file.
+
+Ansible control machine is a server on which ansible is installed and executes ansible tasks on the managed nodes.
+
+An inventory file is a list of managed nodes which are also called "hosts". Ansible is not installed on managed nodes.
+
+Step 1. In the terminal, enter the command "ssh-keygen".
+
+Press "Enter", when asked for the following 
+
+    a) Enter file in which to save the key 
+
+    b) Enter passphrase
+
+    c) Enter passphrase again
+
+**Tip**
+No Passphrase is required.
+
+
+
+Step 2. Public and Private keys should have been generated and are stored in the directory /root/.ssh/. Public key need to be copied to authorized keys file, which gives ansible access to login into the managed node.
+
+**Note:**
+In this example Ansible control machine and the managed node is the same server. If authorized_keys file is already available, overwrite it with the public key or a new file is generated.
+
+
+Execute the following commands to copy the public key
+
+```cd /root/.ssh```
+
+```cp id_rsa.pub authorized_keys```
+
+Enter "yes" when promted to overwrite authorized_keys file.
+
+
+
+Step 3. Check to see if Ansible is able to connect to the servers, defined in the inventory file that was created in the previous section. 
+
+Execute the following command which pings the servers in the inventory file.
+
+```ansible all -m ping```
+
+Enter "yes" when prompted to add server ip to the known_hosts file. 
+
+
+
+Above command pings the servers defined in the inventory file that is created in the previous steps. Since only local machine is added in the inventory file ansible does a ping on the local machine using the SSH key created. 
