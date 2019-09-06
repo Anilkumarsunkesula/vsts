@@ -20,6 +20,12 @@
 
 [Conditions in Ansible](#conditions-in-ansible)
 
+[Loops and Variables in Ansible](#loops-and-variables-in-ansible)
+
+[Configuring Apache using Ansible](#configuring-apache-using-ansible)
+
+[Delete the resources](#delete-the-resources)
+
 ## Overview
 
 ## Login to OCI Console
@@ -431,3 +437,53 @@ Run the command ```ansible-playbook -s condition.yaml```
 
 Step 8. In the last task of the output, wget is installed, if the same playbook is executed again , it skips the last step as the package is already installed which is shown in the following screenshot.
 
+## Loops and Variables in Ansible
+
+In this section, we will discuss about the variables and loops in Ansible playbooks. Loops are used if a same task needs to be executed multiple times like creating multiple users, installing multiple packages etc.
+
+Step 1. Update the playbook install_package.yaml that is created in the previous sections with the following code
+
+**Note:** Remove packages if they are already installed using the command ```yum -y remove wget telnet htop```
+
+Step 2. Packages are defined in a list variable and the variable is used in the task to install multiple packages at the same time. With_items iterates overs the list variable "packages" and stores the value in a temperory variable "item". Yum task is executed on each item from the packages variable. 
+
+Step 3. If the packages are already installed on the server, Ansible skips installation of the specific package, to validate the playbook installs the required packages, they can be removed with the command
+
+yum remove -y wget telnet htop
+4) Execute the playbook using the command "ansible-playbook -s install_package.yaml" to install the packages
+
+
+5) All the packages are installed on the server. To verify if the package is installed run the command:
+
+```yum list <<package_name>>```
+
+## Configuring Apache using Ansible
+
+In this section, we will install Apache on the server, Update the configuration of Apache using the template and start the Apache server. 
+
+Step 1. Create a new file using the command "touch /root/ansible/httpd.yaml" and "touch /root/ansible/index.html"
+
+Step 2.  Update index.html file with the following code
+
+Step 3. Update httpd.yaml file with the following code
+
+Step 4. Run the following command to execute the playbook httpd.yaml. This playbook installs Apache, updates a file and start Apache service. 
+
+```ansible-playbook -s httpd.yaml```
+
+Step 5. We have created a template and updated the template for the index file of httpd. To validate if the created file is available, check the file with the command:
+
+```cat /usr/share/httpd/noindex/index.html```
+
+
+Conclusion:
+
+Congratulations!
+
+You have successfully completed the Introduction to Ansible lab! In this tutorial we have Created a VCN (Virtual Cloud Network) in Oracle cloud and Created a compute instance inside the VCN. We have create SSH keypair which is used to login into the compute instance. We have logged into the instance using the Keypair that was created. 
+
+We have learnt basics of Ansible on how to install Ansible and manage the configuration using Ansible. We have used Ansible playbooks to install multiple packages, store values inside variables, loops and conditions in Ansible. Finally we have installed and configured apache on a server and started the Apache service. 
+
+Feel free to continue exploring or start a new lab. 
+
+Thank you for taking this self-paced lab!
