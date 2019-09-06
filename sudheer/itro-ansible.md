@@ -14,9 +14,11 @@
 
 [Create a Compute Instance](#create-a-compute-instance)
 
-[Login to the Compute Instance & Install Ansible](#login-to-the-compute-instance-&-install-ansible)
+[Login to the Compute Instance and Install Ansible](#login-to-the-compute-instance-and-install-ansible)
 
 [Creating SSH Keys for Ansible to access other instances](#creating-ssh-keys-for-ansible-to-access-other-instances)
+
+[Conditions in Ansible](#conditions-in-ansible)
 
 ## Overview
 
@@ -170,7 +172,7 @@ We now have a Compute instance with a Public IP address running in OCI.
 
 Next we will SSH to the compute instance from the internet.
 
-## Login to the Compute Instance & Install Ansible
+## Login to the Compute Instance and Install Ansible
 
 In this section we will SSH into the Compute instance using its Public IP address and private SSH key to Install and Configure Ansible. 
 
@@ -317,7 +319,7 @@ vi install_package.yaml
 
 Step 2. Copy/Type the following code into the created install_package.yaml file 
 
-```
+```yml
 ---
 - hosts: local
   tasks:
@@ -343,7 +345,7 @@ Step 6. To validate if htop is installed on the server, type the command "htop -
 To list all the versions of httpd package available, execute the command "yum list httpd" and copy the version 
 
 
-```
+```yml
 example: 
 
 - name: install one specific version of Apache
@@ -354,4 +356,78 @@ example:
 Step 7. Multiple tasks can be defined in a single playbook, all the tasks are executed in a sequencial fashion. Like install a package, update the configuration of the package and start the service. All the 3 steps defined are executed in a sequencial fashion.
 
 In the below example we are installing wget and telnet packages that are installed sequencially.
+
+## Conditions in Ansible
+
+In this section, we will learn how Ansible conditions work and how they can be used inside Ansible playbooks to perform conditional tasks. Sometimes for a task to execute, it may depend on the output of a previous task or a defined variable or a fact of the system, the playbook is running on. 
+
+In this example, we will check the system facts, see if a specific package is available and or if it is installed and if not, install it.
+
+Step 1. Create a new file condition.yaml with the command "touch /root/ansible/condition.yaml"
+
+Step 2.  Ansible collects the facts before executing a playbook on the server. These facts are the attributes of the machine.
+
+To list all the default facts of the machine run the following code:
+
+```ansible -m setup local```
+
+This command prints all the facts that ansible collects about the machine. If you want it to display single fact, use grep.
+
+The following command displays ansible distribution facts which playbook collects before execution: 
+
+```ansible -m setup local | grep ansible_distribution```
+
+
+Step 3. Create a new file with the command "touch /root/ansible/condition.yaml". Add the following code into condition.yaml file. 
+
+**Note:**
+Remove wget package if it is already installed on the server using "yum -y remove wget"
+
+```yml
+---
+- hosts: local
+  tasks:
+    - name: Check if package wget is installed on the server
+      yum:
+        list=wget
+      register: installedpkg
+
+    - name: Show output of the registered value
+      debug: var=installedpkg.results[0].yumstate
+```
+Step 4. First task in the above code checks to see if the package is installed and registers the result into a variable "installedpkg". Second task prints the value stored in the variable. Run the following command to execute the playbook.
+
+```ansible-playbook -s condition.yaml```
+ 
+
+Step 5. Since the package state is "available" and not "installed", we can write a condition, to check if the package is installed else install the package. Update the code with the following 
+
+```yml
+---
+- hosts: local
+  tasks:
+    - name: Check if package wget is installed on the server
+      yum:
+        list=wget
+        register: installedpkg
+
+    - name: Show output of the registered value
+        debug: var=installedpkg.results|selectattr("yumstate","match","installed")|list|length
+
+    - name: Install package wget if it is not installed
+        yum:
+          name=wget
+          state=installed
+        when: installedpkg.results|selectattr("yumstate", "match", "installed")|list|length == 0
+```
+
+Step 6.The above code checks to see if the package is installed and gets the length of the package installation results. If the package is installed then the length will be greater than 0.
+
+Step 7.  In the last task of the playbook, we check the length to validate if the package needs to be installed. 
+
+Run the command ```ansible-playbook -s condition.yaml```
+
+
+
+Step 8. In the last task of the output, wget is installed, if the same playbook is executed again , it skips the last step as the package is already installed which is shown in the following screenshot.
 
