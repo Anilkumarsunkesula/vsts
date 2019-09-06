@@ -10,6 +10,8 @@
 
 [Create a VCN](#create-a-VCN)
 
+[Create Public/Private SSH Keypair to Login to the Compute Instance](#create-publicprivate-ssh-keypair-to-login-to-the-compute-instance)
+
 ## Overview
 
 ## Login to OCI Console
@@ -36,8 +38,8 @@ Cloud Tenant: {{Tenant Name}}<br>
 Username: {{Username}}<br>
 Password: {{Password}}
 
-error_outlineNote
-Your password should be updated automatically for you, but sometimes  you may be asked to change it after signing in the first time. If prompted, pleaseupdate the password. You can use this one to expedite things: Oracle123!!!! . It will not be saved after this lab expires.
+
+**Note:**Your password should be updated automatically for you, but sometimes  you may be asked to change it after signing in the first time. If prompted, pleaseupdate the password. You can use this one to expedite things: Oracle123!!!! . It will not be saved after this lab expires.
 
 Step 2. Reduce the Browser Display Window Size/Resolution to fit your needs(Below example is for Chrome). 
 
@@ -67,5 +69,50 @@ Step 4: Fill out the details for Dialog Box that appears with the following info
 
 Step 5. A Virtual Cloud Network will be created and the name that was given will appear as the name of the VCN on the OCI Console.
 
-wb_sunnyTip
-If there are multiple Networks, scroll down to locate the one you just created.
+## Create Public/Private SSH Keypair to Login to the Compute Instance
+
+In this section we will create a public/private SSH key pair. These keys will be used to launch a Compute instance and connect to it.
+
+Step 1. In the OCI Console Window, select the Apps icon and open git-Bash. A Git-Bash terminal will appear.
+
+
+Step 2. Enter the command ssh-keygen in git-bash window.
+
+**TIP:**
+You can swap between the OCI window and any other application (git-bash etc.) by clicking the Switch Window icon beside apps icon. 
+
+ 
+Step 3. Press "Enter", when asked for the following:
+    a) Enter file in which to save the key 
+
+    b) Enter passphrase
+
+    c) Enter passphrase again
+
+
+Step 4. You should now have the Public and Private keys generated.They can be found in 
+             /C/Users/PhotonUser/.ssh/id_rsa (Private Key)
+             /C/Users/PhotonUser/.ssh/id_rsa.pub (Public Key)
+
+**Note:**<br>
+id_rsa.pub will be used to create the Compute instance and id_rsa to connect via SSH into the Compute instance.
+Run 'cd /C/Users/PhotonUser/.ssh' (No Spaces in directory path) and then 'ls' to verify the two files exist.
+
+
+Step 5. In the git-bash terminal window, type ‘cat /C/Users/PhotonUser/.ssh/id_rsa.pub’, Highlight the SSH key and copy (using the mouse or the keyboard (ctrl-c)
+
+
+
+Step 6. In the OCI Console Window, click the Apps icon  and click Notepad. 
+
+**TIP:**
+You can swap between the OCI window and any other application (Notepad etc.) by clicking the Switch Window  icon.
+
+
+Step 7. Paste the public key in Notepad (using your mouse/touch pad or Ctrl v).
+
+
+Step 8. Minimize Notepad and git-bash (if open) windows.
+
+We now have a Public/Private SSH key pair. Next we will
+create a compute instance using the public key we just saved.
