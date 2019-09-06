@@ -31,9 +31,9 @@ In this section we will login to the OCI console and adjust your screen size (if
 Step 1. Sign in to your account using the below credentials 
             (Please type in your credentials):
 
-OCI Login Credentials
-Cloud Tenant: {{Tenant Name}}
-Username: {{Username}}
+OCI Login Credentials<br>
+Cloud Tenant: {{Tenant Name}}<br>
+Username: {{Username}}<br>
 Password: {{Password}}
 
 error_outlineNote
@@ -50,23 +50,22 @@ Step 1. Click on the OCI Services Menu, Select Networking and choose Virtual Clo
  
 
 Step 2. Please ensure you have the correct Compartment Selected. (Bottom Left of OCI console). 
-Choose Compartment: {{d3183873-c6a7-10af-0f0a-ef3cd14ec3c2.output.compartment_name}}
+Choose Compartment: {{comparment-name}}
 
 
 
 Step 3: Click Create Virtual Cloud Network. 
 
-Step 4:Fill out the details for Dialog Box that appears with the following information.
-
-    4.1 Ensure Create in Compartment is set to the right compartment.<br>
-    4.2 For the NAME, enter an easy to remember name, like for example, "my_vcn"
-    4.3 Check the radio button Virtual Cloud Network Plus Related Resources option to ensure we create a VCN that can accommodate other OCI resources.
-
+Step 4: Fill out the details for Dialog Box that appears with the following information.
+     4.1 Ensure Create in Compartment is set to the right compartment.<br>
+     4.2 For the NAME, enter an easy to remember name, like for example, "my_vcn"
+     4.3 Check the radio button Virtual Cloud Network Plus Related Resources option to ensure we create a VCN that can accommodate other OCI resources.
 
 
-    4.4 Leave the remainder of the fields in the Dialog Box as is.
-    4.5 Click Create Virtual Cloud Network to create the VCN
-    4.6 Click Close to close VCN Dialog Box.
+
+     4.4 Leave the remainder of the fields in the Dialog Box as is.
+     4.5 Click Create Virtual Cloud Network to create the VCN
+     4.6 Click Close to close VCN Dialog Box.
 
 Step 5. A Virtual Cloud Network will be created and the name that was given will appear as the name of the VCN on the OCI Console.
 
