@@ -575,7 +575,7 @@ In this above file Username and Password are sensitive data and cannot be stored
 
 Step 3: Encrypt the playbook with the following command
 
-```ansible-vault encrypt encrypt.yaml``
+```ansible-vault encrypt encrypt.yaml```
 
 In the above command, ansible-vault is a feature of ansible, encrypt is the keyword used to encrypt a file and encrypt.yaml is the filename which is being encrypted. 
 
