@@ -17,6 +17,9 @@
 [Login to the Compute Instance and Install Ansible](#login-to-the-compute-instance-and-install-ansible)
 
 [Creating SSH keys](#creating-ssh-keys)
+
+[Create a Playbook](#create-a-playbook)
+
 ## Overview
 
 Welcome to the Introduction to Ansible Playbooks Learning Lab!
@@ -258,6 +261,7 @@ Step 7. The "sudo" command allows user to run programs with elevated privileges 
 ```sudo su -```
 
 ```yum install -y ansible```
+
 **Note:** Along with Anisble package, multiple pre-requisite packages are being installed which takes a couple of minutes.
 
 Step 8. Bring up a new git-bash terminal using the Apps icon.
@@ -266,7 +270,7 @@ Step 9. To login to the Second running instance, we will SSH into it. Type the c
 
 ```ssh –i id_rsa opc@<PUBLIC_IP_OF_COMPUTE_INSTANCE_2>```
 
-            Enter ‘yes’ when prompted for security message. 
+Enter ‘yes’ when prompted for security message. 
 
 Step 10. Ansible has a default inventory file created which is located at "/etc/ansible/hosts". Inventory file contains a list of nodes which are managed/configured by ansible.
 
@@ -297,7 +301,7 @@ Step 12. In the Step 11, we have added local server's ip address (127.0.0.1) and
 
 Step 13. To validate Ansible is installed and configured correctly, run the following command:
 
-               ```ansible --version```
+```ansible --version```
 
 **Note:** It is ok, if the above command returns different version of ansible. 
 
@@ -342,7 +346,7 @@ Step 3. Open authorized_keys and copy the data using the following command:
 
 ``` cat /root/.ssh/authorized_keys```
             
-            Highlight the SSH key and copy (using the mouse)
+Highlight the SSH key and copy (using the mouse)
 
 
 
@@ -362,7 +366,7 @@ Copy the key into authorized_keys file
 
 Step 5. In the Ansible Control Machine, Check to see if Ansible is able to connect to the servers, defined in the inventory file that was created in the previous section. Execute the following command which pings the servers in the inventory file.
 
-              ```ansible all -m ping```
+```ansible all -m ping```
 
 Enter "yes" when prompted to add server ip to the known_hosts file. You might need to type twice as 2 hosts are added to the known_hosts file.
 
@@ -370,4 +374,76 @@ Enter "yes" when prompted to add server ip to the known_hosts file. You might ne
 
 Above command pings the servers defined in the inventory file that is created in the previous steps. Since only local machine is added in the inventory file ansible does a ping on the local machine using the SSH key created. 
 
+## Create a Playbook
+
+In this section, we will create an Ansible playbook and learn mroe about roles in Ansible.
+
+**Note:** In this lab by default the "vi" text editor is used to update files. To learn vi text editor visit "https://ryanstutorials.net/linuxtutorial/vi.php". Any other user preferred text editor can be used to update files.
+
+Ansible has an inbuilt tool ansible-galaxy which is used to create roles. Roles are pre-packaged units of work known to Ansible as roles. Roles can be accessed from Ansible playbooks. Roles consist of the tasks it needs to perform. Roles can be shared between playbooks. Ansible Galaxy creates the default directory hierarcy for a role. 
+
+**Note:** Ansible Control Machine Terminal can be accessed by "Switch Windows" beside the apps menu. If the terminal is closed, git-bash can be opened and the server can be logged into from apps menu.
+
+Step 1. Open the terminal of Ansible Control Machine, Create a folder named Ansible and store all the playbooks that are required in this tutorial. Create a folder roles under Ansible to store all roles in the folder. 
+
  
+```sh
+mkdir -p /root/ansible/roles
+cd /root/ansible/roles
+ansible-galaxy init create_user
+```
+
+Step 2. Under the folder create_user, navigate to the tasks directory by entering:
+
+```cd tasks/```
+
+Next, enter vi main.yml to edit the file "main.yaml", then update it with the following code (see screenshot below):
+
+```yml
+---
+# tasks file for create_user
+- name: Create a new user
+   user:
+       name: Sysgain
+       state: present
+   become: true
+```
+
+
+
+In the above code, we are creating a new user named Sysgain. The attribute "become: true" implies to create the user Sysgain from a root account. 
+
+Step 3. Create a new playbook in the parent directory where the roles folder is available. Enter the command: vi Create_User.yaml, then update it with the following code (see screenshot below):
+
+```yml
+---
+- name: Create a new user
+   hosts: local
+   roles: 
+      - role: create_user
+```
+
+
+
+In the above playbook, we are executing the role "create_user" in the local group(inventory file) which is defined in the host section.
+
+**Note:** Servers are defined under groups which are inturn defined under an inventory file. This file was created in the previous sections of this tutorial.
+
+Step 4. Execute the following command to run the playbook and create a new user "Sysgain"
+
+```ansible-playbook /root/ansible/Create_user.yaml```
+
+
+
+Step 5. Hosts section of the playbook is defined as "local" which create's the user in the local server(Ansible Control Machine). To create a user in all the servers mentioned in the ansible inventory file, Update the hosts section to "all" and run the command **```ansible-playbook /root/ansible/Create_user.yaml```**
+
+
+
+
+
+In the above execution, User Sysgain was only created in the remote server as the user already exists in the local machine.
+
+Step 6. To check if the User(Sysgain) is created in the machines, run the following command
+
+```awk -F ":" '/^Sysgain/{print $1}' /etc/passwd```
+
