@@ -34,7 +34,7 @@ Ansible Playbooks are an organized unit of scripts that is used for server confi
 
 Playbook contains one or more plays/tasks which executes a simple command or a script. Every playbook has an attribute hosts, where servers or group of servers are defined. These plays are executed in sequencial manner on the servers defined in the playbook.
 
-
+![](https://qloudableassets.blob.core.windows.net/devops/OCI/introduction-to-ansible-playbook/images/1.png?st=2019-09-06T10%3A31%3A31Z&se=2022-09-07T10%3A31%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=fwljWymO6LKz5xubtKh3mAsK3r858hNP%2Bl6%2FtadP4MM%3D)
 
 It is possible to run several hundreds of tasks in a single playbook, but it is efficient to reuse a task multiple time in multiple playbooks so tasks or group of tasks can be organized into roles. These roles can be included into a playbook. Directory structure of a sample ansible project is:
 
@@ -79,7 +79,6 @@ Click Start above to begin the lab!
 3) SSH private/public key knowledge
 
 ## Login to OCI Console
-
 
 Before you Begin:
 
@@ -257,7 +256,8 @@ Type ls and verify the id_rsa file exists.
 **Step 4.** Enter ‘yes’ when prompted for security message. 
 
 **Step 5.** Verify the prompt shows 
-              ```opc@<YOUR_VM_NAME>``` (below example shows the command prompt for Compute instance)
+
+ ```opc@<YOUR_VM_NAME>``` (below example shows the command prompt for Compute instance)
 
 
 
