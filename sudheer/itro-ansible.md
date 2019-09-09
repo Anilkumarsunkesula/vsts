@@ -65,19 +65,21 @@ Password: {{Password}}
 
 **Step 2.** Reduce the Browser Display Window Size/Resolution to fit your needs(Below example is for Chrome). 
 
+![](https://qloudableassets.blob.core.windows.net/devops/OCI/introduction-to-ansible/images/1.jpg?st=2019-09-06T10%3A31%3A31Z&se=2022-09-07T10%3A31%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=fwljWymO6LKz5xubtKh3mAsK3r858hNP%2Bl6%2FtadP4MM%3D)
+
 ## Create a VCN
 
 In this section, you will create a Virtual Cloud Network (VCN) within the OCI console.
 
 **Step 1.** Click on the OCI Services Menu, Select Networking and choose Virtual Cloud Networking
 
- 
+![](https://qloudableassets.blob.core.windows.net/devops/OCI/introduction-to-ansible/images/2.jpg?st=2019-09-06T10%3A31%3A31Z&se=2022-09-07T10%3A31%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=fwljWymO6LKz5xubtKh3mAsK3r858hNP%2Bl6%2FtadP4MM%3D)
 
 **Step 2.** Please ensure you have the correct Compartment Selected. (Bottom Left of OCI console). 
 
 Choose Compartment: {{comparment-name}}
 
-
+![](https://qloudableassets.blob.core.windows.net/devops/OCI/introduction-to-ansible/images/3.jpg?st=2019-09-06T10%3A31%3A31Z&se=2022-09-07T10%3A31%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=fwljWymO6LKz5xubtKh3mAsK3r858hNP%2Bl6%2FtadP4MM%3D)
 
 **Step 3.** Click Create Virtual Cloud Network. 
 
@@ -90,6 +92,8 @@ Choose Compartment: {{comparment-name}}
      4.5 Click Create Virtual Cloud Network to create the VCN<br>
      4.6 Click Close to close VCN Dialog Box.
 
+![](https://qloudableassets.blob.core.windows.net/devops/OCI/introduction-to-ansible/images/4.jpg?st=2019-09-06T10%3A31%3A31Z&se=2022-09-07T10%3A31%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=fwljWymO6LKz5xubtKh3mAsK3r858hNP%2Bl6%2FtadP4MM%3D)
+
 **Step 5.** A Virtual Cloud Network will be created and the name that was given will appear as the name of the VCN on the OCI Console.
 
 ## Create Public and Private SSH Keypair to Login to the Compute Instance
@@ -98,6 +102,7 @@ In this section we will create a public/private SSH key pair. These keys will be
 
 **Step 1.** In the OCI Console Window, select the Apps icon and open git-Bash. A Git-Bash terminal will appear.
 
+![](https://qloudableassets.blob.core.windows.net/devops/OCI/introduction-to-ansible/images/5.jpg?st=2019-09-06T10%3A31%3A31Z&se=2022-09-07T10%3A31%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=fwljWymO6LKz5xubtKh3mAsK3r858hNP%2Bl6%2FtadP4MM%3D)
 
 **Step 2.** Enter the command ssh-keygen in git-bash window.
 
@@ -113,6 +118,7 @@ You can swap between the OCI window and any other application (git-bash etc.) by
 
  c) Enter passphrase again
 
+![](https://qloudableassets.blob.core.windows.net/devops/OCI/introduction-to-ansible/images/6.jpg?st=2019-09-06T10%3A31%3A31Z&se=2022-09-07T10%3A31%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=fwljWymO6LKz5xubtKh3mAsK3r858hNP%2Bl6%2FtadP4MM%3D)
 
 **Step 4.** You should now have the Public and Private keys generated.They can be found in<br> 
              /C/Users/PhotonUser/.ssh/id_rsa (Private Key)<br>
@@ -122,19 +128,22 @@ You can swap between the OCI window and any other application (git-bash etc.) by
        id_rsa.pub will be used to create the Compute instance and id_rsa to connect via SSH into the Compute instance.<br>
        Run 'cd /C/Users/PhotonUser/.ssh' (No Spaces in directory path) and then 'ls' to verify the two files exist.
 
+![](https://qloudableassets.blob.core.windows.net/devops/OCI/introduction-to-ansible/images/7.jpg?st=2019-09-06T10%3A31%3A31Z&se=2022-09-07T10%3A31%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=fwljWymO6LKz5xubtKh3mAsK3r858hNP%2Bl6%2FtadP4MM%3D)
 
 **Step 5.** In the git-bash terminal window, type ‘cat /C/Users/PhotonUser/.ssh/id_rsa.pub’, Highlight the SSH key and copy (using the mouse or the keyboard (ctrl-c)
 
-
+![](https://qloudableassets.blob.core.windows.net/devops/OCI/introduction-to-ansible/images/8.jpg?st=2019-09-06T10%3A31%3A31Z&se=2022-09-07T10%3A31%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=fwljWymO6LKz5xubtKh3mAsK3r858hNP%2Bl6%2FtadP4MM%3D)
 
 **Step 6.** In the OCI Console Window, click the Apps icon  and click Notepad. 
 
 **TIP:**
 You can swap between the OCI window and any other application (Notepad etc.) by clicking the Switch Window  icon.
 
+![](https://qloudableassets.blob.core.windows.net/devops/OCI/introduction-to-ansible/images/9.jpg?st=2019-09-06T10%3A31%3A31Z&se=2022-09-07T10%3A31%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=fwljWymO6LKz5xubtKh3mAsK3r858hNP%2Bl6%2FtadP4MM%3D)
 
 **Step 7.** Paste the public key in Notepad (using your mouse/touch pad or Ctrl v).
 
+![](https://qloudableassets.blob.core.windows.net/devops/OCI/introduction-to-ansible/images/10.jpg?st=2019-09-06T10%3A31%3A31Z&se=2022-09-07T10%3A31%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=fwljWymO6LKz5xubtKh3mAsK3r858hNP%2Bl6%2FtadP4MM%3D)
 
 **Step 8.** Minimize Notepad and git-bash (if open) windows.
 
@@ -144,7 +153,6 @@ create a compute instance using the public key we just saved.
 ## Create a Compute Instance
 
 In this section we will create a Compute instance with a Public IP address using the public SSH key generated in the previous section.
-
 
 **Step 1.** Switch to OCI console (if not already).
 
@@ -174,6 +182,7 @@ You can swap between the OCI window and any other application (notepad etc.) by 
 
 **Note:** Leave other options in the dialog box as is other than the options mentioned above. 
 
+![](https://qloudableassets.blob.core.windows.net/devops/OCI/introduction-to-ansible/images/11.jpg?st=2019-09-06T10%3A31%3A31Z&se=2022-09-07T10%3A31%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=fwljWymO6LKz5xubtKh3mAsK3r858hNP%2Bl6%2FtadP4MM%3D)
 
 **Step 4.** Once Instance is in ‘Running’ state, note down the public IP address.
  
@@ -182,6 +191,7 @@ You can swap between the OCI window and any other application (notepad etc.) by 
  
 **Step 5.** You can also that instance has now been provisioned and is in Running state.
 
+![](https://qloudableassets.blob.core.windows.net/devops/OCI/introduction-to-ansible/images/12.jpg?st=2019-09-06T10%3A31%3A31Z&se=2022-09-07T10%3A31%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=fwljWymO6LKz5xubtKh3mAsK3r858hNP%2Bl6%2FtadP4MM%3D)
 
 We now have a Compute instance with a Public IP address running in OCI.
 
@@ -196,7 +206,7 @@ In this section we will SSH into the Compute instance using its Public IP addres
 **Tip:** 
 If the terminal was closed simply launch a new one using the Apps icon .
 
-
+![](https://qloudableassets.blob.core.windows.net/devops/OCI/introduction-to-ansible/images/13.jpg?st=2019-09-06T10%3A31%3A31Z&se=2022-09-07T10%3A31%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=fwljWymO6LKz5xubtKh3mAsK3r858hNP%2Bl6%2FtadP4MM%3D)
  
  **Step 2.** In the git-bash Terminal Window Type the command
 
@@ -207,7 +217,7 @@ Type ls and verify the id_rsa file exists.
 
 **Tip:** No Space in directory path (/C/Users/PhotonUser/.ssh).
 
-
+![](https://qloudableassets.blob.core.windows.net/devops/OCI/introduction-to-ansible/images/14.jpg?st=2019-09-06T10%3A31%3A31Z&se=2022-09-07T10%3A31%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=fwljWymO6LKz5xubtKh3mAsK3r858hNP%2Bl6%2FtadP4MM%3D)
 
 **Step 3.** To login to the running instance, we will SSH into it. Type the command            
 
@@ -215,14 +225,14 @@ Type ls and verify the id_rsa file exists.
 
 **Note:** User name is ‘opc’. <PUBLIC_IP_OF_COMPUTE_INSTANCE> should be the actual IP address which was noted in previous section. (Example: 129.0.1.10)
 
-
+![](https://qloudableassets.blob.core.windows.net/devops/OCI/introduction-to-ansible/images/15.jpg?st=2019-09-06T10%3A31%3A31Z&se=2022-09-07T10%3A31%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=fwljWymO6LKz5xubtKh3mAsK3r858hNP%2Bl6%2FtadP4MM%3D)
 
 **Step 4.** Enter ‘yes’ when prompted for security message. 
 **Step 5.** Verify the prompt shows 
 
-              opc@<YOUR_VM_NAME> (below example shows the command prompt for Compute instance)
+ ``` opc@<YOUR_VM_NAME> ``` (below example shows the command prompt for Compute instance)
 
-
+![](https://qloudableassets.blob.core.windows.net/devops/OCI/introduction-to-ansible/images/16.jpg?st=2019-09-06T10%3A31%3A31Z&se=2022-09-07T10%3A31%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=fwljWymO6LKz5xubtKh3mAsK3r858hNP%2Bl6%2FtadP4MM%3D)
 
 **Step 6.**  We now have a Compute instance in OCI with a Public IP  address which is accessible over the internet. 
 
@@ -265,6 +275,8 @@ Step 11. To validate Ansible is installed and configured correctly, run the foll
 
 **Note:** It is ok, if the above command returns different version of ansible. 
 
+![](https://qloudableassets.blob.core.windows.net/devops/OCI/introduction-to-ansible/images/17.jpg?st=2019-09-06T10%3A31%3A31Z&se=2022-09-07T10%3A31%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=fwljWymO6LKz5xubtKh3mAsK3r858hNP%2Bl6%2FtadP4MM%3D)
+
 ## Creating SSH Keys for Ansible to access other instances
 
 In this section, We will create a public and private SSH key pairs for ansible control machine to SSH into the nodes defined in inventory file.
@@ -286,7 +298,7 @@ Press "Enter", when asked for the following
 **Tip**
 No Passphrase is required.
 
-
+![](https://qloudableassets.blob.core.windows.net/devops/OCI/introduction-to-ansible/images/18.jpg?st=2019-09-06T10%3A31%3A31Z&se=2022-09-07T10%3A31%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=fwljWymO6LKz5xubtKh3mAsK3r858hNP%2Bl6%2FtadP4MM%3D)
 
 **Step 2.** Public and Private keys should have been generated and are stored in the directory /root/.ssh/. Public key need to be copied to authorized keys file, which gives ansible access to login into the managed node.
 
@@ -302,6 +314,7 @@ Execute the following commands to copy the public key
 
 Enter "yes" when promted to overwrite authorized_keys file.
 
+![](https://qloudableassets.blob.core.windows.net/devops/OCI/introduction-to-ansible/images/19.jpg?st=2019-09-06T10%3A31%3A31Z&se=2022-09-07T10%3A31%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=fwljWymO6LKz5xubtKh3mAsK3r858hNP%2Bl6%2FtadP4MM%3D)
 
 
 **Step 3.** Check to see if Ansible is able to connect to the servers, defined in the inventory file that was created in the previous section. 
@@ -312,7 +325,7 @@ Execute the following command which pings the servers in the inventory file.
 
 Enter "yes" when prompted to add server ip to the known_hosts file. 
 
-
+![](https://qloudableassets.blob.core.windows.net/devops/OCI/introduction-to-ansible/images/29.jpg?st=2019-09-06T10%3A31%3A31Z&se=2022-09-07T10%3A31%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=fwljWymO6LKz5xubtKh3mAsK3r858hNP%2Bl6%2FtadP4MM%3D)
 
 Above command pings the servers defined in the inventory file that is created in the previous steps. Since only local machine is added in the inventory file ansible does a ping on the local machine using the SSH key created. 
 
@@ -351,7 +364,7 @@ Uninstall htop package - ```yum -y remove htop```
 
 **Step 4.** Run the command "ansible-playbook -s install_package.yaml". Ansible checks the inventory file for the local group and installs the package htop with latest version on the servers. 
 
-
+![](https://qloudableassets.blob.core.windows.net/devops/OCI/introduction-to-ansible/images/21.jpg?st=2019-09-06T10%3A31%3A31Z&se=2022-09-07T10%3A31%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=fwljWymO6LKz5xubtKh3mAsK3r858hNP%2Bl6%2FtadP4MM%3D)
 
 **Step 5.** From the output, there were 2 tasks run in the playbook , first is gathering facts. Ansible gathers facts of the server on which playbook is running and then executes the tasks defined in the playbook which is installing htop package. 
 
@@ -359,6 +372,7 @@ Uninstall htop package - ```yum -y remove htop```
 
 To list all the versions of httpd package available, execute the command "yum list httpd" and copy the version 
 
+![](https://qloudableassets.blob.core.windows.net/devops/OCI/introduction-to-ansible/images/22.jpg?st=2019-09-06T10%3A31%3A31Z&se=2022-09-07T10%3A31%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=fwljWymO6LKz5xubtKh3mAsK3r858hNP%2Bl6%2FtadP4MM%3D)
 
 ```yml
 example: 
@@ -371,6 +385,8 @@ example:
 **Step 7.** Multiple tasks can be defined in a single playbook, all the tasks are executed in a sequencial fashion. Like install a package, update the configuration of the package and start the service. All the 3 steps defined are executed in a sequencial fashion.
 
 In the below example we are installing wget and telnet packages that are installed sequencially.
+
+![](https://qloudableassets.blob.core.windows.net/devops/OCI/introduction-to-ansible/images/23.jpg?st=2019-09-06T10%3A31%3A31Z&se=2022-09-07T10%3A31%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=fwljWymO6LKz5xubtKh3mAsK3r858hNP%2Bl6%2FtadP4MM%3D)
 
 ## Conditions in Ansible
 
@@ -392,6 +408,7 @@ The following command displays ansible distribution facts which playbook collect
 
 ```ansible -m setup local | grep ansible_distribution```
 
+![](https://qloudableassets.blob.core.windows.net/devops/OCI/introduction-to-ansible/images/24.jpg?st=2019-09-06T10%3A31%3A31Z&se=2022-09-07T10%3A31%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=fwljWymO6LKz5xubtKh3mAsK3r858hNP%2Bl6%2FtadP4MM%3D)
 
 **Step 3.** Create a new file with the command "touch /root/ansible/condition.yaml". Add the following code into condition.yaml file. 
 
@@ -414,6 +431,7 @@ Remove wget package if it is already installed on the server using "yum -y remov
 
 ```ansible-playbook -s condition.yaml```
  
+ ![](https://qloudableassets.blob.core.windows.net/devops/OCI/introduction-to-ansible/images/25.jpg?st=2019-09-06T10%3A31%3A31Z&se=2022-09-07T10%3A31%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=fwljWymO6LKz5xubtKh3mAsK3r858hNP%2Bl6%2FtadP4MM%3D)
 
 **Step 5.** Since the package state is "available" and not "installed", we can write a condition, to check if the package is installed else install the package. Update the code with the following 
 
@@ -442,9 +460,11 @@ Remove wget package if it is already installed on the server using "yum -y remov
 
 Run the command ```ansible-playbook -s condition.yaml```
 
-
+![](https://qloudableassets.blob.core.windows.net/devops/OCI/introduction-to-ansible/images/26.jpg?st=2019-09-06T10%3A31%3A31Z&se=2022-09-07T10%3A31%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=fwljWymO6LKz5xubtKh3mAsK3r858hNP%2Bl6%2FtadP4MM%3D)
 
 **Step 8.** In the last task of the output, wget is installed, if the same playbook is executed again , it skips the last step as the package is already installed which is shown in the following screenshot.
+
+![](https://qloudableassets.blob.core.windows.net/devops/OCI/introduction-to-ansible/images/27.jpg?st=2019-09-06T10%3A31%3A31Z&se=2022-09-07T10%3A31%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=fwljWymO6LKz5xubtKh3mAsK3r858hNP%2Bl6%2FtadP4MM%3D)
 
 ## Loops and Variables in Ansible
 
@@ -462,6 +482,7 @@ In this section, we will discuss about the variables and loops in Ansible playbo
 
 **Step 4.** Execute the playbook using the command ```ansible-playbook -s install_package.yaml``` to install the packages
 
+![](https://qloudableassets.blob.core.windows.net/devops/OCI/introduction-to-ansible/images/28.jpg?st=2019-09-06T10%3A31%3A31Z&se=2022-09-07T10%3A31%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=fwljWymO6LKz5xubtKh3mAsK3r858hNP%2Bl6%2FtadP4MM%3D)
 
 **Step 5.** All the packages are installed on the server. To verify if the package is installed run the command:
 
@@ -480,6 +501,8 @@ In this section, we will install Apache on the server, Update the configuration 
 **Step 4.** Run the following command to execute the playbook httpd.yaml. This playbook installs Apache, updates a file and start Apache service. 
 
 ```ansible-playbook -s httpd.yaml```
+
+![](https://qloudableassets.blob.core.windows.net/devops/OCI/introduction-to-ansible/images/29.jpg?st=2019-09-06T10%3A31%3A31Z&se=2022-09-07T10%3A31%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=fwljWymO6LKz5xubtKh3mAsK3r858hNP%2Bl6%2FtadP4MM%3D)
 
 **Step 5.** We have created a template and updated the template for the index file of httpd. To validate if the created file is available, check the file with the command:
 
