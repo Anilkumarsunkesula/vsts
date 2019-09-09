@@ -495,7 +495,7 @@ Blocks allow for logical grouping of tasks and in play error handling. Multiple 
 
 Step 1: Create a new playbook under the folder ansible with the following command
 
-```touch /root/ansible/blocks.yaml``
+```touch /root/ansible/blocks.yaml```
 
 Update the created file with the following code
 
