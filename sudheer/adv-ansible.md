@@ -72,10 +72,11 @@ Cloud Tenant: {{Tenant Name}}<br>
 Username: {{Username}}<br>
 Password: {{Password}}
 
-
 **Note:** Your password should be updated automatically for you, but sometimes  you may be asked to change it after signing in the first time. If prompted, pleaseupdate the password. You can use this one to expedite things: Oracle123!!!! . It will not be saved after this lab expires.
 
 **Step 2.** Reduce the Browser Display Window Size/Resolution to fit your needs(Below example is for Chrome). 
+
+![](https://qloudableassets.blob.core.windows.net/devops/OCI/advanced-ansible-playbooks/images/2.jpg?st=2019-09-06T10%3A31%3A31Z&se=2022-09-07T10%3A31%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=fwljWymO6LKz5xubtKh3mAsK3r858hNP%2Bl6%2FtadP4MM%3D)
 
 ## Create a VCN
 
