@@ -22,6 +22,10 @@
 
 [Install multiple roles in servers](#install-multiple-roles-in-servers)
 
+[Variables and handlers](#variables-and-handlers)
+
+
+
 ## Overview
 
 Welcome to the Introduction to Ansible Playbooks Learning Lab!
@@ -540,3 +544,132 @@ Step 6. To validate the packages Apache and tomcat are installed on their respec
 ```service httpd status (shows status of apache service)```
 
 ```service tomcat status ( shows status of tomcat service)```
+
+## Variables and handlers
+
+In this section, we will learn about different types of variables and use of handlers in Ansible.
+
+Handlers are tasks that are only executed when they are notified by other tasks in the playbook. For example, if a configuration of a package is updated then the handler is notified to restart the service for the configuration to take effect.
+
+### Variables
+
+Group Variables: These variables are defined in the parent/top directory where roles folder is available. Variables defined here can be accessed across roles. 
+
+Local Variables: These variables are defined inside the role and the scope the variable is limited to the specific role. 
+
+Step 1. Enter mkdir group_vars to create a folder named "group_vars"  in the top hierarchy of the folders where roles folder is available. Create a new file "login.yaml" by entering vi group_vars/login.yaml and update the code as follows:
+
+```yml
+---
+username: "testuser@sysgain.com"
+password: "AnsibleTutorial"
+```
+ 
+
+
+
+Step 2. These variables can be used in all the roles defined in the roles folder.  
+
+Step 3.  Create a new role variables and update "main.yaml" file under tasks directory as follows:
+
+```ansible-galaxy init /root/ansible/roles/variables```
+
+```vi /root/ansible/roles/variables/tasks/main.yaml```
+  
+
+The above code takes variable values from the group variables defined in the group variable directory
+
+Step 4. Create a new playbook variable.yaml in the main directory where roles are defined and update the code with the following (see screenshot below):
+
+```yml
+---
+- name: Include group variable
+   hosts: all
+   tasks:
+      - include_vars: "group_vars/login.yaml"
+
+- name: Show variable
+   hosts: local
+   roles: 
+      - role: variables
+```
+
+
+In the above code, since login.yaml file was included in the playbook which is a group variables file, they can be automatically passed to the subsequent tasks in the playbook. These variables can be accessed in all the nodes that role is executed on.
+
+Step 5. Execute the playbook with the following command 
+
+```ansible-playbook create_user.yaml```
+
+
+
+Step 6. Handlers are only executed if a certain task reports any changes. For example, if a configuration of a package is updated, then handler is notified to restart the package service which picks up updated configuration.
+
+Step 7. Under the role Apache, there is a folder named handlers. Update the file "main.yaml" file with the following code (see screenshot below):
+
+```yml
+---
+# handlers file for apache
+- name: restart apache
+   service:
+      name: httpd
+      state: restarted
+```
+
+
+
+
+Step 8. We will be maintaining a file using Apache module and if the file changes we will notify the handler to restart Apache service.
+
+Go to the role Apache and templates folder by entering cd roles/apache/templates/. Create a new file "Sample.j2"  as shown below. j2 is the format of the template that Ansible recognizes. 
+
+
+
+
+
+ Step 9. Update the Ansible role code at "/root/ansible/roles/apache/tasks/main.yaml" file with the following code (see below screenshot):
+
+
+```yml
+- name: Update a file
+   template:
+       src: Sample.j2
+       dest: /etc/Sample.txt
+   notify:
+       - restart apache
+```
+
+
+Step 10. Create a new playbook apache.yaml file under the top folder in the hierarchy with the following code (see screenshot below):
+
+```yml
+---
+- name: Install and configure Apache
+   hosts: local
+   roles: 
+      - role: apache
+   become: true
+```
+
+
+
+
+Step 11. Enter the below command to execute the playbook apache, which installs Apache and configures the file in the location (/etc/Sample.txt). Since this file was configured for the first time, it notifies handler and Apache service is restarted. Subsequent execution of the playbook will not restart the service as there are no changes to the file. 
+
+```ansible-playbook apache.yaml```
+
+**Note:** If the file (Sample.j2) is updated in the templates folder then subseqent runs of ansible will restart apache service
+
+ 
+
+
+
+In the above execution output we can see that file was updated and the handler was notified to restart the service. Immediate execution of the playbook again will skip that step as the file is not being updated as shown below:
+
+
+
+### Conclusion:
+
+Congratulations!
+
+You have successfully completed this lab. In this learning lab we have learnt how to Create a VCN in Oracle Cloud and create multiple compute instances inside a VCN. We have learnt on how to install Ansible, How Ansible connects with other nodes to execute Ansible playbooks. We have created playbooks with in-built Ansible Galaxy tool and updated them to install multiple packages. We have learnt how to use multiple roles, variables and how to create handlers.
