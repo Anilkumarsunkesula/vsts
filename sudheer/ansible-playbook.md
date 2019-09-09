@@ -107,19 +107,21 @@ Password: {{Password}}
 
 **Step 2.** Reduce the Browser Display Window Size/Resolution to fit your needs(Below example is for Chrome). 
 
+![](https://qloudableassets.blob.core.windows.net/devops/OCI/introduction-to-ansible-playbook/images/2.jpg?st=2019-09-06T10%3A31%3A31Z&se=2022-09-07T10%3A31%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=fwljWymO6LKz5xubtKh3mAsK3r858hNP%2Bl6%2FtadP4MM%3D)
+
 ## Create a VCN
 
 In this section, you will create a Virtual Cloud Network (VCN) within the OCI console.
 
 **Step 1.** Click on the OCI Services Menu, Select Networking and choose Virtual Cloud Networking
 
- 
+ ![](https://qloudableassets.blob.core.windows.net/devops/OCI/introduction-to-ansible-playbook/images/3.jpg?st=2019-09-06T10%3A31%3A31Z&se=2022-09-07T10%3A31%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=fwljWymO6LKz5xubtKh3mAsK3r858hNP%2Bl6%2FtadP4MM%3D)
 
 **Step 2.** Please ensure you have the correct Compartment Selected. (Bottom Left of OCI console). 
 
 Choose Compartment: {{comparment-name}}
 
-
+![](https://qloudableassets.blob.core.windows.net/devops/OCI/introduction-to-ansible-playbook/images/4.jpg?st=2019-09-06T10%3A31%3A31Z&se=2022-09-07T10%3A31%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=fwljWymO6LKz5xubtKh3mAsK3r858hNP%2Bl6%2FtadP4MM%3D)
 
 **Step 3.** Click Create Virtual Cloud Network. 
 
@@ -131,6 +133,7 @@ Choose Compartment: {{comparment-name}}
      4.4 Leave the remainder of the fields in the Dialog Box as is.<br>
      4.5 Click Create Virtual Cloud Network to create the VCN<br>
      4.6 Click Close to close VCN Dialog Box.
+![](https://qloudableassets.blob.core.windows.net/devops/OCI/introduction-to-ansible-playbook/images/5.jpg?st=2019-09-06T10%3A31%3A31Z&se=2022-09-07T10%3A31%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=fwljWymO6LKz5xubtKh3mAsK3r858hNP%2Bl6%2FtadP4MM%3D)
 
 **Step 5.** A Virtual Cloud Network will be created and the name that was given will appear as the name of the VCN on the OCI Console.
 
@@ -140,6 +143,7 @@ In this section we will create a public/private SSH key pair. These keys will be
 
 **Step 1.** In the OCI Console Window, select the Apps icon and open git-Bash. A Git-Bash terminal will appear.
 
+![](https://qloudableassets.blob.core.windows.net/devops/OCI/introduction-to-ansible-playbook/images/6.jpg?st=2019-09-06T10%3A31%3A31Z&se=2022-09-07T10%3A31%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=fwljWymO6LKz5xubtKh3mAsK3r858hNP%2Bl6%2FtadP4MM%3D)
 
 **Step 2.** Enter the command ssh-keygen in git-bash window.
 
@@ -155,6 +159,7 @@ You can swap between the OCI window and any other application (git-bash etc.) by
 
  c) Enter passphrase again
 
+![](https://qloudableassets.blob.core.windows.net/devops/OCI/introduction-to-ansible-playbook/images/7.jpg?st=2019-09-06T10%3A31%3A31Z&se=2022-09-07T10%3A31%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=fwljWymO6LKz5xubtKh3mAsK3r858hNP%2Bl6%2FtadP4MM%3D)
 
 **Step 4.** You should now have the Public and Private keys generated.They can be found in<br> 
              /C/Users/PhotonUser/.ssh/id_rsa (Private Key)<br>
@@ -164,19 +169,23 @@ You can swap between the OCI window and any other application (git-bash etc.) by
        id_rsa.pub will be used to create the Compute instance and id_rsa to connect via SSH into the Compute instance.<br>
        Run 'cd /C/Users/PhotonUser/.ssh' (No Spaces in directory path) and then 'ls' to verify the two files exist.
 
+![](https://qloudableassets.blob.core.windows.net/devops/OCI/introduction-to-ansible-playbook/images/8.jpg?st=2019-09-06T10%3A31%3A31Z&se=2022-09-07T10%3A31%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=fwljWymO6LKz5xubtKh3mAsK3r858hNP%2Bl6%2FtadP4MM%3D)
 
-**Step 5.** In the git-bash terminal window, type ‘cat /C/Users/PhotonUser/.ssh/id_rsa.pub’, Highlight the SSH key and copy (using the mouse or the keyboard (ctrl-c)
+**Step 5.** In the git-bash terminal window, 
+type ```cat /C/Users/PhotonUser/.ssh/id_rsa.pub`` <br> Highlight the SSH key and copy (using the mouse or the keyboard (ctrl-c)
 
-
+![](https://qloudableassets.blob.core.windows.net/devops/OCI/introduction-to-ansible-playbook/images/9.jpg?st=2019-09-06T10%3A31%3A31Z&se=2022-09-07T10%3A31%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=fwljWymO6LKz5xubtKh3mAsK3r858hNP%2Bl6%2FtadP4MM%3D)
 
 **Step 6.** In the OCI Console Window, click the Apps icon  and click Notepad. 
 
 **TIP:**
 You can swap between the OCI window and any other application (Notepad etc.) by clicking the Switch Window  icon.
 
+![](https://qloudableassets.blob.core.windows.net/devops/OCI/introduction-to-ansible-playbook/images/10.jpg?st=2019-09-06T10%3A31%3A31Z&se=2022-09-07T10%3A31%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=fwljWymO6LKz5xubtKh3mAsK3r858hNP%2Bl6%2FtadP4MM%3D)
 
 **Step 7.** Paste the public key in Notepad (using your mouse/touch pad or Ctrl v).
 
+![](https://qloudableassets.blob.core.windows.net/devops/OCI/introduction-to-ansible-playbook/images/11.jpg?st=2019-09-06T10%3A31%3A31Z&se=2022-09-07T10%3A31%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=fwljWymO6LKz5xubtKh3mAsK3r858hNP%2Bl6%2FtadP4MM%3D)
 
 **Step 8.** Minimize Notepad and git-bash (if open) windows.
 
@@ -186,7 +195,6 @@ create a compute instance using the public key we just saved.
 ## Create a Compute Instance
 
 In this section we will create a Compute instance with a Public IP address using the public SSH key generated in the previous section.
-
 
 **Step 1.** Switch to OCI console (if not already).
 
@@ -216,11 +224,19 @@ You can swap between the OCI window and any other application (notepad etc.) by 
 
 **Note:** Leave other options in the dialog box as is other than the options mentioned above. 
 
+![](https://qloudableassets.blob.core.windows.net/devops/OCI/introduction-to-ansible-playbook/images/12.jpg?st=2019-09-06T10%3A31%3A31Z&se=2022-09-07T10%3A31%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=fwljWymO6LKz5xubtKh3mAsK3r858hNP%2Bl6%2FtadP4MM%3D)
+
+![](https://qloudableassets.blob.core.windows.net/devops/OCI/introduction-to-ansible-playbook/images/13.jpg?st=2019-09-06T10%3A31%3A31Z&se=2022-09-07T10%3A31%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=fwljWymO6LKz5xubtKh3mAsK3r858hNP%2Bl6%2FtadP4MM%3D)
+
 **Step 4.** Follow the step 2 and 3 again to create another instance.
 
 **Step 5.** Once both the Instances are in ‘Running’ state, note down the public IP addresses.
 
+![](https://qloudableassets.blob.core.windows.net/devops/OCI/introduction-to-ansible-playbook/images/14.jpg?st=2019-09-06T10%3A31%3A31Z&se=2022-09-07T10%3A31%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=fwljWymO6LKz5xubtKh3mAsK3r858hNP%2Bl6%2FtadP4MM%3D)
+
 **Step 6.** You can also see that instances has now been provisioned and are in Running state.
+
+![](https://qloudableassets.blob.core.windows.net/devops/OCI/introduction-to-ansible-playbook/images/15.jpg?st=2019-09-06T10%3A31%3A31Z&se=2022-09-07T10%3A31%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=fwljWymO6LKz5xubtKh3mAsK3r858hNP%2Bl6%2FtadP4MM%3D)
 
 We now have two Compute instances with a Public IP addresses running in OCI.
 Next we will SSH to the compute instance from the internet.
@@ -235,6 +251,8 @@ In this section we will SSH into one of the Compute instances using its Public I
 
 **Tip:** If the terminal was closed simply launch a new one using the Apps icon .
 
+![](https://qloudableassets.blob.core.windows.net/devops/OCI/introduction-to-ansible-playbook/images/16.jpg?st=2019-09-06T10%3A31%3A31Z&se=2022-09-07T10%3A31%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=fwljWymO6LKz5xubtKh3mAsK3r858hNP%2Bl6%2FtadP4MM%3D)
+
 **Step 2.** In the git-bash Terminal Window Type the command:
 
 ```cd /C/Users/PhotonUser/.ssh/  ```
@@ -244,6 +262,7 @@ Type ls and verify the id_rsa file exists.
 **Tip:** No Space in directory path (/C/Users/PhotonUser/.ssh).
 
 
+![](https://qloudableassets.blob.core.windows.net/devops/OCI/introduction-to-ansible-playbook/images/17.jpg?st=2019-09-06T10%3A31%3A31Z&se=2022-09-07T10%3A31%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=fwljWymO6LKz5xubtKh3mAsK3r858hNP%2Bl6%2FtadP4MM%3D)
 
 **Step 3.** To login to the running instance, we will SSH into it. Type the command:
 
@@ -252,6 +271,7 @@ Type ls and verify the id_rsa file exists.
 **Note:** User name is ‘opc’. <PUBLIC_IP_OF_COMPUTE_INSTANCE_1> should be the actual IP address which was noted in previous section for example:  129.0.1.10 
 
 
+![](https://qloudableassets.blob.core.windows.net/devops/OCI/introduction-to-ansible-playbook/images/18.jpg?st=2019-09-06T10%3A31%3A31Z&se=2022-09-07T10%3A31%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=fwljWymO6LKz5xubtKh3mAsK3r858hNP%2Bl6%2FtadP4MM%3D)
 
 **Step 4.** Enter ‘yes’ when prompted for security message. 
 
@@ -260,6 +280,7 @@ Type ls and verify the id_rsa file exists.
  ```opc@<YOUR_VM_NAME>``` (below example shows the command prompt for Compute instance)
 
 
+![](https://qloudableassets.blob.core.windows.net/devops/OCI/introduction-to-ansible-playbook/images/19.jpg?st=2019-09-06T10%3A31%3A31Z&se=2022-09-07T10%3A31%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=fwljWymO6LKz5xubtKh3mAsK3r858hNP%2Bl6%2FtadP4MM%3D)
 
 **Step 6.**  We now have a Compute instance in OCI with a Public IP  address which is accessible over the internet.
 
@@ -304,6 +325,8 @@ Any other user preferred text editor can be used to update files.
 <<ipaddress of second server>>
  ```
 
+![](https://qloudableassets.blob.core.windows.net/devops/OCI/introduction-to-ansible-playbook/images/20.jpg?st=2019-09-06T10%3A31%3A31Z&se=2022-09-07T10%3A31%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=fwljWymO6LKz5xubtKh3mAsK3r858hNP%2Bl6%2FtadP4MM%3D)
+
 **Step 12.** In the Step 11, we have added local server's ip address (127.0.0.1) and the second server (public IP address) to the hosts inventory file, Ansible uses the host file to SSH into the servers and run the requiredAansible jobs.
 
 **Step 13.** To validate Ansible is installed and configured correctly, run the following command:
@@ -311,6 +334,8 @@ Any other user preferred text editor can be used to update files.
 ```ansible --version```
 
 **Note:** It is ok, if the above command returns different version of ansible. 
+
+![](https://qloudableassets.blob.core.windows.net/devops/OCI/introduction-to-ansible-playbook/images/21.jpg?st=2019-09-06T10%3A31%3A31Z&se=2022-09-07T10%3A31%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=fwljWymO6LKz5xubtKh3mAsK3r858hNP%2Bl6%2FtadP4MM%3D)
 
 ## Creating SSH keys
 
@@ -332,7 +357,7 @@ Press "Enter", when asked for the following:
 
 **Tip:** No Passphrase is required.
 
-
+![](https://qloudableassets.blob.core.windows.net/devops/OCI/introduction-to-ansible-playbook/images/22.jpg?st=2019-09-06T10%3A31%3A31Z&se=2022-09-07T10%3A31%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=fwljWymO6LKz5xubtKh3mAsK3r858hNP%2Bl6%2FtadP4MM%3D)
 
 **Step 2.** Public and Private keys should have been generated and are stored in the directory /root/.ssh/. Public key need to be copied to authorized keys file, which gives Ansible access to login into the managed node.
 
@@ -347,7 +372,7 @@ Execute the following commands to copy the public key:
 
 Enter "yes" when promted to overwrite authorized_keys file.
 
-
+![](https://qloudableassets.blob.core.windows.net/devops/OCI/introduction-to-ansible-playbook/images/23.jpg?st=2019-09-06T10%3A31%3A31Z&se=2022-09-07T10%3A31%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=fwljWymO6LKz5xubtKh3mAsK3r858hNP%2Bl6%2FtadP4MM%3D)
 
 **Step 3.** Open authorized_keys and copy the data using the following command:
 
@@ -355,11 +380,13 @@ Enter "yes" when promted to overwrite authorized_keys file.
             
 Highlight the SSH key and copy (using the mouse)
 
-
+![](https://qloudableassets.blob.core.windows.net/devops/OCI/introduction-to-ansible-playbook/images/24.jpg?st=2019-09-06T10%3A31%3A31Z&se=2022-09-07T10%3A31%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=fwljWymO6LKz5xubtKh3mAsK3r858hNP%2Bl6%2FtadP4MM%3D)
 
 **Step 4.** Open the terminal of the second server. We need to paste the copied public key to the authorized keys file in the second server. Follow the steps to copy the public key:
 
 **Tip:** You can swap between the OCI window and any other application (Notepad etc.) by clicking the Switch Window icon.
+
+![](https://qloudableassets.blob.core.windows.net/devops/OCI/introduction-to-ansible-playbook/images/25.jpg?st=2019-09-06T10%3A31%3A31Z&se=2022-09-07T10%3A31%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=fwljWymO6LKz5xubtKh3mAsK3r858hNP%2Bl6%2FtadP4MM%3D)
 
 ```sh
 sudo su -
@@ -377,7 +404,7 @@ Copy the key into authorized_keys file
 
 Enter "yes" when prompted to add server ip to the known_hosts file. You might need to type twice as 2 hosts are added to the known_hosts file.
 
-
+![](https://qloudableassets.blob.core.windows.net/devops/OCI/introduction-to-ansible-playbook/images/26.jpg?st=2019-09-06T10%3A31%3A31Z&se=2022-09-07T10%3A31%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=fwljWymO6LKz5xubtKh3mAsK3r858hNP%2Bl6%2FtadP4MM%3D)
 
 Above command pings the servers defined in the inventory file that is created in the previous steps. Since only local machine is added in the inventory file ansible does a ping on the local machine using the SSH key created. 
 
@@ -400,6 +427,8 @@ cd /root/ansible/roles
 ansible-galaxy init create_user
 ```
 
+![](https://qloudableassets.blob.core.windows.net/devops/OCI/introduction-to-ansible-playbook/images/27.jpg?st=2019-09-06T10%3A31%3A31Z&se=2022-09-07T10%3A31%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=fwljWymO6LKz5xubtKh3mAsK3r858hNP%2Bl6%2FtadP4MM%3D)
+
 **Step 2.** Under the folder create_user, navigate to the tasks directory by entering:
 
 ```cd tasks/```
@@ -416,7 +445,9 @@ Next, enter vi main.yml to edit the file "main.yaml", then update it with the fo
    become: true
 ```
 
+![](https://qloudableassets.blob.core.windows.net/devops/OCI/introduction-to-ansible-playbook/images/28.jpg?st=2019-09-06T10%3A31%3A31Z&se=2022-09-07T10%3A31%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=fwljWymO6LKz5xubtKh3mAsK3r858hNP%2Bl6%2FtadP4MM%3D)
 
+![](https://qloudableassets.blob.core.windows.net/devops/OCI/introduction-to-ansible-playbook/images/29.jpg?st=2019-09-06T10%3A31%3A31Z&se=2022-09-07T10%3A31%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=fwljWymO6LKz5xubtKh3mAsK3r858hNP%2Bl6%2FtadP4MM%3D)
 
 In the above code, we are creating a new user named Sysgain. The attribute "become: true" implies to create the user Sysgain from a root account. 
 
@@ -430,7 +461,8 @@ In the above code, we are creating a new user named Sysgain. The attribute "beco
       - role: create_user
 ```
 
-
+![](https://qloudableassets.blob.core.windows.net/devops/OCI/introduction-to-ansible-playbook/images/30.jpg?st=2019-09-06T10%3A31%3A31Z&se=2022-09-07T10%3A31%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=fwljWymO6LKz5xubtKh3mAsK3r858hNP%2Bl6%2FtadP4MM%3D)
+![](https://qloudableassets.blob.core.windows.net/devops/OCI/introduction-to-ansible-playbook/images/31.jpg?st=2019-09-06T10%3A31%3A31Z&se=2022-09-07T10%3A31%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=fwljWymO6LKz5xubtKh3mAsK3r858hNP%2Bl6%2FtadP4MM%3D)
 
 In the above playbook, we are executing the role "create_user" in the local group(inventory file) which is defined in the host section.
 
@@ -440,19 +472,20 @@ In the above playbook, we are executing the role "create_user" in the local grou
 
 ```ansible-playbook /root/ansible/Create_user.yaml```
 
-
+![](https://qloudableassets.blob.core.windows.net/devops/OCI/introduction-to-ansible-playbook/images/32.jpg?st=2019-09-06T10%3A31%3A31Z&se=2022-09-07T10%3A31%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=fwljWymO6LKz5xubtKh3mAsK3r858hNP%2Bl6%2FtadP4MM%3D)
 
 **Step 5.** Hosts section of the playbook is defined as "local" which create's the user in the local server(Ansible Control Machine). To create a user in all the servers mentioned in the ansible inventory file, Update the hosts section to "all" and run the command **```ansible-playbook /root/ansible/Create_user.yaml```**
 
-
-
-
+![](https://qloudableassets.blob.core.windows.net/devops/OCI/introduction-to-ansible-playbook/images/33.jpg?st=2019-09-06T10%3A31%3A31Z&se=2022-09-07T10%3A31%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=fwljWymO6LKz5xubtKh3mAsK3r858hNP%2Bl6%2FtadP4MM%3D)
+![](https://qloudableassets.blob.core.windows.net/devops/OCI/introduction-to-ansible-playbook/images/34.jpg?st=2019-09-06T10%3A31%3A31Z&se=2022-09-07T10%3A31%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=fwljWymO6LKz5xubtKh3mAsK3r858hNP%2Bl6%2FtadP4MM%3D)
 
 In the above execution, User Sysgain was only created in the remote server as the user already exists in the local machine.
 
 **Step 6.** To check if the User(Sysgain) is created in the machines, run the following command
 
 ```awk -F ":" '/^Sysgain/{print $1}' /etc/passwd```
+
+![](https://qloudableassets.blob.core.windows.net/devops/OCI/introduction-to-ansible-playbook/images/35.jpg?st=2019-09-06T10%3A31%3A31Z&se=2022-09-07T10%3A31%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=fwljWymO6LKz5xubtKh3mAsK3r858hNP%2Bl6%2FtadP4MM%3D)
 
 ## Install multiple roles in servers
 
@@ -466,7 +499,7 @@ In the local machine we will install Apache and the remote node we will be insta
 
  ```ansible-galaxy init /root/ansible/roles/tomcat```
 
-
+![](https://qloudableassets.blob.core.windows.net/devops/OCI/introduction-to-ansible-playbook/images/36.jpg?st=2019-09-06T10%3A31%3A31Z&se=2022-09-07T10%3A31%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=fwljWymO6LKz5xubtKh3mAsK3r858hNP%2Bl6%2FtadP4MM%3D)
 
 **Step 2.** Inside Apache role, Update the file "main.yaml" under the folder tasks with the following code:
 
@@ -483,7 +516,7 @@ In the local machine we will install Apache and the remote node we will be insta
        name: httpd
        state: started
 ```
-
+![](https://qloudableassets.blob.core.windows.net/devops/OCI/introduction-to-ansible-playbook/images/37.jpg?st=2019-09-06T10%3A31%3A31Z&se=2022-09-07T10%3A31%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=fwljWymO6LKz5xubtKh3mAsK3r858hNP%2Bl6%2FtadP4MM%3D)
 
 In the above code, we are installing the latest version of Apache and starting the service of Apache. 
 
@@ -502,7 +535,7 @@ In the above code, we are installing the latest version of Apache and starting t
        name: tomcat
        state: started
 ```
-
+![](https://qloudableassets.blob.core.windows.net/devops/OCI/introduction-to-ansible-playbook/images/38.jpg?st=2019-09-06T10%3A31%3A31Z&se=2022-09-07T10%3A31%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=fwljWymO6LKz5xubtKh3mAsK3r858hNP%2Bl6%2FtadP4MM%3D)
 
 In the above code, we are installing the latest version of tomcat and starting the service of tomcat.
 
@@ -522,9 +555,8 @@ In the above code, we are installing the latest version of tomcat and starting t
       - role: tomcat
    become: true
 ```
-
-
-
+![](https://qloudableassets.blob.core.windows.net/devops/OCI/introduction-to-ansible-playbook/images/39.jpg?st=2019-09-06T10%3A31%3A31Z&se=2022-09-07T10%3A31%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=fwljWymO6LKz5xubtKh3mAsK3r858hNP%2Bl6%2FtadP4MM%3D)
+![](https://qloudableassets.blob.core.windows.net/devops/OCI/introduction-to-ansible-playbook/images/40.jpg?st=2019-09-06T10%3A31%3A31Z&se=2022-09-07T10%3A31%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=fwljWymO6LKz5xubtKh3mAsK3r858hNP%2Bl6%2FtadP4MM%3D)
 
 From the above code, the role "apache" is being installed on the hosts group local and the role "tomcat" is being installed on the webserver group. 
 
@@ -534,7 +566,7 @@ From the above code, the role "apache" is being installed on the hosts group loc
 
 ``` ansible-playbook /root/ansible/Package_install.yaml```
 
-
+![](https://qloudableassets.blob.core.windows.net/devops/OCI/introduction-to-ansible-playbook/images/41.jpg?st=2019-09-06T10%3A31%3A31Z&se=2022-09-07T10%3A31%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=fwljWymO6LKz5xubtKh3mAsK3r858hNP%2Bl6%2FtadP4MM%3D)
 
 From the above output, we can see that Apache is installed on the local machine and tomcat is installed on the remote machine.
 
@@ -566,7 +598,8 @@ username: "testuser@sysgain.com"
 password: "AnsibleTutorial"
 ```
  
-
+![](https://qloudableassets.blob.core.windows.net/devops/OCI/introduction-to-ansible-playbook/images/42.jpg?st=2019-09-06T10%3A31%3A31Z&se=2022-09-07T10%3A31%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=fwljWymO6LKz5xubtKh3mAsK3r858hNP%2Bl6%2FtadP4MM%3D)
+![](https://qloudableassets.blob.core.windows.net/devops/OCI/introduction-to-ansible-playbook/images/43.jpg?st=2019-09-06T10%3A31%3A31Z&se=2022-09-07T10%3A31%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=fwljWymO6LKz5xubtKh3mAsK3r858hNP%2Bl6%2FtadP4MM%3D)
 
 
 **Step 2.** These variables can be used in all the roles defined in the roles folder.  
@@ -577,6 +610,7 @@ password: "AnsibleTutorial"
 
 ```vi /root/ansible/roles/variables/tasks/main.yaml```
   
+![](https://qloudableassets.blob.core.windows.net/devops/OCI/introduction-to-ansible-playbook/images/44.jpg?st=2019-09-06T10%3A31%3A31Z&se=2022-09-07T10%3A31%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=fwljWymO6LKz5xubtKh3mAsK3r858hNP%2Bl6%2FtadP4MM%3D)
 
 The above code takes variable values from the group variables defined in the group variable directory
 
@@ -595,6 +629,7 @@ The above code takes variable values from the group variables defined in the gro
       - role: variables
 ```
 
+![](https://qloudableassets.blob.core.windows.net/devops/OCI/introduction-to-ansible-playbook/images/45.jpg?st=2019-09-06T10%3A31%3A31Z&se=2022-09-07T10%3A31%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=fwljWymO6LKz5xubtKh3mAsK3r858hNP%2Bl6%2FtadP4MM%3D)
 
 In the above code, since login.yaml file was included in the playbook which is a group variables file, they can be automatically passed to the subsequent tasks in the playbook. These variables can be accessed in all the nodes that role is executed on.
 
@@ -602,7 +637,7 @@ In the above code, since login.yaml file was included in the playbook which is a
 
 ```ansible-playbook create_user.yaml```
 
-
+![](https://qloudableassets.blob.core.windows.net/devops/OCI/introduction-to-ansible-playbook/images/46.jpg?st=2019-09-06T10%3A31%3A31Z&se=2022-09-07T10%3A31%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=fwljWymO6LKz5xubtKh3mAsK3r858hNP%2Bl6%2FtadP4MM%3D)
 
 **Step 6.** Handlers are only executed if a certain task reports any changes. For example, if a configuration of a package is updated, then handler is notified to restart the package service which picks up updated configuration.
 
@@ -616,16 +651,15 @@ In the above code, since login.yaml file was included in the playbook which is a
       name: httpd
       state: restarted
 ```
-
-
-
+![](https://qloudableassets.blob.core.windows.net/devops/OCI/introduction-to-ansible-playbook/images/47.jpg?st=2019-09-06T10%3A31%3A31Z&se=2022-09-07T10%3A31%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=fwljWymO6LKz5xubtKh3mAsK3r858hNP%2Bl6%2FtadP4MM%3D)
+![](https://qloudableassets.blob.core.windows.net/devops/OCI/introduction-to-ansible-playbook/images/48.jpg?st=2019-09-06T10%3A31%3A31Z&se=2022-09-07T10%3A31%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=fwljWymO6LKz5xubtKh3mAsK3r858hNP%2Bl6%2FtadP4MM%3D)
 
 **Step 8.** We will be maintaining a file using Apache module and if the file changes we will notify the handler to restart Apache service.
 
 Go to the role Apache and templates folder by entering cd roles/apache/templates/. Create a new file "Sample.j2"  as shown below. j2 is the format of the template that Ansible recognizes. 
 
-
-
+![](https://qloudableassets.blob.core.windows.net/devops/OCI/introduction-to-ansible-playbook/images/49.jpg?st=2019-09-06T10%3A31%3A31Z&se=2022-09-07T10%3A31%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=fwljWymO6LKz5xubtKh3mAsK3r858hNP%2Bl6%2FtadP4MM%3D)
+![](https://qloudableassets.blob.core.windows.net/devops/OCI/introduction-to-ansible-playbook/images/50.jpg?st=2019-09-06T10%3A31%3A31Z&se=2022-09-07T10%3A31%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=fwljWymO6LKz5xubtKh3mAsK3r858hNP%2Bl6%2FtadP4MM%3D)
 
 
  **Step 9.** Update the Ansible role code at "/root/ansible/roles/apache/tasks/main.yaml" file with the following code (see below screenshot):
@@ -639,7 +673,7 @@ Go to the role Apache and templates folder by entering cd roles/apache/templates
    notify:
        - restart apache
 ```
-
+![](https://qloudableassets.blob.core.windows.net/devops/OCI/introduction-to-ansible-playbook/images/51.jpg?st=2019-09-06T10%3A31%3A31Z&se=2022-09-07T10%3A31%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=fwljWymO6LKz5xubtKh3mAsK3r858hNP%2Bl6%2FtadP4MM%3D)
 
 **Step 10.** Create a new playbook apache.yaml file under the top folder in the hierarchy with the following code (see screenshot below):
 
@@ -651,8 +685,8 @@ Go to the role Apache and templates folder by entering cd roles/apache/templates
       - role: apache
    become: true
 ```
-
-
+![](https://qloudableassets.blob.core.windows.net/devops/OCI/introduction-to-ansible-playbook/images/52.jpg?st=2019-09-06T10%3A31%3A31Z&se=2022-09-07T10%3A31%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=fwljWymO6LKz5xubtKh3mAsK3r858hNP%2Bl6%2FtadP4MM%3D)
+![](https://qloudableassets.blob.core.windows.net/devops/OCI/introduction-to-ansible-playbook/images/53.jpg?st=2019-09-06T10%3A31%3A31Z&se=2022-09-07T10%3A31%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=fwljWymO6LKz5xubtKh3mAsK3r858hNP%2Bl6%2FtadP4MM%3D)
 
 
 **Step 11.** Enter the below command to execute the playbook apache, which installs Apache and configures the file in the location (/etc/Sample.txt). Since this file was configured for the first time, it notifies handler and Apache service is restarted. Subsequent execution of the playbook will not restart the service as there are no changes to the file. 
@@ -661,13 +695,11 @@ Go to the role Apache and templates folder by entering cd roles/apache/templates
 
 **Note:** If the file (Sample.j2) is updated in the templates folder then subseqent runs of ansible will restart apache service
 
- 
-
-
+![](https://qloudableassets.blob.core.windows.net/devops/OCI/introduction-to-ansible-playbook/images/54.jpg?st=2019-09-06T10%3A31%3A31Z&se=2022-09-07T10%3A31%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=fwljWymO6LKz5xubtKh3mAsK3r858hNP%2Bl6%2FtadP4MM%3D)
 
 In the above execution output we can see that file was updated and the handler was notified to restart the service. Immediate execution of the playbook again will skip that step as the file is not being updated as shown below:
 
-
+![](https://qloudableassets.blob.core.windows.net/devops/OCI/introduction-to-ansible-playbook/images/55.jpg?st=2019-09-06T10%3A31%3A31Z&se=2022-09-07T10%3A31%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=fwljWymO6LKz5xubtKh3mAsK3r858hNP%2Bl6%2FtadP4MM%3D)
 
 ### Conclusion:
 
