@@ -84,13 +84,13 @@ In this section, you will create a Virtual Cloud Network (VCN) within the OCI co
 
 **Step 1.** Click on the OCI Services Menu, Select Networking and choose Virtual Cloud Networking
 
- 
+ ![](https://qloudableassets.blob.core.windows.net/devops/OCI/advanced-ansible-playbooks/images/3.jpg?st=2019-09-06T10%3A31%3A31Z&se=2022-09-07T10%3A31%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=fwljWymO6LKz5xubtKh3mAsK3r858hNP%2Bl6%2FtadP4MM%3D)
 
 **Step 2.** Please ensure you have the correct Compartment Selected. (Bottom Left of OCI console). 
 
 Choose Compartment: {{comparment-name}}
 
-
+![](https://qloudableassets.blob.core.windows.net/devops/OCI/advanced-ansible-playbooks/images/4.jpg?st=2019-09-06T10%3A31%3A31Z&se=2022-09-07T10%3A31%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=fwljWymO6LKz5xubtKh3mAsK3r858hNP%2Bl6%2FtadP4MM%3D)
 
 **Step 3.** Click Create Virtual Cloud Network. 
 
@@ -101,6 +101,9 @@ Choose Compartment: {{comparment-name}}
      <br>
      4.4 Leave the remainder of the fields in the Dialog Box as is.<br>
      4.5 Click Create Virtual Cloud Network to create the VCN<br>
+
+     ![](https://qloudableassets.blob.core.windows.net/devops/OCI/advanced-ansible-playbooks/images/5.jpg?st=2019-09-06T10%3A31%3A31Z&se=2022-09-07T10%3A31%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=fwljWymO6LKz5xubtKh3mAsK3r858hNP%2Bl6%2FtadP4MM%3D)
+
      4.6 Click Close to close VCN Dialog Box.
 
 **Step 5.** A Virtual Cloud Network will be created and the name that was given will appear as the name of the VCN on the OCI Console.
@@ -111,6 +114,7 @@ In this section we will create a public/private SSH key pair. These keys will be
 
 **Step 1.** In the OCI Console Window, select the Apps icon and open git-Bash. A Git-Bash terminal will appear.
 
+![](https://qloudableassets.blob.core.windows.net/devops/OCI/advanced-ansible-playbooks/images/6.jpg?st=2019-09-06T10%3A31%3A31Z&se=2022-09-07T10%3A31%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=fwljWymO6LKz5xubtKh3mAsK3r858hNP%2Bl6%2FtadP4MM%3D)
 
 **Step 2.** Enter the command ssh-keygen in git-bash window.
 
@@ -126,6 +130,7 @@ You can swap between the OCI window and any other application (git-bash etc.) by
 
  c) Enter passphrase again
 
+![](https://qloudableassets.blob.core.windows.net/devops/OCI/advanced-ansible-playbooks/images/7.jpg?st=2019-09-06T10%3A31%3A31Z&se=2022-09-07T10%3A31%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=fwljWymO6LKz5xubtKh3mAsK3r858hNP%2Bl6%2FtadP4MM%3D)
 
 **Step 4.** You should now have the Public and Private keys generated.They can be found in<br> 
              /C/Users/PhotonUser/.ssh/id_rsa (Private Key)<br>
@@ -135,19 +140,22 @@ You can swap between the OCI window and any other application (git-bash etc.) by
        id_rsa.pub will be used to create the Compute instance and id_rsa to connect via SSH into the Compute instance.<br>
        Run 'cd /C/Users/PhotonUser/.ssh' (No Spaces in directory path) and then 'ls' to verify the two files exist.
 
+![](https://qloudableassets.blob.core.windows.net/devops/OCI/advanced-ansible-playbooks/images/8.jpg?st=2019-09-06T10%3A31%3A31Z&se=2022-09-07T10%3A31%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=fwljWymO6LKz5xubtKh3mAsK3r858hNP%2Bl6%2FtadP4MM%3D)
 
 **Step 5.** In the git-bash terminal window, type ‘cat /C/Users/PhotonUser/.ssh/id_rsa.pub’, Highlight the SSH key and copy (using the mouse or the keyboard (ctrl-c)
 
-
+![](https://qloudableassets.blob.core.windows.net/devops/OCI/advanced-ansible-playbooks/images/9.jpg?st=2019-09-06T10%3A31%3A31Z&se=2022-09-07T10%3A31%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=fwljWymO6LKz5xubtKh3mAsK3r858hNP%2Bl6%2FtadP4MM%3D)
 
 **Step 6.** In the OCI Console Window, click the Apps icon  and click Notepad. 
 
 **TIP:**
 You can swap between the OCI window and any other application (Notepad etc.) by clicking the Switch Window  icon.
 
+![](https://qloudableassets.blob.core.windows.net/devops/OCI/advanced-ansible-playbooks/images/10.jpg?st=2019-09-06T10%3A31%3A31Z&se=2022-09-07T10%3A31%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=fwljWymO6LKz5xubtKh3mAsK3r858hNP%2Bl6%2FtadP4MM%3D)
 
 **Step 7.** Paste the public key in Notepad (using your mouse/touch pad or Ctrl v).
 
+![](https://qloudableassets.blob.core.windows.net/devops/OCI/advanced-ansible-playbooks/images/11.jpg?st=2019-09-06T10%3A31%3A31Z&se=2022-09-07T10%3A31%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=fwljWymO6LKz5xubtKh3mAsK3r858hNP%2Bl6%2FtadP4MM%3D)
 
 **Step 8.** Minimize Notepad and git-bash (if open) windows.
 
@@ -177,7 +185,7 @@ In this section we will create a Compute instance with a Public IP address using
 
          3.5 SSH Keys: Select the PASTE SSH KEYS radio button and Paste the Public Key you saved in Notepad in the previous section.
 
-You can swap between the OCI window and any other application (notepad etc.) by clicking the Switch Window icon beside apps icon. 
+**TIP:** You can swap between the OCI window and any other application (notepad etc.) by clicking the Switch Window icon beside apps icon. 
 <br>
          3.6 Virtual Cloud Network: Select the VCN you created in the previous section.
 
@@ -187,9 +195,14 @@ You can swap between the OCI window and any other application (notepad etc.) by 
 
 **Note:** Leave other options in the dialog box as is other than the options mentioned above. 
 
+![](https://qloudableassets.blob.core.windows.net/devops/OCI/advanced-ansible-playbooks/images/12.jpg?st=2019-09-06T10%3A31%3A31Z&se=2022-09-07T10%3A31%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=fwljWymO6LKz5xubtKh3mAsK3r858hNP%2Bl6%2FtadP4MM%3D)
+
 **Step 4.** Follow the step 2 and 3 again to create another instance.
 
 **Step 5.** Once both the Instances are in ‘Running’ state, note down the public IP addresses.
+
+![](https://qloudableassets.blob.core.windows.net/devops/OCI/advanced-ansible-playbooks/images/13.jpg?st=2019-09-06T10%3A31%3A31Z&se=2022-09-07T10%3A31%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=fwljWymO6LKz5xubtKh3mAsK3r858hNP%2Bl6%2FtadP4MM%3D)
+![](https://qloudableassets.blob.core.windows.net/devops/OCI/advanced-ansible-playbooks/images/14.jpg?st=2019-09-06T10%3A31%3A31Z&se=2022-09-07T10%3A31%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=fwljWymO6LKz5xubtKh3mAsK3r858hNP%2Bl6%2FtadP4MM%3D)
 
 **Step 6.** You can also see that instances has now been provisioned and are in Running state.
 
@@ -206,6 +219,8 @@ In this section we will SSH into one of the Compute instances using its Public I
 
 **Tip:** If the terminal was closed simply launch a new one using the Apps icon .
 
+![](https://qloudableassets.blob.core.windows.net/devops/OCI/advanced-ansible-playbooks/images/15.jpg?st=2019-09-06T10%3A31%3A31Z&se=2022-09-07T10%3A31%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=fwljWymO6LKz5xubtKh3mAsK3r858hNP%2Bl6%2FtadP4MM%3D)
+
 **Step 2.** In the git-bash Terminal Window Type the command:
 
 ```cd /C/Users/PhotonUser/.ssh/  ```
@@ -214,7 +229,7 @@ Type ls and verify the id_rsa file exists.
 
 **Tip:** No Space in directory path (/C/Users/PhotonUser/.ssh).
 
-
+![](https://qloudableassets.blob.core.windows.net/devops/OCI/advanced-ansible-playbooks/images/16.jpg?st=2019-09-06T10%3A31%3A31Z&se=2022-09-07T10%3A31%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=fwljWymO6LKz5xubtKh3mAsK3r858hNP%2Bl6%2FtadP4MM%3D)
 
 **Step 3.** To login to the running instance, we will SSH into it. Type the command:
 
@@ -222,7 +237,7 @@ Type ls and verify the id_rsa file exists.
 
 **Note:** User name is ‘opc’. <PUBLIC_IP_OF_COMPUTE_INSTANCE_1> should be the actual IP address which was noted in previous section for example:  129.0.1.10 
 
-
+![](https://qloudableassets.blob.core.windows.net/devops/OCI/advanced-ansible-playbooks/images/17.jpg?st=2019-09-06T10%3A31%3A31Z&se=2022-09-07T10%3A31%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=fwljWymO6LKz5xubtKh3mAsK3r858hNP%2Bl6%2FtadP4MM%3D)
 
 **Step 4.** Enter ‘yes’ when prompted for security message. 
 
@@ -230,6 +245,7 @@ Type ls and verify the id_rsa file exists.
 
  ```opc@<YOUR_VM_NAME>``` (below example shows the command prompt for Compute instance)
 
+![](https://qloudableassets.blob.core.windows.net/devops/OCI/advanced-ansible-playbooks/images/18.jpg?st=2019-09-06T10%3A31%3A31Z&se=2022-09-07T10%3A31%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=fwljWymO6LKz5xubtKh3mAsK3r858hNP%2Bl6%2FtadP4MM%3D)
 
 
 **Step 6.**  We now have a Compute instance in OCI with a Public IP  address which is accessible over the internet.
@@ -283,6 +299,8 @@ Any other user preferred text editor can be used to update files.
 
 **Note:** It is ok, if the above command returns different version of ansible. 
 
+![](https://qloudableassets.blob.core.windows.net/devops/OCI/advanced-ansible-playbooks/images/19.jpg?st=2019-09-06T10%3A31%3A31Z&se=2022-09-07T10%3A31%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=fwljWymO6LKz5xubtKh3mAsK3r858hNP%2Bl6%2FtadP4MM%3D)
+
 ## Creating SSH keys
 
 In this section, we will create a public and private SSH key pairs for ansible control machine to SSH into the nodes defined in inventory file.
@@ -303,7 +321,7 @@ Press "Enter", when asked for the following:
 
 **Tip:** No Passphrase is required.
 
-
+![](https://qloudableassets.blob.core.windows.net/devops/OCI/advanced-ansible-playbooks/images/20.jpg?st=2019-09-06T10%3A31%3A31Z&se=2022-09-07T10%3A31%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=fwljWymO6LKz5xubtKh3mAsK3r858hNP%2Bl6%2FtadP4MM%3D)
 
 **Step 2.** Public and Private keys should have been generated and are stored in the directory /root/.ssh/. Public key need to be copied to authorized keys file, which gives Ansible access to login into the managed node.
 
@@ -318,7 +336,7 @@ Execute the following commands to copy the public key:
 
 Enter "yes" when promted to overwrite authorized_keys file.
 
-
+![](https://qloudableassets.blob.core.windows.net/devops/OCI/advanced-ansible-playbooks/images/21.jpg?st=2019-09-06T10%3A31%3A31Z&se=2022-09-07T10%3A31%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=fwljWymO6LKz5xubtKh3mAsK3r858hNP%2Bl6%2FtadP4MM%3D)
 
 **Step 3.** Open authorized_keys and copy the data using the following command:
 
@@ -326,7 +344,7 @@ Enter "yes" when promted to overwrite authorized_keys file.
             
 Highlight the SSH key and copy (using the mouse)
 
-
+![](https://qloudableassets.blob.core.windows.net/devops/OCI/advanced-ansible-playbooks/images/22.jpg?st=2019-09-06T10%3A31%3A31Z&se=2022-09-07T10%3A31%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=fwljWymO6LKz5xubtKh3mAsK3r858hNP%2Bl6%2FtadP4MM%3D)
 
 **Step 4.** Open the terminal of the second server. We need to paste the copied public key to the authorized keys file in the second server. Follow the steps to copy the public key:
 
@@ -339,6 +357,7 @@ vi authorized_keys​
 ```
 Copy the key into authorized_keys file 
  
+![](https://qloudableassets.blob.core.windows.net/devops/OCI/advanced-ansible-playbooks/images/23.jpg?st=2019-09-06T10%3A31%3A31Z&se=2022-09-07T10%3A31%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=fwljWymO6LKz5xubtKh3mAsK3r858hNP%2Bl6%2FtadP4MM%3D)
 
 **Note:** The public key needs to be copied into authorized_keys file in all servers(nodes) so that ansible control machine can SSH into the machines.
 
@@ -348,7 +367,7 @@ Copy the key into authorized_keys file
 
 Enter "yes" when prompted to add server ip to the known_hosts file. You might need to type twice as 2 hosts are added to the known_hosts file.
 
-
+![](https://qloudableassets.blob.core.windows.net/devops/OCI/advanced-ansible-playbooks/images/24.jpg?st=2019-09-06T10%3A31%3A31Z&se=2022-09-07T10%3A31%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=fwljWymO6LKz5xubtKh3mAsK3r858hNP%2Bl6%2FtadP4MM%3D)
 
 Above command pings the servers defined in the inventory file that is created in the previous steps. Since only local machine is added in the inventory file ansible does a ping on the local machine using the SSH key created. 
 
@@ -394,7 +413,7 @@ Step 4: Run the command to execute the playbook
 
 You can see that the execution of the playbook does not stop for 15 seconds but completes the playbook execution.
 
-
+![](https://qloudableassets.blob.core.windows.net/devops/OCI/advanced-ansible-playbooks/images/25.jpg?st=2019-09-06T10%3A31%3A31Z&se=2022-09-07T10%3A31%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=fwljWymO6LKz5xubtKh3mAsK3r858hNP%2Bl6%2FtadP4MM%3D)
 
 To validate that wget is installed on the server, type wget and check that wget command is available and asking for URL. 
 
@@ -420,7 +439,7 @@ Step 5. Asynchronous tasks can be checked later in the playbook if the task has 
 
 Execute the playbook with the command **```ansible-playbook async.yaml```**
 
-
+![](https://qloudableassets.blob.core.windows.net/devops/OCI/advanced-ansible-playbooks/images/26.jpg?st=2019-09-06T10%3A31%3A31Z&se=2022-09-07T10%3A31%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=fwljWymO6LKz5xubtKh3mAsK3r858hNP%2Bl6%2FtadP4MM%3D)
 
 Step 6. In the above execution, the task when was performed asynchronously was to sleep for 30 seconds. In the next task we checked to see if the above task was completed. Status of the command "Sleep 30 seconds" were tried for 5 times before it finished the task.
 
@@ -450,6 +469,7 @@ Step 3. Execute the playbook with the command
 
 ```ansible-playbook delegate.yaml```
 
+![](https://qloudableassets.blob.core.windows.net/devops/OCI/advanced-ansible-playbooks/images/27.jpg?st=2019-09-06T10%3A31%3A31Z&se=2022-09-07T10%3A31%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=fwljWymO6LKz5xubtKh3mAsK3r858hNP%2Bl6%2FtadP4MM%3D)
 
 As we can see in the execution output that the task was delegated to a different node and wget was installed on remote machine.
 
@@ -474,6 +494,7 @@ Step 6.  Execute the playbook with the following command
 
 ```ansible-playbook delegate.yaml```
 
+![](https://qloudableassets.blob.core.windows.net/devops/OCI/advanced-ansible-playbooks/images/28.jpg?st=2019-09-06T10%3A31%3A31Z&se=2022-09-07T10%3A31%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=fwljWymO6LKz5xubtKh3mAsK3r858hNP%2Bl6%2FtadP4MM%3D)
 
 In the above execution output, first wget is installed in the local machine and then it is installed on the remote machine. 
 
@@ -524,7 +545,8 @@ In the block section, "command: /bin/false"  fails to execute and the execution 
 Step 2.  Execute the playbook with the command 
 
 ```ansible-playbook blocks.yaml```
- 
+
+![](https://qloudableassets.blob.core.windows.net/devops/OCI/advanced-ansible-playbooks/images/29.jpg?st=2019-09-06T10%3A31%3A31Z&se=2022-09-07T10%3A31%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=fwljWymO6LKz5xubtKh3mAsK3r858hNP%2Bl6%2FtadP4MM%3D) 
 
 In the above execution output, we can see that the tasks executed after the error are in the "rescue" section and "block" section.
 
@@ -552,6 +574,8 @@ Changing the command from "/bin/false" to "/bin/true" will pass execution in the
 Step 4.  Execute the playbook with the command 
 
 ```ansible-playbook blocks.yaml```
+
+![](https://qloudableassets.blob.core.windows.net/devops/OCI/advanced-ansible-playbooks/images/30.jpg?st=2019-09-06T10%3A31%3A31Z&se=2022-09-07T10%3A31%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=fwljWymO6LKz5xubtKh3mAsK3r858hNP%2Bl6%2FtadP4MM%3D)
 
 ## Encrypt sensitive data using Vaults
 
@@ -584,12 +608,13 @@ Command prompts to enter the password, type the password and type "Enter".  Type
 
 **Note:** Password that is being entered is not visible.
 
-
+![](https://qloudableassets.blob.core.windows.net/devops/OCI/advanced-ansible-playbooks/images/31.jpg?st=2019-09-06T10%3A31%3A31Z&se=2022-09-07T10%3A31%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=fwljWymO6LKz5xubtKh3mAsK3r858hNP%2Bl6%2FtadP4MM%3D)
 
 Step 4. Open the encrypted file and it looks similar to the following image
 
 ```vi /etc/ansible/encrypt.yaml```
 
+![](https://qloudableassets.blob.core.windows.net/devops/OCI/advanced-ansible-playbooks/images/32.jpg?st=2019-09-06T10%3A31%3A31Z&se=2022-09-07T10%3A31%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=fwljWymO6LKz5xubtKh3mAsK3r858hNP%2Bl6%2FtadP4MM%3D)
 
 Step 5. Execute the playbook with the following command
 
@@ -597,7 +622,7 @@ Step 5. Execute the playbook with the following command
 
 The above command prompts for a password and type the same password used to encrypt the file. Ansible decrypts the file and the playbook is executed. 
 
-
+![](https://qloudableassets.blob.core.windows.net/devops/OCI/advanced-ansible-playbooks/images/33.jpg?st=2019-09-06T10%3A31%3A31Z&se=2022-09-07T10%3A31%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=fwljWymO6LKz5xubtKh3mAsK3r858hNP%2Bl6%2FtadP4MM%3D)
 
 Step 6. If the playbook needs to be updated it can be decrypted using the following command and the passord provided during encryption.
 
