@@ -94,7 +94,7 @@ Username: {{Username}}<br>
 Password: {{Password}}
 
 
-**Note:**Your password should be updated automatically for you, but sometimes  you may be asked to change it after signing in the first time. If prompted, pleaseupdate the password. You can use this one to expedite things: Oracle123!!!! . It will not be saved after this lab expires.
+**Note:** Your password should be updated automatically for you, but sometimes  you may be asked to change it after signing in the first time. If prompted, pleaseupdate the password. You can use this one to expedite things: Oracle123!!!! . It will not be saved after this lab expires.
 
 **Step 2.** Reduce the Browser Display Window Size/Resolution to fit your needs(Below example is for Chrome). 
 
@@ -107,6 +107,7 @@ In this section, you will create a Virtual Cloud Network (VCN) within the OCI co
  
 
 **Step 2.** Please ensure you have the correct Compartment Selected. (Bottom Left of OCI console). 
+
 Choose Compartment: {{comparment-name}}
 
 
@@ -206,20 +207,14 @@ You can swap between the OCI window and any other application (notepad etc.) by 
 
 **Note:** Leave other options in the dialog box as is other than the options mentioned above. 
 
+Step 4. Follow the step 2 and 3 again to create another instance.
 
-**Step 4.** Once Instance is in ‘Running’ state, note down the public IP address.
- 
-**Tip:** We recommend writing down the IP address in a notepad for future use.
+Step 5. Once both the Instances are in ‘Running’ state, note down the public IP addresses.
 
- 
-**Step 5.** You can also that instance has now been provisioned and is in Running state.
+Step 6. You can also see that instances has now been provisioned and are in Running state.
 
-
-We now have a Compute instance with a Public IP address running in OCI.
-
+We now have two Compute instances with a Public IP addresses running in OCI.
 Next we will SSH to the compute instance from the internet.
-
-
 
 ## Login to the Compute Instance and Install Ansible
 
