@@ -20,6 +20,8 @@
 
 [Create a Playbook](#create-a-playbook)
 
+[Install multiple roles in servers](#install-multiple-roles-in-servers)
+
 ## Overview
 
 Welcome to the Introduction to Ansible Playbooks Learning Lab!
@@ -447,3 +449,94 @@ Step 6. To check if the User(Sysgain) is created in the machines, run the follow
 
 ```awk -F ":" '/^Sysgain/{print $1}' /etc/passwd```
 
+## Install multiple roles in servers
+
+In this section, We will learn to install multiple roles in different servers from a single playbook.
+
+In the local machine we will install Apache and the remote node we will be installing tomcat package from a single playbook that is executed from Ansible Control Machine.
+
+Step 1.  Inside the directory roles, create a new role named "apache". This role is used to install/configure and manage the apache service. 
+
+ ```ansible-galaxy init /root/ansible/roles/apache```
+
+ ```ansible-galaxy init /root/ansible/roles/tomcat```
+
+
+
+Step 2. Inside Apache role, Update the file "main.yaml" under the folder tasks with the following code:
+
+```yml
+---
+# tasks file for apache
+- name: Install package Apache
+   yum:
+       name: httpd
+       state: latest
+
+- name: start Apache service
+   service:
+       name: httpd
+       state: started
+```
+
+
+In the above code, we are installing the latest version of Apache and starting the service of Apache. 
+
+Step 3. Inside Tomcat role, Update the file "main.yaml" (using vi command) under the folder tasks with the following code:
+
+```yml
+---
+# tasks file for tomcat
+- name: Install package Tomcat
+   yum:
+       name: tomcat
+       state: latest
+
+- name: Start tomcat service
+   service:
+       name: tomcat
+       state: started
+```
+
+
+In the above code, we are installing the latest version of tomcat and starting the service of tomcat.
+
+Step 4. Create a new playbook "Package_install.yaml" under the parent folder Ansible where roles directory is available. Update the following code (using vi command) in Package_install.yaml file:
+
+```yml
+---
+- name: Install Apache
+   hosts: local
+   roles: 
+      - role: apache
+   become: true
+
+- name: Install tomcat
+   hosts: webserver
+   roles: 
+      - role: tomcat
+   become: true
+```
+
+
+
+
+From the above code, the role "apache" is being installed on the hosts group local and the role "tomcat" is being installed on the webserver group. 
+
+**Note:** The groups "local" and "webserver" are defined under inventory file in the previous sections. We have defined Ansible Control Machine in the local group and the second node server in the webserver group.
+
+Step 5.  Execute the playbook from Ansible Control Server which installs apache on the local machine and tomcat on the second compute instance. 
+
+``` ansible-playbook /root/ansible/Package_install.yaml```
+
+
+
+From the above output, we can see that Apache is installed on the local machine and tomcat is installed on the remote machine.
+
+**Tip:** We can view the IP address of the server on which the playbook is executing in the output section.
+
+Step 6. To validate the packages Apache and tomcat are installed on their respective servers. Login into their respective server and the following command:
+
+```service httpd status (shows status of apache service)```
+
+```service tomcat status ( shows status of tomcat service)```
