@@ -10,7 +10,7 @@
 
 [Create a VCN](#create-a-VCN)
 
-[Create Public/Private SSH Keypair to Login to the Compute Instance](#create-publicprivate-ssh-keypair-to-login-to-the-compute-instance)
+[Create Public and Private SSH Keypair to Login to the Compute Instance](#create-public-and-private-ssh-keypair-to-login-to-the-compute-instance)
 
 [Create a Compute Instance](#create-a-compute-instance)
 
@@ -134,7 +134,7 @@ Choose Compartment: {{comparment-name}}
 
 **Step 5.** A Virtual Cloud Network will be created and the name that was given will appear as the name of the VCN on the OCI Console.
 
-## Create Public/Private SSH Keypair to Login to the Compute Instance
+## Create Public and Private SSH Keypair to Login to the Compute Instance
 
 In this section we will create a public/private SSH key pair. These keys will be used to launch a Compute instance and connect to it.
 
