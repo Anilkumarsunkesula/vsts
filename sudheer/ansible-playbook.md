@@ -235,7 +235,7 @@ In this section we will SSH into one of the Compute instances using its Public I
 
 **Tip:** If the terminal was closed simply launch a new one using the Apps icon .
 
-**Step 1.** In the git-bash Terminal Window Type the command:
+**Step 2.** In the git-bash Terminal Window Type the command:
 
 ```cd /C/Users/PhotonUser/.ssh/  ```
 
@@ -333,7 +333,7 @@ Press "Enter", when asked for the following:
 
 
 
-**Step 1.** Public and Private keys should have been generated and are stored in the directory /root/.ssh/. Public key need to be copied to authorized keys file, which gives Ansible access to login into the managed node.
+**Step 2.** Public and Private keys should have been generated and are stored in the directory /root/.ssh/. Public key need to be copied to authorized keys file, which gives Ansible access to login into the managed node.
 
 **Note:** In this example Ansible control machine and the managed node is the same server. If authorized_keys file is already available, overwrite it with the public key or a new file is generated.
 
@@ -399,7 +399,7 @@ cd /root/ansible/roles
 ansible-galaxy init create_user
 ```
 
-**Step 1.** Under the folder create_user, navigate to the tasks directory by entering:
+**Step 2.** Under the folder create_user, navigate to the tasks directory by entering:
 
 ```cd tasks/```
 
@@ -467,7 +467,7 @@ In the local machine we will install Apache and the remote node we will be insta
 
 
 
-**Step 1.** Inside Apache role, Update the file "main.yaml" under the folder tasks with the following code:
+**Step 2.** Inside Apache role, Update the file "main.yaml" under the folder tasks with the following code:
 
 ```yml
 ---
@@ -568,7 +568,7 @@ password: "AnsibleTutorial"
 
 
 
-**Step 1.** These variables can be used in all the roles defined in the roles folder.  
+**Step 2.** These variables can be used in all the roles defined in the roles folder.  
 
 **Step 3.**  Create a new role variables and update "main.yaml" file under tasks directory as follows:
 
