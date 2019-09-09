@@ -20,6 +20,9 @@
 
 [Task Delegation](#task-delegation)
 
+[Blocks for error handling in Ansible Playbooks](#blocks-for-error-handling-in-ansible-playbooks)
+
+[Encrypt sensitive data using Vaults](#encrypt-sensitive-data-using-vaults)
 ## Overview
 
 Welcome to the Advanced Ansible Playbooks Learning Lab on OCI from Sysgain!
@@ -486,3 +489,121 @@ Rolling update can even be defined, if there are different batch of servers that
 
 In the above code the task is executed in baches, the first batch would contain a single host, the next would contain 5 hosts, and the remaining batches would contain 10 hosts untill all the available hosts completes task execution. 
 
+## Blocks for error handling in Ansible Playbooks
+
+Blocks allow for logical grouping of tasks and in play error handling. Multiple tasks are grouped into a section named "blocks" and if any of the tasks in the block fails, "rescue" section tasks are executed. The section "always" is executed everytime irrespective of an error either in the block or rescue section.
+
+Step 1: Create a new playbook under the folder ansible with the following command
+
+```touch /root/ansible/blocks.yaml``
+
+Update the created file with the following code
+
+```yml
+---
+- hosts: local
+  tasks:
+    - name: Attempt and graceful rollback 
+      block:
+        - debug:
+             msg: 'I execute normally'
+        - command: /bin/false
+        - debug:
+             msg: 'I never execute, due to the above failing command'
+      rescue:
+        - debug:
+             msg: 'I caught an error'
+      always:
+        - debug:
+             msg: ' I always execute'
+```
+
+In the block section, "command: /bin/false"  fails to execute and the execution is transferred to the rescue section, where all the tasks under it are executed before proceeding to "always" section.
+
+Step 2.  Execute the playbook with the command 
+
+```ansible-playbook blocks.yaml```
+ 
+
+In the above execution output, we can see that the tasks executed after the error are in the "rescue" section and "block" section.
+
+Step 3. We will update the file "blocks.yaml" with the following code so that it passes execution in the "block" section and continous to execute "always" section.
+
+```yml
+---
+- hosts: local
+  tasks:
+    - name: Attempt and graceful rollback 
+      block:
+        - debug:
+             msg: 'I execute normally'
+        - command: /bin/true
+      rescue:
+        - debug:
+             msg: 'I caught an error'
+      always:
+        - debug:
+             msg: ' I always execute'
+```
+
+Changing the command from "/bin/false" to "/bin/true" will pass execution in the block section and always section code is executed. 
+
+Step 4.  Execute the playbook with the command 
+
+```ansible-playbook blocks.yaml```
+
+## Encrypt sensitive data using Vaults
+
+In this section, we will learn about Ansible vault and how it is used to encrypt sensitive data(usernames and passwords). Ansible vault is a feature of ansible which can encrypt any structured data file used by Ansible. In the steps below, we will see how a playbook can be encrypted with a password and how the encrypted playbooks are executed. 
+
+Step 1: Create a new file  "encrypt.yaml" under the folder ansible with the command
+
+```touch /root/ansible/encrypt.yaml```
+
+Step 2: Update the file "encrypt.yaml" file with the following code 
+
+```yml
+---
+- hosts: local
+  tasks:
+    - name: Print Username and password
+      debug:
+        msg: ' Username is Sysgain123 and Password is Ansible123'
+```
+
+In this above file Username and Password are sensitive data and cannot be stored as a plain text. Ansible vault feature helps us to encrypt the playbook.
+
+Step 3: Encrypt the playbook with the following command
+
+```ansible-vault encrypt encrypt.yaml``
+
+In the above command, ansible-vault is a feature of ansible, encrypt is the keyword used to encrypt a file and encrypt.yaml is the filename which is being encrypted. 
+
+Command prompts to enter the password, type the password and type "Enter".  Type the same password again when asked to confirm. 
+
+**Note:** Password that is being entered is not visible.
+
+
+
+Step 4. Open the encrypted file and it looks similar to the following image
+
+```vi /etc/ansible/encrypt.yaml```
+
+
+Step 5. Execute the playbook with the following command
+
+```ansible-playbook encrypt.yaml --ask-vault-pass```
+
+The above command prompts for a password and type the same password used to encrypt the file. Ansible decrypts the file and the playbook is executed. 
+
+
+
+Step 6. If the playbook needs to be updated it can be decrypted using the following command and the passord provided during encryption.
+
+```ansible-vault decrypt encrypt.yaml```
+
+The above command decrypts the file into normal text file. It can be encrypted again either with the same password or a new password. 
+
+You have successfully completed this tutorial. In this Training lab we have learnt how to Create a VCN in Oracle Cloud and create multiple compute instances inside a VCN. We have learnt on how to install Ansible, How Ansible connects with other nodes to execute ansible playbook. 
+
+We have learnt about Asynchrouns actions and polling of tasks, task delegation to a different server, blocks for error handing and encryption of sensitive data. 
