@@ -31,7 +31,7 @@ Ansible Playbooks are an organized unit of scripts that is used for server confi
 
 Playbook contains one or more plays/tasks which executes a simple command or a script. Every playbook has an attribute hosts, where servers or group of servers are defined. These plays are executed in sequencial manner on the servers defined in the playbook.
 
-
+![](https://qloudableassets.blob.core.windows.net/devops/OCI/advanced-ansible-playbooks/images/1.jpg?st=2019-09-06T10%3A31%3A31Z&se=2022-09-07T10%3A31%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=fwljWymO6LKz5xubtKh3mAsK3r858hNP%2Bl6%2FtadP4MM%3D)
 
 It is possible to run several hundreds of tasks in a single playbook, but it is efficient to reuse a task multiple time in multiple playbooks so tasks or group of tasks can be organized into roles. These roles can be included into a playbook. In this tutorial we will learning about how the tasks in a role are executed in asynchronous mode and how they can be polled later during the playbook execution.
 
