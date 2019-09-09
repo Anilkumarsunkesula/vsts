@@ -216,11 +216,11 @@ You can swap between the OCI window and any other application (notepad etc.) by 
 
 **Note:** Leave other options in the dialog box as is other than the options mentioned above. 
 
-Step 4. Follow the step 2 and 3 again to create another instance.
+**Step 4.** Follow the step 2 and 3 again to create another instance.
 
-Step 5. Once both the Instances are in ‘Running’ state, note down the public IP addresses.
+**Step 5.** Once both the Instances are in ‘Running’ state, note down the public IP addresses.
 
-Step 6. You can also see that instances has now been provisioned and are in Running state.
+**Step 6.** You can also see that instances has now been provisioned and are in Running state.
 
 We now have two Compute instances with a Public IP addresses running in OCI.
 Next we will SSH to the compute instance from the internet.
@@ -231,11 +231,11 @@ In this section we will SSH into one of the Compute instances using its Public I
 
 **Note:** One server can randomly be selected to be Ansible Control Machine.
 
-Step 1. Bring up a new git terminal or switch to the existing one (if you still have it open).
+**Step 1.** Bring up a new git terminal or switch to the existing one (if you still have it open).
 
 **Tip:** If the terminal was closed simply launch a new one using the Apps icon .
 
-Step 2. In the git-bash Terminal Window Type the command:
+**Step 1.** In the git-bash Terminal Window Type the command:
 
 ```cd /C/Users/PhotonUser/.ssh/  ```
 
@@ -245,7 +245,7 @@ Type ls and verify the id_rsa file exists.
 
 
 
-Step 3. To login to the running instance, we will SSH into it. Type the command:
+**Step 3.** To login to the running instance, we will SSH into it. Type the command:
 
 ```ssh –i id_rsa opc@<PUBLIC_IP_OF_COMPUTE_INSTANCE_1>```
 
@@ -253,16 +253,16 @@ Step 3. To login to the running instance, we will SSH into it. Type the command:
 
 
 
-Step 4. Enter ‘yes’ when prompted for security message. 
+**Step 4.** Enter ‘yes’ when prompted for security message. 
 
-Step 5. Verify the prompt shows 
+**Step 5.** Verify the prompt shows 
               ```opc@<YOUR_VM_NAME>``` (below example shows the command prompt for Compute instance)
 
 
 
-Step 6.  We now have a Compute instance in OCI with a Public IP  address which is accessible over the internet.
+**Step 6.**  We now have a Compute instance in OCI with a Public IP  address which is accessible over the internet.
 
-Step 7. The "sudo" command allows user to run programs with elevated privileges and "su" command allows you to become another user. Running the following command will default to root account (system administrator account) which allows installing and configuring ansible using yum package manager.
+**Step 7.** The "sudo" command allows user to run programs with elevated privileges and "su" command allows you to become another user. Running the following command will default to root account (system administrator account) which allows installing and configuring ansible using yum package manager.
 
 ```sudo su -```
 
@@ -270,15 +270,15 @@ Step 7. The "sudo" command allows user to run programs with elevated privileges 
 
 **Note:** Along with Anisble package, multiple pre-requisite packages are being installed which takes a couple of minutes.
 
-Step 8. Bring up a new git-bash terminal using the Apps icon.
+**Step 8.** Bring up a new git-bash terminal using the Apps icon.
 
-Step 9. To login to the Second running instance, we will SSH into it. Type the command
+**Step 9.** To login to the Second running instance, we will SSH into it. Type the command
 
 ```ssh –i id_rsa opc@<PUBLIC_IP_OF_COMPUTE_INSTANCE_2>```
 
 Enter ‘yes’ when prompted for security message. 
 
-Step 10. Ansible has a default inventory file created which is located at "/etc/ansible/hosts". Inventory file contains a list of nodes which are managed/configured by ansible.
+**Step 10.** Ansible has a default inventory file created which is located at "/etc/ansible/hosts". Inventory file contains a list of nodes which are managed/configured by ansible.
 
 It is always a good practice to back up the default inventory file to reference it in future if required.
 
@@ -295,7 +295,7 @@ To learn vi text editor "https://ryanstutorials.net/linuxtutorial/vi.php"
 
 Any other user preferred text editor can be used to update files.
 
-Step 11. Update the created hosts file in the step 8 with the following data:
+**Step 11.** Update the created hosts file in the step 8 with the following data:
 ```sh
 [local]
 127.0.0.1
@@ -303,9 +303,9 @@ Step 11. Update the created hosts file in the step 8 with the following data:
 <<ipaddress of second server>>
  ```
 
-Step 12. In the Step 11, we have added local server's ip address (127.0.0.1) and the second server (public IP address) to the hosts inventory file, Ansible uses the host file to SSH into the servers and run the requiredAansible jobs.
+**Step 12.** In the Step 11, we have added local server's ip address (127.0.0.1) and the second server (public IP address) to the hosts inventory file, Ansible uses the host file to SSH into the servers and run the requiredAansible jobs.
 
-Step 13. To validate Ansible is installed and configured correctly, run the following command:
+**Step 13.** To validate Ansible is installed and configured correctly, run the following command:
 
 ```ansible --version```
 
@@ -319,7 +319,7 @@ Ansible control machine is a server on which Ansible is installed and executes A
 
 An inventory file is a list of managed nodes which are also called "hosts". Ansible is not installed on managed nodes.
 
-Step 1. In the terminal of Ansible Control Machine (where ansible is installed), enter the command "ssh-keygen".
+**Step 1.** In the terminal of Ansible Control Machine (where ansible is installed), enter the command "ssh-keygen".
 
 Press "Enter", when asked for the following:
 
@@ -333,7 +333,7 @@ Press "Enter", when asked for the following:
 
 
 
-Step 2. Public and Private keys should have been generated and are stored in the directory /root/.ssh/. Public key need to be copied to authorized keys file, which gives Ansible access to login into the managed node.
+**Step 1.** Public and Private keys should have been generated and are stored in the directory /root/.ssh/. Public key need to be copied to authorized keys file, which gives Ansible access to login into the managed node.
 
 **Note:** In this example Ansible control machine and the managed node is the same server. If authorized_keys file is already available, overwrite it with the public key or a new file is generated.
 
@@ -348,7 +348,7 @@ Enter "yes" when promted to overwrite authorized_keys file.
 
 
 
-Step 3. Open authorized_keys and copy the data using the following command:
+**Step 3.** Open authorized_keys and copy the data using the following command:
 
 ``` cat /root/.ssh/authorized_keys```
             
@@ -356,7 +356,7 @@ Highlight the SSH key and copy (using the mouse)
 
 
 
-Step 4. Open the terminal of the second server. We need to paste the copied public key to the authorized keys file in the second server. Follow the steps to copy the public key:
+**Step 4.** Open the terminal of the second server. We need to paste the copied public key to the authorized keys file in the second server. Follow the steps to copy the public key:
 
 **Tip:** You can swap between the OCI window and any other application (Notepad etc.) by clicking the Switch Window icon.
 
@@ -370,7 +370,7 @@ Copy the key into authorized_keys file
 
 **Note:** The public key needs to be copied into authorized_keys file in all servers(nodes) so that ansible control machine can SSH into the machines.
 
-Step 5. In the Ansible Control Machine, Check to see if Ansible is able to connect to the servers, defined in the inventory file that was created in the previous section. Execute the following command which pings the servers in the inventory file.
+**Step 5.** In the Ansible Control Machine, Check to see if Ansible is able to connect to the servers, defined in the inventory file that was created in the previous section. Execute the following command which pings the servers in the inventory file.
 
 ```ansible all -m ping```
 
@@ -390,7 +390,7 @@ Ansible has an inbuilt tool ansible-galaxy which is used to create roles. Roles 
 
 **Note:** Ansible Control Machine Terminal can be accessed by "Switch Windows" beside the apps menu. If the terminal is closed, git-bash can be opened and the server can be logged into from apps menu.
 
-Step 1. Open the terminal of Ansible Control Machine, Create a folder named Ansible and store all the playbooks that are required in this tutorial. Create a folder roles under Ansible to store all roles in the folder. 
+**Step 1.** Open the terminal of Ansible Control Machine, Create a folder named Ansible and store all the playbooks that are required in this tutorial. Create a folder roles under Ansible to store all roles in the folder. 
 
  
 ```sh
@@ -399,7 +399,7 @@ cd /root/ansible/roles
 ansible-galaxy init create_user
 ```
 
-Step 2. Under the folder create_user, navigate to the tasks directory by entering:
+**Step 1.** Under the folder create_user, navigate to the tasks directory by entering:
 
 ```cd tasks/```
 
@@ -419,7 +419,7 @@ Next, enter vi main.yml to edit the file "main.yaml", then update it with the fo
 
 In the above code, we are creating a new user named Sysgain. The attribute "become: true" implies to create the user Sysgain from a root account. 
 
-Step 3. Create a new playbook in the parent directory where the roles folder is available. Enter the command: vi Create_User.yaml, then update it with the following code (see screenshot below):
+**Step 3.** Create a new playbook in the parent directory where the roles folder is available. Enter the command: vi Create_User.yaml, then update it with the following code (see screenshot below):
 
 ```yml
 ---
@@ -435,13 +435,13 @@ In the above playbook, we are executing the role "create_user" in the local grou
 
 **Note:** Servers are defined under groups which are inturn defined under an inventory file. This file was created in the previous sections of this tutorial.
 
-Step 4. Execute the following command to run the playbook and create a new user "Sysgain"
+**Step 4.** Execute the following command to run the playbook and create a new user "Sysgain"
 
 ```ansible-playbook /root/ansible/Create_user.yaml```
 
 
 
-Step 5. Hosts section of the playbook is defined as "local" which create's the user in the local server(Ansible Control Machine). To create a user in all the servers mentioned in the ansible inventory file, Update the hosts section to "all" and run the command **```ansible-playbook /root/ansible/Create_user.yaml```**
+**Step 5.** Hosts section of the playbook is defined as "local" which create's the user in the local server(Ansible Control Machine). To create a user in all the servers mentioned in the ansible inventory file, Update the hosts section to "all" and run the command **```ansible-playbook /root/ansible/Create_user.yaml```**
 
 
 
@@ -449,7 +449,7 @@ Step 5. Hosts section of the playbook is defined as "local" which create's the u
 
 In the above execution, User Sysgain was only created in the remote server as the user already exists in the local machine.
 
-Step 6. To check if the User(Sysgain) is created in the machines, run the following command
+**Step 6.** To check if the User(Sysgain) is created in the machines, run the following command
 
 ```awk -F ":" '/^Sysgain/{print $1}' /etc/passwd```
 
@@ -459,7 +459,7 @@ In this section, We will learn to install multiple roles in different servers fr
 
 In the local machine we will install Apache and the remote node we will be installing tomcat package from a single playbook that is executed from Ansible Control Machine.
 
-Step 1.  Inside the directory roles, create a new role named "apache". This role is used to install/configure and manage the apache service. 
+**Step 1.**  Inside the directory roles, create a new role named "apache". This role is used to install/configure and manage the apache service. 
 
  ```ansible-galaxy init /root/ansible/roles/apache```
 
@@ -467,7 +467,7 @@ Step 1.  Inside the directory roles, create a new role named "apache". This role
 
 
 
-Step 2. Inside Apache role, Update the file "main.yaml" under the folder tasks with the following code:
+**Step 1.** Inside Apache role, Update the file "main.yaml" under the folder tasks with the following code:
 
 ```yml
 ---
@@ -486,7 +486,7 @@ Step 2. Inside Apache role, Update the file "main.yaml" under the folder tasks w
 
 In the above code, we are installing the latest version of Apache and starting the service of Apache. 
 
-Step 3. Inside Tomcat role, Update the file "main.yaml" (using vi command) under the folder tasks with the following code:
+**Step 3.** Inside Tomcat role, Update the file "main.yaml" (using vi command) under the folder tasks with the following code:
 
 ```yml
 ---
@@ -505,7 +505,7 @@ Step 3. Inside Tomcat role, Update the file "main.yaml" (using vi command) under
 
 In the above code, we are installing the latest version of tomcat and starting the service of tomcat.
 
-Step 4. Create a new playbook "Package_install.yaml" under the parent folder Ansible where roles directory is available. Update the following code (using vi command) in Package_install.yaml file:
+**Step 4.** Create a new playbook "Package_install.yaml" under the parent folder Ansible where roles directory is available. Update the following code (using vi command) in Package_install.yaml file:
 
 ```yml
 ---
@@ -529,7 +529,7 @@ From the above code, the role "apache" is being installed on the hosts group loc
 
 **Note:** The groups "local" and "webserver" are defined under inventory file in the previous sections. We have defined Ansible Control Machine in the local group and the second node server in the webserver group.
 
-Step 5.  Execute the playbook from Ansible Control Server which installs apache on the local machine and tomcat on the second compute instance. 
+**Step 5.**  Execute the playbook from Ansible Control Server which installs apache on the local machine and tomcat on the second compute instance. 
 
 ``` ansible-playbook /root/ansible/Package_install.yaml```
 
@@ -539,7 +539,7 @@ From the above output, we can see that Apache is installed on the local machine 
 
 **Tip:** We can view the IP address of the server on which the playbook is executing in the output section.
 
-Step 6. To validate the packages Apache and tomcat are installed on their respective servers. Login into their respective server and the following command:
+**Step 6.** To validate the packages Apache and tomcat are installed on their respective servers. Login into their respective server and the following command:
 
 ```service httpd status (shows status of apache service)```
 
@@ -557,7 +557,7 @@ Group Variables: These variables are defined in the parent/top directory where r
 
 Local Variables: These variables are defined inside the role and the scope the variable is limited to the specific role. 
 
-Step 1. Enter mkdir group_vars to create a folder named "group_vars"  in the top hierarchy of the folders where roles folder is available. Create a new file "login.yaml" by entering vi group_vars/login.yaml and update the code as follows:
+**Step 1.** Enter mkdir group_vars to create a folder named "group_vars"  in the top hierarchy of the folders where roles folder is available. Create a new file "login.yaml" by entering vi group_vars/login.yaml and update the code as follows:
 
 ```yml
 ---
@@ -568,9 +568,9 @@ password: "AnsibleTutorial"
 
 
 
-Step 2. These variables can be used in all the roles defined in the roles folder.  
+**Step 1.** These variables can be used in all the roles defined in the roles folder.  
 
-Step 3.  Create a new role variables and update "main.yaml" file under tasks directory as follows:
+**Step 3.**  Create a new role variables and update "main.yaml" file under tasks directory as follows:
 
 ```ansible-galaxy init /root/ansible/roles/variables```
 
@@ -579,7 +579,7 @@ Step 3.  Create a new role variables and update "main.yaml" file under tasks dir
 
 The above code takes variable values from the group variables defined in the group variable directory
 
-Step 4. Create a new playbook variable.yaml in the main directory where roles are defined and update the code with the following (see screenshot below):
+**Step 4.** Create a new playbook variable.yaml in the main directory where roles are defined and update the code with the following (see screenshot below):
 
 ```yml
 ---
@@ -597,15 +597,15 @@ Step 4. Create a new playbook variable.yaml in the main directory where roles ar
 
 In the above code, since login.yaml file was included in the playbook which is a group variables file, they can be automatically passed to the subsequent tasks in the playbook. These variables can be accessed in all the nodes that role is executed on.
 
-Step 5. Execute the playbook with the following command 
+**Step 5.** Execute the playbook with the following command 
 
 ```ansible-playbook create_user.yaml```
 
 
 
-Step 6. Handlers are only executed if a certain task reports any changes. For example, if a configuration of a package is updated, then handler is notified to restart the package service which picks up updated configuration.
+**Step 6.** Handlers are only executed if a certain task reports any changes. For example, if a configuration of a package is updated, then handler is notified to restart the package service which picks up updated configuration.
 
-Step 7. Under the role Apache, there is a folder named handlers. Update the file "main.yaml" file with the following code (see screenshot below):
+**Step 7.** Under the role Apache, there is a folder named handlers. Update the file "main.yaml" file with the following code (see screenshot below):
 
 ```yml
 ---
@@ -619,7 +619,7 @@ Step 7. Under the role Apache, there is a folder named handlers. Update the file
 
 
 
-Step 8. We will be maintaining a file using Apache module and if the file changes we will notify the handler to restart Apache service.
+**Step 8.** We will be maintaining a file using Apache module and if the file changes we will notify the handler to restart Apache service.
 
 Go to the role Apache and templates folder by entering cd roles/apache/templates/. Create a new file "Sample.j2"  as shown below. j2 is the format of the template that Ansible recognizes. 
 
@@ -627,7 +627,7 @@ Go to the role Apache and templates folder by entering cd roles/apache/templates
 
 
 
- Step 9. Update the Ansible role code at "/root/ansible/roles/apache/tasks/main.yaml" file with the following code (see below screenshot):
+ **Step 9.** Update the Ansible role code at "/root/ansible/roles/apache/tasks/main.yaml" file with the following code (see below screenshot):
 
 
 ```yml
@@ -640,7 +640,7 @@ Go to the role Apache and templates folder by entering cd roles/apache/templates
 ```
 
 
-Step 10. Create a new playbook apache.yaml file under the top folder in the hierarchy with the following code (see screenshot below):
+**Step 10.** Create a new playbook apache.yaml file under the top folder in the hierarchy with the following code (see screenshot below):
 
 ```yml
 ---
@@ -654,7 +654,7 @@ Step 10. Create a new playbook apache.yaml file under the top folder in the hier
 
 
 
-Step 11. Enter the below command to execute the playbook apache, which installs Apache and configures the file in the location (/etc/Sample.txt). Since this file was configured for the first time, it notifies handler and Apache service is restarted. Subsequent execution of the playbook will not restart the service as there are no changes to the file. 
+**Step 11.** Enter the below command to execute the playbook apache, which installs Apache and configures the file in the location (/etc/Sample.txt). Since this file was configured for the first time, it notifies handler and Apache service is restarted. Subsequent execution of the playbook will not restart the service as there are no changes to the file. 
 
 ```ansible-playbook apache.yaml```
 
