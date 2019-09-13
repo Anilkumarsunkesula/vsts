@@ -26,8 +26,8 @@ Jenkins Pipeline is written into text file called **Jenkinsfile**. which you can
 
 #### Jenkins Pipeline is supported in two types of syntax:
 
--  [Declarative Pipeline](#what-is-declarative-pipeline)
--  [Scripted Pipeline](#what-is-scripted-pipeline)
+-  **Declarative Pipeline**
+-  **Scripted Pipeline**
 
 ### Pipeline Concepts
 
