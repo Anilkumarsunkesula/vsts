@@ -146,7 +146,7 @@ test
 * jenkins username: {{jenkins username}}
 * jenkins password: {{jenkins password}}
 
-###Declarative Pipeline with Classic UI
+ ### Declarative Pipeline with Classic UI
 
 steps to create sample pipeline in classic UI
 
@@ -215,7 +215,7 @@ pipeline {
 
 ![console_output](/Intermediate/img/console_output.png?token=AJU3VUSW4OQVG7TAGE5XCQC43ZNUM)
 
-###Scripted Pipeline with SCM
+ ### Scripted Pipeline with SCM
 
 - Steps to create scripted pipeline with SCM
 
@@ -261,7 +261,7 @@ e.g: Jenkinsfile_pipeline
 
 ![console_output_jenkinsfile](/Intermediate/img/console_output_jenkinsfile.png?token=AJU3VURTH72EGRROJCUCPZS43ZU5E)
  
-###Deletion of Pipeline 
+ ### Deletion of Pipeline 
 
 - Steps to delete a pipeline
 
