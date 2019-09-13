@@ -144,7 +144,7 @@ test
 
 * jenkins url: {{jenkins url}}
 * jenkins username: {{jenkins username}}
-* jenkins password: {{jenkins password}}
+* jenkins password: {{jenkins password}}<br>
 
 ### Declarative Pipeline with Classic UI
 
