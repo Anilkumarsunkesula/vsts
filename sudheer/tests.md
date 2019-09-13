@@ -335,9 +335,9 @@ node('master'){
 
 ![pipeline-view](/Intermediate/img/p-gh-pipeline-view.png?token=AJU3VUVWNJAWOXXFHWZ3E7K46UGEA) 
 
-10. We can verify the history of executed build by clicking the build number e.g:  **#1** 
+10.We can verify the history of executed build by clicking the build number e.g:  **#1** 
 
-11. Click on build number and select  **console output**  
+11.Click on build number and select  **console output**  
 
 ![console-output](/Intermediate/img/p-gh-console-output.png?token=AJU3VURHFBO5FT2HFS6WC6246UGGY) 
 
