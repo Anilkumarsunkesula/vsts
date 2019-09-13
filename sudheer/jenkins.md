@@ -15,6 +15,7 @@
 [conclusion](#conclusion)
 
 ## Overview
+
 Jenkins Pipeline is a workflow with group of tasks that brings code from version control system or scripted pipeline into provide the good software to customers or end users in a automated way.
 - Pipeline offers a extensible set of tools for modeling simple to complex delivery **pipeline as a code** via *Domain Specific Language* (DSL).
 
@@ -141,7 +142,8 @@ Before using Jenkins Pipeline we need following requirements.
 * jenkins username: {{jenkins username}}
 * jenkins password: {{jenkins password}}
 
-## Declarative Pipeline with Classic UI
+### Declarative Pipeline with Classic UI
+
 steps to create sample pipeline in classic UI
 1. Click **New Item** in the top left corner on the dashboard.  
 ![new_item](/Intermediate/img/new_item.png?token=AJU3VUWRXBECK5O6APPDX6246UFXA)  
@@ -179,13 +181,21 @@ pipeline {
 
 ```
 ![script_area](/Intermediate/img/pipeline_script.png?token=AJU3VUUR3ECCZLQV3ND5MW243ZNMY)
+
 7. Finally click on **Apply** and **Save**. it will redirect to pipeline view page.
+
 8. Click **Build Now** button to execute your pipeline.
+
 ![build_now](/Intermediate/img/build_now.png?token=AJU3VUQNQQYXJX5CYWJIQOK43ZNPW)
+
 9. After pipeline execution is completed the pipeline view will be **below** screenshot.
+
 ![pipeline_view](/Intermediate/img/pipeline_view.png?token=AJU3VUWSEHRP2M4FBCJHDFC43ZNSM)
+
 10. We can verify the history of executed build by clicking the build number e.g: **#1**
+
 11. Click on build number and select **console output**
+
 ![console_output](/Intermediate/img/console_output.png?token=AJU3VUSW4OQVG7TAGE5XCQC43ZNUM)
 
 ### Scripted Pipeline with SCM
@@ -224,18 +234,29 @@ e.g: Jenkinsfile_pipeline
 ![last_dashboard](/Intermediate/img/last_dashboard.png?token=AJU3VUU3I3D4WWSJABPC3UC432GMK)
 
 ## Pipeline with git hub project
+
 - Steps to create pipeline with git hub project
-1.  Click  **New Item**  in the top left corner on the dashboard.  
+
+1.  Click  **New Item**  in the top left corner on the dashboard. 
+
 ![new_item](/Intermediate/img/new_item.png?token=AJU3VUWRXBECK5O6APPDX6246UFXA)  
+
 2.  Enter the name of your project in the  **Enter an item name**  field, and select  **Pipeline**  project , and click  **OK**  button.
+
 e.g: pipeline_git_project
+
 ![enter-name](/Intermediate/img/p-gh-enter-name.png?token=AJU3VUQD3R3MZYDGEL3YYN246UF4E)
+
 3.  Next Enter the  **description**  if you want.
+
 4.  Scroll down to pipeline section,  **Definition**  field.
+
 5.  In this lab we used already created git hub repository URL ```https://github.com/sysgain/qloudable_Jenkinsfile.git```
+
 6. Write your pipeline code into script area.
 
 copy and paste the following pipeline script into script area.
+
 ``` groovy
 node('master'){
 	stage('git_clone') {
@@ -250,17 +271,28 @@ node('master'){
 	}
 }
 ```
-  -  git_clone stage : Clone the repository into your local. 
+ -  git_clone stage : Clone the repository into your local. 
+
  - list_of_files stage : List the files and folders in that repository.
- - list_of_branches stage : List of branches given repository.  
-![script-area](/Intermediate/img/p-gh-scriptarea.png?token=AJU3VUS6V7OJRBULNH4222S46UJLK)  
-7. Finally click on  **Apply**  and  **Save**. it will redirect to pipeline view page.  
+
+ - list_of_branches stage : List of branches given repository. 
+
+![script-area](/Intermediate/img/p-gh-scriptarea.png?token=AJU3VUS6V7OJRBULNH4222S46UJLK)
+
+7. Finally click on  **Apply**  and  **Save**. it will redirect to pipeline view page. 
+
 8. Click  **Build Now**  button to execute your pipeline.  
+
 9. After pipeline execution is completed the pipeline view will be **below** screenshot  
-![pipeline-view](/Intermediate/img/p-gh-pipeline-view.png?token=AJU3VUVWNJAWOXXFHWZ3E7K46UGEA)  
-10. We can verify the history of executed build by clicking the build number e.g:  **#1**  
+
+![pipeline-view](/Intermediate/img/p-gh-pipeline-view.png?token=AJU3VUVWNJAWOXXFHWZ3E7K46UGEA) 
+
+10. We can verify the history of executed build by clicking the build number e.g:  **#1** 
+
 11. Click on build number and select  **console output**  
-![console-output](/Intermediate/img/p-gh-console-output.png?token=AJU3VURHFBO5FT2HFS6WC6246UGGY)  
+
+![console-output](/Intermediate/img/p-gh-console-output.png?token=AJU3VURHFBO5FT2HFS6WC6246UGGY) 
+ 
 ## Conclusion
 
 Congratulations! You have successfully completed the jenkins pipeline lab. In this lab, you created Declarative Pipeline and Scripted Pipeline and create pipeline with git hub project. Feel free to continue exploring or start a new lab.Thank you for taking this training lab!
