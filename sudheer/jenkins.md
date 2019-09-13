@@ -17,18 +17,19 @@
 ## Overview
 
 Jenkins Pipeline is a workflow with group of tasks that brings code from version control system or scripted pipeline into provide the good software to customers or end users in a automated way.
+
 - Pipeline offers a extensible set of tools for modeling simple to complex delivery **pipeline as a code** via *Domain Specific Language* (DSL).
 
 #### what is Jenkinsfile
 
 Jenkins Pipeline is written into text file called **Jenkinsfile**. which you can commit to your project source code repository.
 
-##### Jenkins Pipeline is supported in two types of syntax:
+#### Jenkins Pipeline is supported in two types of syntax:
 
 -  [Declarative Pipeline](#what-is-declarative-pipeline)
 -  [Scripted Pipeline](#what-is-scripted-pipeline)
 
-#### Pipeline Concepts
+### Pipeline Concepts
 
 - The following concepts are fundamental of jenkins pipeline
 -  **Pipeline**: A pipeline is a user-defined model of a Continuous Delivery. A Pipeline’s code defines your entire build process, which includes stages for build, test and deliver the application. It is a part of Declarative pipeline.
@@ -145,18 +146,31 @@ Before using Jenkins Pipeline we need following requirements.
 ### Declarative Pipeline with Classic UI
 
 steps to create sample pipeline in classic UI
-1. Click **New Item** in the top left corner on the dashboard.  
+
+1. Click **New Item** in the top left corner on the dashboard. 
+
 ![new_item](/Intermediate/img/new_item.png?token=AJU3VUWRXBECK5O6APPDX6246UFXA)  
+
 2. Enter the name of your project in the **Enter an item name** field, and select **Pipeline** project , and click **OK** button .
+
 e.g: pipeline_project_1
+
 ![pipeline_name](/Intermediate/img/entername.png?token=AJU3VUXI5YTZ4TFNFMFDCXC43ZNA6)
+
 3. Next Enter the **description** if you want.
+
 4. Go to pipeline section, **Definition** field indicates Pipeline script option.
+
 ![definition](/Intermediate/img/definition.png?token=AJU3VUX6XPHGPUF5XEA66DK43ZNKW)
+
 5. write your pipeline code into script area.
+
 6. In this lab we are going to explain declarative pipeline. select **pipeline script** in **definition** field.
+
 - For example:-
+
 copy and paste the following declarative pipeline example into script area.
+
 ``` groovy
 pipeline {
 	agent any
@@ -199,38 +213,69 @@ pipeline {
 ![console_output](/Intermediate/img/console_output.png?token=AJU3VUSW4OQVG7TAGE5XCQC43ZNUM)
 
 ### Scripted Pipeline with SCM
+
 - Steps to create scripted pipeline with SCM
+
 1. Click **New Item** in the top left corner on the dashboard.  
+
 ![new_item](/Intermediate/img/new_item.png?token=AJU3VUWRXBECK5O6APPDX6246UFXA)  
+
 2. Enter the name of your project in the **Enter an item name** field, and select **Pipeline** project , and click **OK** button.
+
 e.g: Jenkinsfile_pipeline
+
 ![pipeline_name](/Intermediate/img/jenkinsfile_name.png?token=AJU3VUQSPSKONFWZ7UR5YMK43ZROU)
+
 3. Next Enter the **description** if you want.
+
 4. Go to pipeline section, in **Definition** field choose **Pipeline script from SCM**.
+
 ![definition](/Intermediate/img/choose_selectscm.png?token=AJU3VUVKETO5CO47MMR5PYS43ZRZI)
+
 5. select **SCM** either git or subversion. in this lab we choose **git**.
+
 ![scm](/Intermediate/img/choose_git.png?token=AJU3VUVC4F2GGDKPBQWLSN243ZSKC)
+
 6. For this lab we already created [scripted Pipeline jenkinsfile](https://raw.githubusercontent.com/sysgain/qloudable_Jenkinsfile/master/Jenkinsfile)
+
 7. Next enter github Jenkinsfile repository URL. `https://github.com/sysgain/qloudable_Jenkinsfile.git`
+
 8. The script path is the name of the Jenkinsfile that is going to be accessed from your SCM to run.
+
 9. Finally click on **Apply** and **Save**. it will redirect to pipeline view page.
+
 10. Click **Build Now** button to execute your pipeline.
+
 ![jenkinsfile_pipeline](/Intermediate/img/build_now_jenkinsfile.png?token=AJU3VUSMQYQRGQ4QLHLVXBK43ZURI)
+
 11. After pipeline execution is completed the pipeline view will be **below** screenshot
+
 ![buildview](/Intermediate/img/pipeline_view_jenkinsfile.png?token=AJU3VUWO3WOMURQKFLOAVKC43ZUV6)
+
 12. We can verify the history of executed build by clicking the build number e.g: **#1**
+
 13. Click on the build number and select **console output**
+
 ![console_output_jenkinsfile](/Intermediate/img/console_output_jenkinsfile.png?token=AJU3VURTH72EGRROJCUCPZS43ZU5E)
  
 ### Deletion of Pipeline 
-- Steps to delete a pipeline 
+
+- Steps to delete a pipeline
+
 1. select the pipeline you want to delete. it will redirect to pipeline view page.
+
 ![select_pipeline](/Intermediate/img/select_pipeline_delete.png?token=AJU3VUVZXQYPRUQ5YVJ5TMS432GEG)
+
 2. Click **Delete Pipeline** on left corner.
+
 ![deletepipeline](/Intermediate/img/delete_pipeline.png?token=AJU3VUTBJ2F42RMYOVJD3B2432GGG)
+
 3. It will open pop-up window click **OK**
+
 ![popup_delete](/Intermediate/img/pop-up_delete.png?token=AJU3VUTJT5TNI4WXRUQRVNK432GJW)
+
 4. It will redirect to jenkins dashboard.
+
 ![last_dashboard](/Intermediate/img/last_dashboard.png?token=AJU3VUU3I3D4WWSJABPC3UC432GMK)
 
 ## Pipeline with git hub project
@@ -292,7 +337,7 @@ node('master'){
 11. Click on build number and select  **console output**  
 
 ![console-output](/Intermediate/img/p-gh-console-output.png?token=AJU3VURHFBO5FT2HFS6WC6246UGGY) 
- 
+
 ## Conclusion
 
 Congratulations! You have successfully completed the jenkins pipeline lab. In this lab, you created Declarative Pipeline and Scripted Pipeline and create pipeline with git hub project. Feel free to continue exploring or start a new lab.Thank you for taking this training lab!
