@@ -19,17 +19,24 @@ Jenkins Pipeline is a workflow with group of tasks that brings code from version
 - Pipeline offers a extensible set of tools for modeling simple to complex delivery **pipeline as a code** via *Domain Specific Language* (DSL).
 
 #### what is Jenkinsfile
+
 Jenkins Pipeline is written into text file called **Jenkinsfile**. which you can commit to your project source code repository.
+
 ##### Jenkins Pipeline is supported in two types of syntax:
+
 -  [Declarative Pipeline](#what-is-declarative-pipeline)
 -  [Scripted Pipeline](#what-is-scripted-pipeline)
+
 #### Pipeline Concepts
+
 - The following concepts are fundamental of jenkins pipeline
 -  **Pipeline**: A pipeline is a user-defined model of a Continuous Delivery. A Pipeline’s code defines your entire build process, which includes stages for build, test and deliver the application. It is a part of Declarative pipeline.
 -  **Node**: A node is a machine on which jenkins runs. node block is mainly used in scripted pipeline.
 -  **Stage**: A stage contains a series of tasks performed through entire pipeline, that is, build, test, and deploy processes all come together in a stage. A stage block can visualize your jenkins pipeline status.
 -  **Step**: A step is nothing but a single task that executes a specific process at a particular point of time. This block is used in Declarative pipeline.
+
 #### what is Declarative Pipeline
+
 Declarative Pipeline bring a simple and user friendly syntax with some specific statements. without learn groovy. Declarative pipeline should be start with *pipeline* sentence and follow the required sections:
 - agent
 - stages
@@ -61,6 +68,7 @@ pipeline {
 ```
 
 #### what is Scripted Pipeline
+
 Scripted Pipeline provides a flexibility and extensibility to jenkins users. it starts with a *node*
 sample Scripted Pipeline example:-
 ``` groovy
@@ -125,7 +133,7 @@ Before using Jenkins Pipeline we need following requirements.
 
 ## Basic Jenkins Pipeline
 
-### Login to Jenkins UI
+## Login to Jenkins UI
 
 1. Login to the jenkins UI using the below details.
 
@@ -133,7 +141,7 @@ Before using Jenkins Pipeline we need following requirements.
 * jenkins username: {{jenkins username}}
 * jenkins password: {{jenkins password}}
 
-### Declarative Pipeline with Classic UI
+## Declarative Pipeline with Classic UI
 steps to create sample pipeline in classic UI
 1. Click **New Item** in the top left corner on the dashboard.  
 ![new_item](/Intermediate/img/new_item.png?token=AJU3VUWRXBECK5O6APPDX6246UFXA)  
@@ -253,6 +261,6 @@ node('master'){
 10. We can verify the history of executed build by clicking the build number e.g:  **#1**  
 11. Click on build number and select  **console output**  
 ![console-output](/Intermediate/img/p-gh-console-output.png?token=AJU3VURHFBO5FT2HFS6WC6246UGGY)  
-### Conclusion
+## Conclusion
 
 Congratulations! You have successfully completed the jenkins pipeline lab. In this lab, you created Declarative Pipeline and Scripted Pipeline and create pipeline with git hub project. Feel free to continue exploring or start a new lab.Thank you for taking this training lab!
