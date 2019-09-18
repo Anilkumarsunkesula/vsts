@@ -133,9 +133,9 @@ Step 3. Click Create Instance. Fill out the dialog box:
 
          3.2 Availability Domain: Select the first available domain. 
 
-         3.3 Image Operating System: For the image, select ubuntu 16.04 Latest available
-.
-         3.4 Shape: Select VM.Standard2.1.
+         3.3 Image Operating System: For the image, select ubuntu 16.04 Latest available 
+         
+         3.4 Shape, Select **VM.Standard2.1**
 
          3.5 SSH Keys: Choose ‘Paste SSH Keys’ and paste the Public Key saved earlier.
 
