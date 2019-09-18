@@ -215,12 +215,12 @@ Docker Swarm Environment:
 
 Initialize a swarm. The docker engine targeted by this command becomes a manager in the newly created single-node swarm.
 
-1. To start docker swarm run: # docker swarm init
+-  To start docker swarm run: ``` docker swarm init```
 
 
-2. To check the nodes connected to swarm run:  # docker node ls
+- To check the nodes connected to swarm run:  # docker node ls
 
-Deploying Cats & Dogs application:
+### Deploying Cats & Dogs application:
 
 Now deploy a simple app in Docker swarm. You can get sample cats & dogs app from docker site.
 
@@ -230,23 +230,23 @@ Run below command to get docker-stak.yml file.
 
  
 
-3. Run below command to deploy the application on docker swarm.
+- Run below command to deploy the application on docker swarm.
 
 ``` docker stack deploy -c docker-stack.yml vote```
 
 If u got any failures while deploying the app run the same command after few seconds.
 
-4. This app will deploy six services, to check services run:
+- This app will deploy six services, to check services run:
 
 ```docker service ls```
 
-5. To check the app run : 
+- To check the app run : 
 
  ```curl localhost:5000```
 
-6. You can browse the app in your browser, for that first you need open **port 5000** in your network security group’s inbound rule on Azure portal
+-  You can browse the app in your browser, for that first you need open **port 5000** in your network security group’s inbound rule on Azure portal
 
 
 
-6. On browser enter ```<dackerswarm_publicip>:5000```
+- On browser enter ```<dackerswarm_publicip>:5000```
 
