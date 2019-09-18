@@ -255,6 +255,7 @@ Run below command to get docker-stak.yml file.
 - Run below command to deploy the application on docker swarm.
 
 ``` docker stack deploy -c docker-stack.yml vote```
+
 ![](https://qloudableassets.blob.core.windows.net/devops/OCI/docker-ce/images/22.png?st=2019-09-06T10%3A31%3A31Z&se=2022-09-07T10%3A31%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=fwljWymO6LKz5xubtKh3mAsK3r858hNP%2Bl6%2FtadP4MM%3D)
 
 If u got any failures while deploying the app run the same command after few seconds.
