@@ -55,6 +55,7 @@ Compartment Name: {{compartment-name}}
 Step 2. Reduce the browser display size  as needed
            (Below example is for Chrome). 
 
+![](https://qloudableassets.blob.core.windows.net/devops/OCI/docker-ce/images/1.png?st=2019-09-06T10%3A31%3A31Z&se=2022-09-07T10%3A31%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=fwljWymO6LKz5xubtKh3mAsK3r858hNP%2Bl6%2FtadP4MM%3D)
 
 
 ### Create VCN
@@ -62,13 +63,13 @@ Step 2. Reduce the browser display size  as needed
 Step 1. From OCI Services menu, click Virtual Cloud Network
             under Networking
 
-
+![](https://qloudableassets.blob.core.windows.net/devops/OCI/docker-ce/images/2.png?st=2019-09-06T10%3A31%3A31Z&se=2022-09-07T10%3A31%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=fwljWymO6LKz5xubtKh3mAsK3r858hNP%2Bl6%2FtadP4MM%3D)
 
 Step 2. Ensure correct compartment is selected (Bottom Left  
            of OCI console). 
-Choose Compartment: {{a8404704-d007-c1cb-e353-8f8c007619f1.variable.compartment_name}}
+Choose Compartment: {{compartment-name}}
 
-
+![](https://qloudableassets.blob.core.windows.net/devops/OCI/docker-ce/images/3.png?st=2019-09-06T10%3A31%3A31Z&se=2022-09-07T10%3A31%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=fwljWymO6LKz5xubtKh3mAsK3r858hNP%2Bl6%2FtadP4MM%3D)
 
 Step 3: Click Create Virtual Cloud Network. 
 
@@ -79,19 +80,27 @@ Step 4. Fill out the dialog box:<br>
          4.4 Click Create Virtual Cloud Network.<br>
          4.5 Click Close.
 
-
+![](https://qloudableassets.blob.core.windows.net/devops/OCI/docker-ce/images/4.png?st=2019-09-06T10%3A31%3A31Z&se=2022-09-07T10%3A31%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=fwljWymO6LKz5xubtKh3mAsK3r858hNP%2Bl6%2FtadP4MM%3D)
+![](https://qloudableassets.blob.core.windows.net/devops/OCI/docker-ce/images/5.png?st=2019-09-06T10%3A31%3A31Z&se=2022-09-07T10%3A31%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=fwljWymO6LKz5xubtKh3mAsK3r858hNP%2Bl6%2FtadP4MM%3D)
 
 navigate  to created virtual cloud networks.
+
+![](https://qloudableassets.blob.core.windows.net/devops/OCI/docker-ce/images/6.png?st=2019-09-06T10%3A31%3A31Z&se=2022-09-07T10%3A31%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=fwljWymO6LKz5xubtKh3mAsK3r858hNP%2Bl6%2FtadP4MM%3D)
 
 
 select security lists on left panel and click default security list  
 
+![](https://qloudableassets.blob.core.windows.net/devops/OCI/docker-ce/images/7.png?st=2019-09-06T10%3A31%3A31Z&se=2022-09-07T10%3A31%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=fwljWymO6LKz5xubtKh3mAsK3r858hNP%2Bl6%2FtadP4MM%3D)
+
 
 Click Edit All Rules.
 
+![](https://qloudableassets.blob.core.windows.net/devops/OCI/docker-ce/images/8.png?st=2019-09-06T10%3A31%3A31Z&se=2022-09-07T10%3A31%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=fwljWymO6LKz5xubtKh3mAsK3r858hNP%2Bl6%2FtadP4MM%3D)
 
 
 To add ingress rouls click Another Ingress Rules button and enter source cidr as 0.0.0.0/0 and Destination port range as 5000 then click save changes.
+
+![](https://qloudableassets.blob.core.windows.net/devops/OCI/docker-ce/images/9.png?st=2019-09-06T10%3A31%3A31Z&se=2022-09-07T10%3A31%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=fwljWymO6LKz5xubtKh3mAsK3r858hNP%2Bl6%2FtadP4MM%3D)
 
 
 ## Create Public and Private SSH keypair to login into the VM
@@ -105,7 +114,8 @@ Step 2. Enter the command ssh-keygen in git-bash window.
 
 Step 3. Press Enter When asked for ‘Enter File in which  to save the key’, ‘Created Directory', Press Enter  when prompted for ‘Enter passphrase’, and Enter again when prompted for ‘Enter Passphrase again'. **NOTE:** No Pass phrase is needed
 
- 
+ ![](https://qloudableassets.blob.core.windows.net/devops/OCI/docker-ce/images/10.png?st=2019-09-06T10%3A31%3A31Z&se=2022-09-07T10%3A31%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=fwljWymO6LKz5xubtKh3mAsK3r858hNP%2Bl6%2FtadP4MM%3D)
+
 Step 4. You should now have the Public and Private keys:<br>
              ~/.ssh/id_rsa (Private Key)<br>
              ~/.ssh/id_rsa.pub (Public Key)<br>
@@ -114,12 +124,17 @@ Step 4. You should now have the Public and Private keys:<br>
 
 Step 5. In git-bash Enter ‘cat ~/.ssh/id_rsa.pub’, highlight the key and copy (using your mouse/touch pad or Ctrl c).
 
+![](https://qloudableassets.blob.core.windows.net/devops/OCI/docker-ce/images/11.png?st=2019-09-06T10%3A31%3A31Z&se=2022-09-07T10%3A31%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=fwljWymO6LKz5xubtKh3mAsK3r858hNP%2Bl6%2FtadP4MM%3D)
+
 Step 6. In the OCI Console Window, click the Apps icon  and click Notepad. <br>
     **HINT:** You can swap between the OCI window and any other application (Notepad etc.) by clicking the Switch Window  icon.
 
+![](https://qloudableassets.blob.core.windows.net/devops/OCI/docker-ce/images/12.png?st=2019-09-06T10%3A31%3A31Z&se=2022-09-07T10%3A31%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=fwljWymO6LKz5xubtKh3mAsK3r858hNP%2Bl6%2FtadP4MM%3D)
+
 Step 7. Paste the public key in Notepad (using your mouse/touch pad or Ctrl v).
 
- 
+ ![](https://qloudableassets.blob.core.windows.net/devops/OCI/docker-ce/images/13.png?st=2019-09-06T10%3A31%3A31Z&se=2022-09-07T10%3A31%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=fwljWymO6LKz5xubtKh3mAsK3r858hNP%2Bl6%2FtadP4MM%3D)
+
 Step 8. Minimize Notepad and git-bash (if open) windows.
 
 We now have a Public/Private SSH key pair. Next we will create a compute instance using the public key we just saved
@@ -151,12 +166,16 @@ Step 3. Click Create Instance. Fill out the dialog box:
 
          3.8 Click Create Instance.
 
+![](https://qloudableassets.blob.core.windows.net/devops/OCI/docker-ce/images/14.png?st=2019-09-06T10%3A31%3A31Z&se=2022-09-07T10%3A31%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=fwljWymO6LKz5xubtKh3mAsK3r858hNP%2Bl6%2FtadP4MM%3D)
+![](https://qloudableassets.blob.core.windows.net/devops/OCI/docker-ce/images/15.png?st=2019-09-06T10%3A31%3A31Z&se=2022-09-07T10%3A31%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=fwljWymO6LKz5xubtKh3mAsK3r858hNP%2Bl6%2FtadP4MM%3D)
+![](https://qloudableassets.blob.core.windows.net/devops/OCI/docker-ce/images/16.png?st=2019-09-06T10%3A31%3A31Z&se=2022-09-07T10%3A31%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=fwljWymO6LKz5xubtKh3mAsK3r858hNP%2Bl6%2FtadP4MM%3D)
 
 
 Step 4. Once Instance is in ‘Running’ state, note down the public IP address.
 
 Step 5. You can also see the Fault Domain of the Virtual Machine
 
+![](https://qloudableassets.blob.core.windows.net/devops/OCI/docker-ce/images/17.png?st=2019-09-06T10%3A31%3A31Z&se=2022-09-07T10%3A31%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=fwljWymO6LKz5xubtKh3mAsK3r858hNP%2Bl6%2FtadP4MM%3D)
 
 We now have a Compute instance with a Public IP address. Next we will SSH to the compute instance from the internet.
 
@@ -201,9 +220,11 @@ Verify that Docker CE is installed correctly by running hello-world image.
 
 ``` docker run hello-world```
 
+![](https://qloudableassets.blob.core.windows.net/devops/OCI/docker-ce/images/18.png?st=2019-09-06T10%3A31%3A31Z&se=2022-09-07T10%3A31%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=fwljWymO6LKz5xubtKh3mAsK3r858hNP%2Bl6%2FtadP4MM%3D)
 
 To check the images, present in docker run: # docker images
 
+![](https://qloudableassets.blob.core.windows.net/devops/OCI/docker-ce/images/19.png?st=2019-09-06T10%3A31%3A31Z&se=2022-09-07T10%3A31%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=fwljWymO6LKz5xubtKh3mAsK3r858hNP%2Bl6%2FtadP4MM%3D)
 
 To check the containers 
 
@@ -217,8 +238,9 @@ Initialize a swarm. The docker engine targeted by this command becomes a manager
 
 -  To start docker swarm run: ``` docker swarm init```
 
+![](https://qloudableassets.blob.core.windows.net/devops/OCI/docker-ce/images/20.png?st=2019-09-06T10%3A31%3A31Z&se=2022-09-07T10%3A31%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=fwljWymO6LKz5xubtKh3mAsK3r858hNP%2Bl6%2FtadP4MM%3D)
 
-- To check the nodes connected to swarm run:  # docker node ls
+- To check the nodes connected to swarm run:  ``` docker node ls```
 
 ### Deploying Cats & Dogs application:
 
@@ -228,11 +250,12 @@ Run below command to get docker-stak.yml file.
 
 ```curl -O https://raw.githubusercontent.com/docker/example-voting-app/master/docker-stack.yml```
 
- 
+ ![](https://qloudableassets.blob.core.windows.net/devops/OCI/docker-ce/images/21.png?st=2019-09-06T10%3A31%3A31Z&se=2022-09-07T10%3A31%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=fwljWymO6LKz5xubtKh3mAsK3r858hNP%2Bl6%2FtadP4MM%3D)
 
 - Run below command to deploy the application on docker swarm.
 
 ``` docker stack deploy -c docker-stack.yml vote```
+![](https://qloudableassets.blob.core.windows.net/devops/OCI/docker-ce/images/22.png?st=2019-09-06T10%3A31%3A31Z&se=2022-09-07T10%3A31%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=fwljWymO6LKz5xubtKh3mAsK3r858hNP%2Bl6%2FtadP4MM%3D)
 
 If u got any failures while deploying the app run the same command after few seconds.
 
@@ -240,13 +263,17 @@ If u got any failures while deploying the app run the same command after few sec
 
 ```docker service ls```
 
+![](https://qloudableassets.blob.core.windows.net/devops/OCI/docker-ce/images/23.png?st=2019-09-06T10%3A31%3A31Z&se=2022-09-07T10%3A31%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=fwljWymO6LKz5xubtKh3mAsK3r858hNP%2Bl6%2FtadP4MM%3D)
+
 - To check the app run : 
 
  ```curl localhost:5000```
 
 -  You can browse the app in your browser, for that first you need open **port 5000** in your network security group’s inbound rule on Azure portal
 
+![](https://qloudableassets.blob.core.windows.net/devops/OCI/docker-ce/images/24.png?st=2019-09-06T10%3A31%3A31Z&se=2022-09-07T10%3A31%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=fwljWymO6LKz5xubtKh3mAsK3r858hNP%2Bl6%2FtadP4MM%3D)
 
 
 - On browser enter ```<dackerswarm_publicip>:5000```
 
+![](https://qloudableassets.blob.core.windows.net/devops/OCI/docker-ce/images/25.png?st=2019-09-06T10%3A31%3A31Z&se=2022-09-07T10%3A31%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=fwljWymO6LKz5xubtKh3mAsK3r858hNP%2Bl6%2FtadP4MM%3D)
