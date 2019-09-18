@@ -10,6 +10,8 @@
 
 [Create Public and Private SSH keypair to login into the VM](#create-public-and-private-ssh-keypair-to-login-into-the-vm)
 
+[Create a compute instance](#create-a-compute-instance)
+
 
 ## Overview
 
@@ -35,7 +37,7 @@ In this section we will login to the OCI console and adjust your screen size (if
 
 Step 1. Sign in to your account using the below credentials 
 
-            (Please type in your credentials):
+(Please type in your credentials):
 
 Access Details
 
@@ -64,11 +66,11 @@ Choose Compartment: {{a8404704-d007-c1cb-e353-8f8c007619f1.variable.compartment_
 
 Step 3: Click Create Virtual Cloud Network. 
 
-Step 4. Fill out the dialog box:
-         4.1 Create in Compartment: Has the correct compartment selected.
-         4.2 Name: Enter easy to remember name (e.g. "my_vcn").
-         4.3 select radio button Create Virtual Cloud Network Plus Related Resources
-         4.4 Click Create Virtual Cloud Network.
+Step 4. Fill out the dialog box:<br>
+         4.1 Create in Compartment: Has the correct compartment selected.<br>
+         4.2 Name: Enter easy to remember name (e.g. "my_vcn").<br>
+         4.3 select radio button Create Virtual Cloud Network Plus Related Resources<br>
+         4.4 Click Create Virtual Cloud Network.<br>
          4.5 Click Close.
 
 
@@ -116,3 +118,38 @@ Step 8. Minimize Notepad and git-bash (if open) windows.
 
 We now have a Public/Private SSH key pair. Next we will create a compute instance using the public key we just saved
  
+
+## Create a compute instance
+
+In this section we will create a Compute instance with a Public IP address using the public SSH key generated in the previous section.
+
+Step 1. Switch to OCI console.(if not already)
+
+Step 2. From OCI servies menu, Click Instances under Compute 
+
+Step 3. Click Create Instance. Fill out the dialog box:
+
+         3.1 Name: Enter a name (e.g. "docker_VM").
+
+         3.2 Availability Domain: Select the first available domain. 
+
+         3.3 Image Operating System: For the image, select ubuntu 16.04 Latest available
+.
+         3.4 Shape: Select VM.Standard2.1.
+
+         3.5 SSH Keys: Choose ‘Paste SSH Keys’ and paste the Public Key saved earlier.
+
+         3.6 Virtual Cloud Network: Select the VCN you created in the previous section. 
+
+         3.7 Subnet: Select the first available subnet. 
+
+         3.8 Click Create Instance.
+
+
+
+Step 4. Once Instance is in ‘Running’ state, note down the public IP address.
+
+Step 5. You can also see the Fault Domain of the Virtual Machine
+
+
+We now have a Compute instance with a Public IP address. Next we will SSH to the compute instance from the internet.
