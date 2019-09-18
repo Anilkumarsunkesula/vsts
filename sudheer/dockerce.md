@@ -12,6 +12,10 @@
 
 [Create a compute instance](#create-a-compute-instance)
 
+[Login to the instance](#login-to-the-instance)
+
+[Install Docker CE](#install-docker-ce)
+
 
 ## Overview
 
@@ -153,3 +157,53 @@ Step 5. You can also see the Fault Domain of the Virtual Machine
 
 
 We now have a Compute instance with a Public IP address. Next we will SSH to the compute instance from the internet.
+
+## Login to the instance
+
+
+In this section we will SSH into the Compute instance using its Public IP address and private SSH key. 
+
+Step 1. Bring up git-bash terminal.
+
+**HINT:** If the terminal was closed simply launch a new one using the Apps icon 
+
+Step 2. To SSH into the compute instance, Enter command  ```ssh  ubuntu@<PUBLIC_IP_OF_COMPUTE_INSTANCE>```
+  
+
+Step 3. Enter ‘Yes’ when prompted for security message. 
+
+
+You now have a Compute instance in OCI with a Public IP address which is accessible over the internet. It can be used install docker CE.
+
+## Install Docker CE
+
+You can install Docker CE in different ways, depending on your needs:
+
+- Most users set up Docker’s repositories and install from them, for ease of installation and upgrade tasks. This is the recommended approach.
+
+- Some users download the deb package and install it manually and manage upgrades completely manually. This is useful in situations such as installing Docker on air-gapped systems with no access to the internet.
+
+In this lab, we are going with Docker's repositories.
+
+Bring up git bash already login to ubuntu in the previous section.
+
+Download the installation script from below link
+
+```wget https://raw.githubusercontent.com/sysgain/tl-scripts/master/docker.sh```
+
+Run: 
+
+``` bash docker.sh```
+ 
+Verify that Docker CE is installed correctly by running hello-world image.
+
+``` docker run hello-world```
+
+
+To check the images, present in docker run: # docker images
+
+
+To check the containers 
+
+run: ```docker ps -a```
+
