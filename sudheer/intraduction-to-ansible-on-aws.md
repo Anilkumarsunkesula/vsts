@@ -42,6 +42,8 @@
     * IAM username: {{user name}}
     * Password: {{password}}
     * Region: {{region}}
+    * Instance username: {{instance username}}
+    * Instance password: {{instance password}}
 
 4. Enter `Account ID` from the above information, then click on `Next`.
 
