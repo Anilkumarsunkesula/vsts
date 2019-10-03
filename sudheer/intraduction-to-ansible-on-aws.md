@@ -8,8 +8,6 @@
 
 [Login to AWS console](#login-to-aws-console)
 
-[Launch Instance for Ansible ](#launch-instance-for-Ansible )
-
 [Login to the Instance and Install Ansible](#login-to-the-instance-and-install-ansible)
 
 [Creating SSH Keys for Ansible to access other instances](#creating-ssh-keys-for-ansible-to-access-other-instances)
