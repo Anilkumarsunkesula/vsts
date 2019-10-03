@@ -42,8 +42,7 @@
     * IAM username: {{user name}}
     * Password: {{password}}
     * Region: {{region}}
-    * Instance username: {{instance username}}
-    * Instance password: {{instance password}}
+ 
 
 4. Enter `Account ID` from the above information, then click on `Next`.
 
@@ -78,8 +77,9 @@ Connect using the IP of "Ansible Server VM" and use the credentials you provided
  
 Server setup:
 
-**Login as: ansible**<br>
-**Password: Password@1234**
+**Login as: {{instance username}}**<br>
+**Password: {{instance password}}**
+
 
 ![](https://qloudableassets.blob.core.windows.net/devops/Azure/chef-server/images/10.png?st=2019-09-06T10%3A31%3A31Z&se=2022-09-07T10%3A31%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=fwljWymO6LKz5xubtKh3mAsK3r858hNP%2Bl6%2FtadP4MM%3D)
 
