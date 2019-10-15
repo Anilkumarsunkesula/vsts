@@ -98,9 +98,11 @@ In this section we will login to the OCI console and adjust your screen size (if
             (Please type in your credentials):
 
 OCI Login Credentials<br>
-Cloud Tenant: {{Tenant Name}}<br>
-Username: {{Username}}<br>
-Password: {{Password}}
+
+**Tenancy Name:** {{tenancy-name}}<br>
+ **OCI login_ID:** {{oci-login-id}} <br>
+ **OCI login_Password:** {{oci-login-password}}<br>
+ **Compartment Name:** {{compartment-name}} <br>
 
 
 **Note:** Your password should be updated automatically for you, but sometimes  you may be asked to change it after signing in the first time. If prompted, pleaseupdate the password. You can use this one to expedite things: Oracle123!!!! . It will not be saved after this lab expires.
@@ -119,7 +121,7 @@ In this section, you will create a Virtual Cloud Network (VCN) within the OCI co
 
 **Step 2.** Please ensure you have the correct Compartment Selected. (Bottom Left of OCI console). 
 
-Choose Compartment: {{comparment-name}}
+Choose Compartment: {{compartment-name}}
 
 ![](https://qloudableassets.blob.core.windows.net/devops/OCI/introduction-to-ansible-playbook/images/4.jpg?st=2019-09-06T10%3A31%3A31Z&se=2022-09-07T10%3A31%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=fwljWymO6LKz5xubtKh3mAsK3r858hNP%2Bl6%2FtadP4MM%3D)
 
